@@ -345,48 +345,6 @@ export function generateSafetyInsights(accidents = [], activeFilter = 'All') {
 
   const recommendations = [];
 
-  if (topLoc && topLoc.count >= 2) {
-    recommendations.push({
-      id: 'rec-corridor',
-      priority: 'high',
-      target: topLoc.name,
-      category: 'Infrastructure & Traffic Management',
-      text: `Recommend conducting an engineering safety review at "${topLoc.name}" to examine intersection geometry, signal timings, and lane channelization due to repeated incidents (${topLoc.count} crashes).`,
-    });
-  }
-
-  if (topFatalLoc && topFatalLoc.count > 0) {
-    recommendations.push({
-      id: 'rec-fatal',
-      priority: 'critical',
-      target: topFatalLoc.name,
-      category: 'Speed & Collision Mitigation',
-      text: `Recommend site-specific safety inspection at "${topFatalLoc.name}" focusing on vehicle operating speeds, vulnerable road user crossings, and roadside barrier protection following ${topFatalLoc.count} recorded fatal casualties.`,
-    });
-  }
-
-  if (fogCount >= 3 || (fogCount / total) >= 0.15) {
-    const fogPct = Math.round((fogCount / total) * 100);
-    recommendations.push({
-      id: 'rec-weather',
-      priority: 'medium',
-      target: 'Arterial Road Network',
-      category: 'Visibility & Delineation',
-      text: `With ${fogCount} crashes (${fogPct}%) recorded in fog/dense fog, evaluate retro-reflective road markings, cat's-eye stud maintenance, and dynamic low-visibility advisory signage along major corridors.`,
-    });
-  }
-
-  if (weekendCount >= 3 && (weekendCount / total) >= 0.35) {
-    const wkPct = Math.round((weekendCount / total) * 100);
-    recommendations.push({
-      id: 'rec-weekend',
-      priority: 'medium',
-      target: 'Citywide Grid',
-      category: 'Enforcement & Patrol Allocation',
-      text: `Weekend volume accounts for ${weekendCount} incidents (${wkPct}%). Recommend reviewing traffic police patrol scheduling and speed-monitoring deployment on weekend peak hours.`,
-    });
-  }
-
   return {
     hasData: true,
     totalCount: total,

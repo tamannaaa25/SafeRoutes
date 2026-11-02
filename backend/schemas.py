@@ -108,14 +108,17 @@ class AIInsightsRequest(BaseModel):
     include_recommendations: Optional[bool] = True
 
 class AIInsightResponse(BaseModel):
+    success: bool = True
+    error: Optional[str] = None
     generated_at: datetime
     source: str
     model_name: str
     executive_summary: str
-    key_observations: List[str]
-    high_risk_corridors_analysis: str
-    weather_and_visibility_impact: str
-    recommended_interventions: List[Dict[str, Any]]
-    caveat_note: str
-    supporting_metrics: Dict[str, Any]
+    recommendations: Optional[List[Dict[str, Any]]] = []
+    key_observations: Optional[List[str]] = []
+    high_risk_corridors_analysis: Optional[str] = ""
+    weather_and_visibility_impact: Optional[str] = ""
+    recommended_interventions: Optional[List[Dict[str, Any]]] = []
+    caveat_note: Optional[str] = ""
+    supporting_metrics: Optional[Dict[str, Any]] = {}
 

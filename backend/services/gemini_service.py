@@ -5,9 +5,10 @@ from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 
-def generate_gemini_safety_insights(
+def generate_gemini_safety_recommendations(
     stats_data: Dict[str, Any],
     top_locations: List[Dict[str, Any]],
+    fatal_locations: List[Dict[str, Any]],
     severity_dist: List[Dict[str, Any]],
     weather_dist: List[Dict[str, Any]]
 ) -> Dict[str, Any]:
@@ -17,110 +18,143 @@ def generate_gemini_safety_insights(
     total_injuries = stats_data.get("total_injuries", 0)
     total_fatalities = stats_data.get("total_fatalities", 0)
 
-    top_loc_str = ", ".join([f"{l.get('location')} ({l.get('crashes')} crashes, {l.get('fatalities', 0)} fatalities)" for l in top_locations[:5]])
-    sev_str = ", ".join([f"{s.get('name')}: {s.get('value')} incidents" for s in severity_dist])
-    weather_str = ", ".join([f"{w.get('name')}: {w.get('value')} incidents" for w in weather_dist[:5]])
-
     supporting_metrics = {
         "total_analyzed_records": total_accidents,
         "total_injuries": total_injuries,
         "total_fatalities": total_fatalities,
-        "primary_locations": top_locations[:5],
-        "severity_breakdown": severity_dist,
-        "weather_breakdown": weather_dist[:5]
+        "top_locations": top_locations[:5],
+        "fatal_locations": fatal_locations[:3],
+        "severity_distribution": severity_dist,
+        "weather_distribution": weather_dist[:5]
     }
 
-    if api_key:
-        try:
-            import google.generativeai as genai
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-1.5-flash")
+    if not api_key:
+        return {
+            "success": False,
+            "error": "Gemini API key is not configured in backend/.env. Please set GEMINI_API_KEY to generate live AI recommendations.",
+            "generated_at": datetime.utcnow().isoformat(),
+            "source": "Google Gemini API",
+            "model_name": "gemini-1.5-flash",
+            "executive_summary": "Gemini API key is required to dynamically generate contextual recommendations.",
+            "recommendations": [],
+            "key_observations": [],
+            "high_risk_corridors_analysis": "",
+            "weather_and_visibility_impact": "",
+            "recommended_interventions": [],
+            "caveat_note": "A valid Google Gemini API key must be supplied in backend/.env to generate dynamic recommendations.",
+            "supporting_metrics": supporting_metrics
+        }
 
-            prompt = f"""You are an expert road safety engineering and decision-support assistant.
-Analyze the following verified road accident statistics from the SafeRoutes database:
-- Total Analyzed Accidents: {total_accidents}
+    top_loc_str = ", ".join([
+        f"{l.get('location')} ({l.get('crashes')} crashes, {l.get('fatalities', 0)} fatalities, {l.get('injuries', 0)} injuries)"
+        for l in top_locations[:5]
+    ])
+    fatal_loc_str = ", ".join([
+        f"{l.get('location')} ({l.get('fatalities')} fatalities)"
+        for l in fatal_locations[:3]
+    ])
+    sev_str = ", ".join([f"{s.get('name')}: {s.get('value')} incidents" for s in severity_dist])
+    weather_str = ", ".join([f"{w.get('name')}: {w.get('value')} incidents" for w in weather_dist[:5]])
+
+    prompt = f"""You are a senior road safety and traffic engineering consultant advising the Chandigarh Road Safety Committee.
+Analyze the following VERIFIED empirical crash dataset extracted from PostgreSQL:
+
+DATABASE EVIDENCE:
+- Total Verified Incidents: {total_accidents}
 - Total Recorded Injuries: {total_injuries}
-- Total Recorded Fatalities: {total_fatalities}
-- Top Accident Corridors: {top_loc_str}
-- Crash Severity Breakdown: {sev_str}
-- Recorded Weather Conditions: {weather_str}
+- Total Fatal Casualties: {total_fatalities}
+- Highest Crash Frequency Corridors: {top_loc_str}
+- Locations with Fatal Casualties: {fatal_loc_str}
+- Severity Distribution: {sev_str}
+- Environmental / Weather Conditions: {weather_str}
 
 MANDATORY RULES:
-1. Do NOT invent or hallucinate any statistics. Rely strictly on the numbers provided above.
-2. Present all conclusions as observational patterns for safety engineering investigation, NOT proven causes.
-3. Do NOT predict future accidents.
-4. Output your response as a valid JSON object matching the exact structure below:
+1. Every recommendation must be written in natural, fluent, professional civil/traffic engineering language. Do NOT use boilerplate sentence templates.
+2. Ground every recommendation in the specific locations, casualty counts, and crash numbers shown above. Never invent or hallucinate data.
+3. Frame all recommendations as proposals for on-site investigation, safety audits, and engineering reviews, NOT confirmed diagnoses or proven causes. Do NOT predict future accidents.
+4. Generate 4 to 5 contextual, specific recommendations addressing:
+   - Intersection geometry, signal phasing, and turning conflict points at high-frequency junctions.
+   - Vulnerable road user protection, pedestrian refuge islands, and vehicle operating speeds at fatal casualty locations.
+   - Low-visibility measures (e.g. high-reflectivity pavement markers, cat's eyes, LED signage) if fog or low visibility is prominent.
+   - Corridor-level channelization and traffic management.
 
+Return your response strictly as a JSON object matching this schema:
 {{
-  "executive_summary": "Two-sentence overview of the observed data.",
-  "key_observations": [
-    "Observation 1 referencing specific location numbers",
-    "Observation 2 referencing severity proportions",
-    "Observation 3 referencing weather and visibility"
-  ],
-  "high_risk_corridors_analysis": "Detailed explanation of why the top locations warrant engineering attention.",
-  "weather_and_visibility_impact": "Observational explanation of weather and lighting patterns.",
-  "recommended_interventions": [
+  "executive_summary": "Two-sentence professional engineering overview summarizing the key risk concentrations in the dataset.",
+  "recommendations": [
     {{
-      "location": "Location name from top corridors",
-      "action": "Specific engineering review action (e.g., signal timing, lane marking, street lighting, pedestrian refuge)",
-      "priority": "Critical or High or Medium"
+      "id": 1,
+      "priority": "CRITICAL" or "HIGH" or "MEDIUM",
+      "target": "Exact location or corridor name",
+      "category": "Specific engineering category (e.g., 'Intersection Geometry & Phasing', 'Speed Mitigation & Pedestrian Refuge', 'Visibility & Delineation Audit')",
+      "text": "2-3 sentences of natural, specific civil engineering recommendation detailing what on-site audits should examine.",
+      "evidence": "Data grounding, citing exact numbers from the evidence above."
     }}
   ]
 }}"""
 
-            response = model.generate_content(
-                prompt,
-                generation_config={"response_mime_type": "application/json"}
-            )
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-1.5-flash")
 
-            parsed = json.loads(response.text)
-            return {
-                "generated_at": datetime.utcnow().isoformat(),
-                "source": "Google Gemini API (Live AI Analysis)",
-                "model_name": "gemini-1.5-flash",
-                "executive_summary": parsed.get("executive_summary", "Aggregated safety overview."),
-                "key_observations": parsed.get("key_observations", []),
-                "high_risk_corridors_analysis": parsed.get("high_risk_corridors_analysis", ""),
-                "weather_and_visibility_impact": parsed.get("weather_and_visibility_impact", ""),
-                "recommended_interventions": parsed.get("recommended_interventions", []),
-                "caveat_note": "AI-generated decision support grounded in PostgreSQL database queries. Does not infer definitive causation without on-site engineering safety audits.",
-                "supporting_metrics": supporting_metrics
-            }
-        except Exception as e:
-            pass
+        response = model.generate_content(
+            prompt,
+            generation_config={"response_mime_type": "application/json"}
+        )
 
-    # High-quality fallback rule-based analysis grounded strictly in SQL stats
-    top_loc = top_locations[0].get("location") if top_locations else "Primary Corridors"
-    top_loc_crashes = top_locations[0].get("crashes", 0) if top_locations else 0
+        parsed = json.loads(response.text)
+        recs = parsed.get("recommendations", [])
 
-    return {
-        "generated_at": datetime.utcnow().isoformat(),
-        "source": "Deterministic Decision-Support Rule Engine (PostgreSQL Grounding)",
-        "model_name": "rule-based-safety-engine-v1",
-        "executive_summary": f"Empirical evaluation of {total_accidents} active records identified {total_fatalities} fatal casualties and {total_injuries} injuries, with {top_loc} recording the highest crash frequency ({top_loc_crashes} incidents).",
-        "key_observations": [
-            f"Location concentration: '{top_loc}' accounts for {top_loc_crashes} recorded crashes.",
-            f"Severity distribution indicates {sev_str} across the active dataset.",
-            f"Environmental patterns show {weather_str} as the primary recorded conditions."
-        ],
-        "high_risk_corridors_analysis": f"The corridors {top_loc_str} exhibit recurring incident density. These locations represent candidates for junction safety inspections, turning movement counts, and lane-channelization audits.",
-        "weather_and_visibility_impact": f"Analysis of atmospheric conditions shows {weather_str}. Corridors experiencing reduced visibility during dense fog require retro-reflective edge delineators and high-luminance signal heads.",
-        "recommended_interventions": [
-            {
-                "location": top_loc,
-                "action": "Conduct site inspection of approach geometry, traffic signal phasing, and turning conflict points.",
-                "priority": "High"
-            },
-            {
-                "location": "Major Arterial Corridors (Madhya / Dakshin Marg)",
-                "action": "Inspect retro-reflective pavement markers (cat's eyes) and pedestrian refuge islands.",
-                "priority": "Medium"
-            }
-        ],
-        "caveat_note": "Decision-support observations grounded directly in PostgreSQL database records. To activate live Gemini LLM explanations, set GEMINI_API_KEY in backend/.env.",
-        "supporting_metrics": supporting_metrics
-    }
+        formatted_recs = []
+        for idx, r in enumerate(recs, 1):
+            formatted_recs.append({
+                "id": r.get("id", idx),
+                "priority": str(r.get("priority", "HIGH")).upper(),
+                "target": r.get("target", "Primary Corridor"),
+                "category": r.get("category", "Traffic Safety Review"),
+                "text": r.get("text", ""),
+                "evidence": r.get("evidence", "")
+            })
+
+        return {
+            "success": True,
+            "error": None,
+            "generated_at": datetime.utcnow().isoformat(),
+            "source": "Google Gemini 1.5 Flash",
+            "model_name": "gemini-1.5-flash",
+            "executive_summary": parsed.get("executive_summary", "Road safety engineering recommendations generated by Google Gemini."),
+            "recommendations": formatted_recs,
+            "key_observations": [],
+            "high_risk_corridors_analysis": "",
+            "weather_and_visibility_impact": "",
+            "recommended_interventions": [
+                {
+                    "location": r["target"],
+                    "action": r["text"],
+                    "priority": r["priority"]
+                }
+                for r in formatted_recs
+            ],
+            "caveat_note": "Recommendations generated dynamically by Google Gemini grounded in verified PostgreSQL crash data. Requires on-site engineering safety review.",
+            "supporting_metrics": supporting_metrics
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Gemini API request failed: {str(e)}",
+            "generated_at": datetime.utcnow().isoformat(),
+            "source": "Google Gemini API",
+            "model_name": "gemini-1.5-flash",
+            "executive_summary": "Unable to generate recommendations due to an API error.",
+            "recommendations": [],
+            "key_observations": [],
+            "high_risk_corridors_analysis": "",
+            "weather_and_visibility_impact": "",
+            "recommended_interventions": [],
+            "caveat_note": f"Gemini API request failed: {str(e)}",
+            "supporting_metrics": supporting_metrics
+        }
 
 def generate_safety_insights(db: Session, dataset_id: Optional[int] = None) -> Dict[str, Any]:
     try:
@@ -164,6 +198,24 @@ def generate_safety_insights(db: Session, dataset_id: Optional[int] = None) -> D
         for loc, crashes, inj, fat in loc_results
     ]
 
+    fatal_results = (
+        query.filter(Accident.fatalities > 0)
+        .with_entities(
+            Accident.location,
+            func.sum(Accident.fatalities).label("fatalities"),
+            func.count(Accident.id).label("crashes")
+        )
+        .group_by(Accident.location)
+        .order_by(desc("fatalities"))
+        .limit(3)
+        .all()
+    )
+
+    fatal_locations = [
+        {"location": loc, "fatalities": int(fat), "crashes": crashes}
+        for loc, fat, crashes in fatal_results
+    ]
+
     sev_results = (
         query.with_entities(Accident.severity, func.count(Accident.id))
         .group_by(Accident.severity)
@@ -179,4 +231,10 @@ def generate_safety_insights(db: Session, dataset_id: Optional[int] = None) -> D
     )
     weather_dist = [{"name": w or "Unknown", "value": cnt} for w, cnt in w_results]
 
-    return generate_gemini_safety_insights(stats_data, top_locations, severity_dist, weather_dist)
+    return generate_gemini_safety_recommendations(
+        stats_data,
+        top_locations,
+        fatal_locations,
+        severity_dist,
+        weather_dist
+    )
