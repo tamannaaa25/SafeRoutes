@@ -16,3 +16,4 @@ router = APIRouter(prefix="/ai", tags=["AI Safety Insights"])
 def get_ai_safety_insights(req: AIInsightsRequest = AIInsightsRequest(), db: Session = Depends(get_db)):
     result = generate_safety_insights(db, req.dataset_id)
     return result
+

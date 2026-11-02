@@ -77,3 +77,4 @@ def clean_dataset_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     df_clean["road_cleaned"] = df_clean["road_condition"].apply(clean_road_condition)
 
     return df_clean
+

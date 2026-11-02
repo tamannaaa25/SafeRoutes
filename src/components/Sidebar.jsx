@@ -85,19 +85,7 @@ export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, curre
           </nav>
         </div>
 
-        <div className="sidebar-footer">
-          <div className="dataset-status-box">
-            <div className={`status-indicator-dot ${currentSource?.isVerified ? 'dot-verified' : ''}`} />
-            <div className="status-text-stack">
-              <span className="status-title">
-                {currentSource?.isCustom ? 'Custom Verified Dataset' : 'MoRTH Baseline Active'}
-              </span>
-              <span className="status-subtitle">
-                {currentSource?.isCustom ? currentSource.name : 'Demonstration Data'}
-              </span>
-            </div>
-          </div>
-        </div>
+        
       </aside>
     </>
   );

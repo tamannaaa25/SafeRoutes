@@ -1,6 +1,6 @@
 # SafeRoutes – Road Safety Analytics and Decision Support System
 
-**SafeRoutes** is a full-stack, data-driven platform that helps road safety engineers, transportation analysts, and university evaluators manage, clean, and analyze road accident datasets, identify high-frequency crash corridors, run live relational SQL queries, and generate actionable engineering interventions to support data-informed road safety planning.
+**SafeRoutes** is a full-stack, data-driven platform that helps road safety engineers, transportation analysts, and university evaluators manage, clean, and analyze road accident datasets, identify high-frequency crash corridors, execute server-side relational SQL analytics, and generate actionable engineering interventions to support data-informed road safety planning.
 
 ---
 
@@ -124,16 +124,22 @@ To demonstrate data cleaning, validation, duplicate detection, and PostgreSQL qu
 
 ---
 
-## 📊 Interactive SQL Demonstration Studio
+## 🗄️ Server-Side SQL Analytics & Repository Architecture
 
-Under the **Database Explorer** tab in the dashboard, evaluators can inspect live table counts and execute pre-approved analytical queries directly against PostgreSQL:
+All SQL queries and database operations execute exclusively in the backend repository layer (`backend/repositories/analytics_repository.py`). The frontend receives structured, processed JSON responses and never renders or exposes raw SQL statements:
 
-1. **Severity & Casualty Aggregation**: Demonstrates `SELECT`, `COUNT`, `SUM`, `GROUP BY`, and `ORDER BY`.
-2. **Repeated Crash Locations Filtered with HAVING**: Demonstrates `GROUP BY location HAVING COUNT(id) >= 2`.
-3. **Monthly Incident Trends**: Demonstrates chronological aggregation using `TO_CHAR(accident_date, 'YYYY-Mon')` and `EXTRACT(MONTH FROM accident_date)`.
-4. **Weather Atmospheric Distribution & Average Casualties**: Demonstrates `AVG(injuries)`, `ROUND`, and `AVG(number_of_vehicles)`.
-5. **Relational Multi-Table Audit**: Demonstrates an `INNER JOIN` between `accidents` and `datasets`, plus a `LEFT JOIN` on `data_quality_issues`.
-6. **Fatal Corridors with SUM & HAVING**: Demonstrates `HAVING SUM(fatalities) >= 1`.
+- **Routes (`backend/routes/analytics.py`)**: Handle HTTP requests and pass parameters (`dataset_id`, `severity`).
+- **Services (`backend/services/analytics_service.py`)**: Implement business logic and wrap results into structured responses (`{"success": true, "data": [...]}`).
+- **Repositories (`backend/repositories/analytics_repository.py`)**: Direct SQL execution in PostgreSQL via SQLAlchemy `text()`:
+  1. **Monthly Incident & Casualty Aggregation**:
+     - Extracts the month using `TO_CHAR(accident_date, 'YYYY-Mon')` and `EXTRACT(MONTH FROM accident_date)`.
+     - Calculates incident count, total injuries (`SUM(injuries)`), and total fatalities (`SUM(fatalities)`).
+     - Groups results by month and sorts chronologically.
+     - Restricts to valid records with non-null accident dates.
+  2. **Severity Classification Distribution**: Groups records by severity classification with casualty aggregations.
+  3. **High-Frequency Crash Corridor Rankings**: Uses `GROUP BY location` ordered by total crash frequency, fatalities, and injuries.
+  4. **Atmospheric / Weather Incident Impact**: Groups by `weather_condition` with casualty totals.
+  5. **Safety Engineering Recommendations**: Queries prioritized intervention records from `investigation_recommendations`.
 
 ---
 
@@ -202,8 +208,8 @@ npm run dev
 | `GET` | `/api/analytics/monthly` | Monthly incident trends |
 | `GET` | `/api/analytics/severity` | Severity distribution (High, Medium, Low) |
 | `GET` | `/api/analytics/locations` | Ranked crash blackspots with injury and fatality counts |
-| `GET` | `/api/analytics/sql-demo` | List available SQL demonstration queries |
-| `POST` | `/api/analytics/sql-demo/run` | Execute pre-approved SQL query against PostgreSQL |
+| `GET` | `/api/analytics/weather` | Weather condition incident distribution |
+| `GET` | `/api/analytics/recommendations` | Prioritized engineering safety interventions |
 | `POST` | `/api/ai/insights` | Generate AI decision support grounded in PostgreSQL stats |
 
 ---

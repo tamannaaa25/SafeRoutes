@@ -96,7 +96,7 @@ MANDATORY RULES:
 
     return {
         "generated_at": datetime.utcnow().isoformat(),
-        "source": "Deterministic Decision-Support Rule Engine (Verified SQL Grounding)",
+        "source": "Deterministic Decision-Support Rule Engine (PostgreSQL Grounding)",
         "model_name": "rule-based-safety-engine-v1",
         "executive_summary": f"Empirical evaluation of {total_accidents} active records identified {total_fatalities} fatal casualties and {total_injuries} injuries, with {top_loc} recording the highest crash frequency ({top_loc_crashes} incidents).",
         "key_observations": [

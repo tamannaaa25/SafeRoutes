@@ -118,3 +118,4 @@ class AIInsightResponse(BaseModel):
     recommended_interventions: List[Dict[str, Any]]
     caveat_note: str
     supporting_metrics: Dict[str, Any]
+

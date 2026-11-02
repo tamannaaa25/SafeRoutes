@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Papa from 'papaparse';
 import Sidebar from './components/Sidebar';
 import HeaderActionBar from './components/HeaderActionBar';
@@ -20,6 +20,12 @@ import {
   getAccidentSeverityDistribution,
   generateSafetyInsights,
 } from './utils/analytics';
+import {
+  getMonthlyAnalytics,
+  getAnalyticsOverview,
+  getSeverityAnalytics,
+  getWeatherAnalytics,
+} from './services/api';
 
 export default function App() {
   const [processedDataset, setProcessedDataset] = useState(() => processCsvDataset(sampleAccidents));
@@ -58,11 +64,91 @@ export default function App() {
     });
   }, [accidents, severityFilter]);
 
-  const overviewStats = useMemo(() => calculateOverviewStats(filteredAccidents), [filteredAccidents]);
-  const monthlyData = useMemo(() => getAccidentsByMonth(filteredAccidents), [filteredAccidents]);
+  const [backendMonthly, setBackendMonthly] = useState(null);
+  const [backendOverview, setBackendOverview] = useState(null);
+  const [backendSeverity, setBackendSeverity] = useState(null);
+  const [backendWeather, setBackendWeather] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadBackendAnalytics() {
+      try {
+        const [monthlyRes, overviewRes, severityRes, weatherRes] = await Promise.all([
+          getMonthlyAnalytics(null, severityFilter),
+          getAnalyticsOverview(null, severityFilter),
+          getSeverityAnalytics(null),
+          getWeatherAnalytics(null),
+        ]);
+        if (isMounted) {
+          if (monthlyRes && Array.isArray(monthlyRes) && monthlyRes.length > 0) {
+            setBackendMonthly(monthlyRes);
+          }
+          if (overviewRes && overviewRes.total_accidents !== undefined) {
+            setBackendOverview(overviewRes);
+          }
+          if (severityRes && Array.isArray(severityRes)) {
+            setBackendSeverity(severityRes);
+          }
+          if (weatherRes && Array.isArray(weatherRes)) {
+            setBackendWeather(weatherRes);
+          }
+        }
+      } catch (err) {
+        // Fallback to local calculations gracefully
+      }
+    }
+    if (!dataSource.isCustom) {
+      loadBackendAnalytics();
+    } else {
+      setBackendMonthly(null);
+      setBackendOverview(null);
+      setBackendSeverity(null);
+      setBackendWeather(null);
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [severityFilter, dataSource]);
+
+  const overviewStats = useMemo(() => {
+    if (backendOverview && !dataSource.isCustom) {
+      return {
+        totalAccidents: backendOverview.total_accidents,
+        totalInjuries: backendOverview.total_injuries,
+        totalFatalities: backendOverview.total_fatalities,
+        topLocation: backendOverview.top_location,
+        topLocationCount: backendOverview.top_location_count,
+        uniqueLocationsCount: backendOverview.unique_locations_count,
+        validCount: backendOverview.valid_records,
+        invalidCount: backendOverview.invalid_records,
+      };
+    }
+    return calculateOverviewStats(filteredAccidents);
+  }, [backendOverview, dataSource.isCustom, filteredAccidents]);
+
+  const monthlyData = useMemo(() => {
+    if (backendMonthly && backendMonthly.length > 0 && !dataSource.isCustom) {
+      return backendMonthly;
+    }
+    return getAccidentsByMonth(filteredAccidents);
+  }, [backendMonthly, dataSource.isCustom, filteredAccidents]);
+
   const dayOfWeekData = useMemo(() => getAccidentsByDayOfWeek(filteredAccidents), [filteredAccidents]);
-  const weatherData = useMemo(() => getAccidentsByWeather(filteredAccidents), [filteredAccidents]);
-  const severityData = useMemo(() => getAccidentSeverityDistribution(filteredAccidents), [filteredAccidents]);
+
+  const weatherData = useMemo(() => {
+    if (backendWeather && backendWeather.length > 0 && !dataSource.isCustom) {
+      return backendWeather;
+    }
+    return getAccidentsByWeather(filteredAccidents);
+  }, [backendWeather, dataSource.isCustom, filteredAccidents]);
+
+  const severityData = useMemo(() => {
+    if (backendSeverity && backendSeverity.length > 0 && !dataSource.isCustom) {
+      return backendSeverity;
+    }
+    return getAccidentSeverityDistribution(filteredAccidents);
+  }, [backendSeverity, dataSource.isCustom, filteredAccidents]);
+
   const safetyInsights = useMemo(() => generateSafetyInsights(filteredAccidents, severityFilter), [filteredAccidents, severityFilter]);
 
   const handleResetFilters = () => {
@@ -225,16 +311,7 @@ export default function App() {
           />
         </main>
 
-        <footer className="footer">
-          <div className="footer-content">
-            <div>
-              <strong>SafeRoutes</strong> — Road Safety Analytics and Decision Support System
-            </div>
-            <div style={{ color: '#71717a', fontSize: '0.75rem', marginTop: '3px' }}>
-              A data-driven platform that helps users manage, process and analyse road accident datasets, identify accident patterns and high-frequency locations, and generate meaningful insights to support road safety planning.
-            </div>
-          </div>
-        </footer>
+        
       </div>
 
       <DataValidationModal

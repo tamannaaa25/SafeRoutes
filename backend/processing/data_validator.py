@@ -196,3 +196,4 @@ def validate_row(row: pd.Series, row_idx: int) -> Tuple[bool, Dict[str, Any], Li
     }
 
     return is_valid, cleaned_record, issues
+

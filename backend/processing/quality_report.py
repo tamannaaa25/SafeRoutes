@@ -63,3 +63,4 @@ def generate_data_quality_report(
         "quality_percentage": quality_percentage,
         "formula": "((Valid Records * 1.0 + Warning Records * 0.5) / Total Records) * 100%"
     }
+

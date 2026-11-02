@@ -117,3 +117,4 @@ def aggregate_records_with_pandas(records: List[Dict[str, Any]]) -> Dict[str, An
         "by_month": by_month,
         "top_locations": top_locations
     }
+

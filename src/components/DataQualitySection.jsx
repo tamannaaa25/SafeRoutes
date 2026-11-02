@@ -82,15 +82,11 @@ export default function DataQualitySection({
       <div className="section-header quality-section-header">
         <div>
           <div className="quality-header-title-row">
-            <ShieldCheck size={18} className="text-primary" />
+           
             <h2 className="section-title">Data Quality & Validation Audit</h2>
           </div>
           <div className="quality-provenance-bar">
-            <span className={`dataset-provenance-pill ${currentSource?.isCustom ? 'pill-custom' : 'pill-baseline'}`}>
-              {currentSource?.isCustom
-                ? `Custom Dataset: ${currentSource.name} (${activeRecordsInEngine} of ${totalRecords} Records Active)`
-                : 'Baseline Dataset: Chandigarh Demonstration Data (37 Records)'}
-            </span>
+            
             <span className="formula-explanation">
               Quality Score Formula: ((Valid × 1.0 + Warnings × 0.5) / Total) × 100%
             </span>
@@ -174,9 +170,7 @@ export default function DataQualitySection({
         <div className="quality-review-header">
           <div className="review-title-group">
             <h3 className="chart-title">Record Review & Analytics Inclusion</h3>
-            <span className="review-subtitle">
-              {activeRecordsInEngine} active in analytics engine • {excludedCount} excluded
-            </span>
+          
           </div>
 
           <div className="quality-batch-actions">
@@ -396,7 +390,7 @@ export default function DataQualitySection({
               ) : (
                 <tr>
                   <td colSpan={9} className="validation-empty-cell">
-                    No records found matching the active filter or search query.
+                    No records found.
                   </td>
                 </tr>
               )}

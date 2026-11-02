@@ -49,3 +49,4 @@ def check_db_connection():
             "latency_ms": latency_ms,
             "error": str(e)
         }
+

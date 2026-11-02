@@ -52,7 +52,8 @@ export async function getAnalyticsOverview(datasetId = null, severity = 'All') {
   if (datasetId) params.append('dataset_id', datasetId);
   if (severity) params.append('severity', severity);
   const q = params.toString();
-  return fetchJson(`/analytics/overview${q ? `?${q}` : ''}`);
+  const res = await fetchJson(`/analytics/overview${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getMonthlyAnalytics(datasetId = null, severity = 'All') {
@@ -60,14 +61,16 @@ export async function getMonthlyAnalytics(datasetId = null, severity = 'All') {
   if (datasetId) params.append('dataset_id', datasetId);
   if (severity) params.append('severity', severity);
   const q = params.toString();
-  return fetchJson(`/analytics/monthly${q ? `?${q}` : ''}`);
+  const res = await fetchJson(`/analytics/monthly${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getSeverityAnalytics(datasetId = null) {
   const params = new URLSearchParams();
   if (datasetId) params.append('dataset_id', datasetId);
   const q = params.toString();
-  return fetchJson(`/analytics/severity${q ? `?${q}` : ''}`);
+  const res = await fetchJson(`/analytics/severity${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getLocationAnalytics(datasetId = null, limit = 10) {
@@ -75,32 +78,24 @@ export async function getLocationAnalytics(datasetId = null, limit = 10) {
   if (datasetId) params.append('dataset_id', datasetId);
   if (limit) params.append('limit', limit);
   const q = params.toString();
-  return fetchJson(`/analytics/locations${q ? `?${q}` : ''}`);
+  const res = await fetchJson(`/analytics/locations${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getWeatherAnalytics(datasetId = null) {
   const params = new URLSearchParams();
   if (datasetId) params.append('dataset_id', datasetId);
   const q = params.toString();
-  return fetchJson(`/analytics/weather${q ? `?${q}` : ''}`);
+  const res = await fetchJson(`/analytics/weather${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getInvestigationRecommendations(datasetId = null) {
   const params = new URLSearchParams();
   if (datasetId) params.append('dataset_id', datasetId);
   const q = params.toString();
-  return fetchJson(`/analytics/recommendations${q ? `?${q}` : ''}`);
-}
-
-export async function getSqlDemoQueries() {
-  return fetchJson('/analytics/sql-demo');
-}
-
-export async function runSqlDemoQuery(queryId) {
-  return fetchJson('/analytics/sql-demo/run', {
-    method: 'POST',
-    body: JSON.stringify({ query_id: queryId }),
-  });
+  const res = await fetchJson(`/analytics/recommendations${q ? `?${q}` : ''}`);
+  return res && res.data ? res.data : res;
 }
 
 export async function getAiSafetyInsights(datasetId = null, severityFilter = 'All') {

@@ -32,3 +32,4 @@ def detect_duplicates_in_records(records: List[Dict[str, Any]], issues_list: Lis
             fingerprints[key] = idx
 
     return records, duplicate_count
+
