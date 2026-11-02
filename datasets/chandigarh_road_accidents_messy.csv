@@ -1,0 +1,764 @@
+# Synthetic Demonstration Dataset – Not Official Police Data
+# SafeRoutes: Chandigarh Road Safety Analytics and Decision Support System
+Accident ID,Accident Date,Accident Time,Location,Latitude,Longitude,Severity,Weather Condition,Road Condition,Number of Vehicles,Injuries,Fatalities,Accident Type,Light Condition
+CHD-2024-0001,2024-04-05,23:06,Kalagram Light Point (Madhya Marg),30.716650107552226,76.82245029318369,Moderate,Cloudy,Dry,1,2,0,Rear-end Collision,Daylight
+CHD-2024-0002,2024-04-23,20:44,Matka Chowk (Madhya Marg & Jan Marg),30.748653552881034,76.78436535969685,Moderate,Dense Fog,Foggy Surface,4,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0003,2024-06-04,02:24,Aroma Light Point (Sector 21/22),30.73337871341672,76.77365313762107,Minor,Fog,Foggy Surface,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0004,2024-11-20,11:36,Press Chowk (Madhya Marg Sector 17/18),30.740288001980783,76.78003178281408,Minor,Clear,Dry,1,0,0,Side-impact,Daylight
+CHD-2024-0005,2024-06-06,11:22,Kalagram Light Point (Madhya Marg),30.72020126225039,76.82423410302368,Minor,Fog,Foggy Surface,1,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0006,2024-12-18,07:43,Press Chowk (Madhya Marg Sector 17/18),30.742199478267842,76.78635391179621,Minor,Clear,Dry,2,-1,0,Side-impact,Dawn/Dusk
+CHD-2024-0007,2024-11-16,12:56,Sector 52 / 53 Light Point (Kajheri),30.718263676264726,76.73934677880798,Severe,Rain,Wet,2,3,0,Head-on Collision,Night - Street Light On
+CHD-2024-0008,2024-10-13,11:14,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70632741608523,76.76204585990224,Fatal,Dense Fog,Foggy Surface,4,0,1,Rear-end Collision,Night - Street Light On
+CHD-2024-0009,2024-10-15,16:16,PGI Light Point (Madhya Marg Sector 11/12),30.76436409030732,76.77444767311674,null,Clear,Dry,1,4,3,Side-impact,Night - Street Light Off
+CHD-2024-0010,2024-12-09,16:48,Poultry Farm Chowk (Industrial Area),30.700737237063294,76.79303815927521,severe,Clear,Dry,3,1,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0011,2024-01-20,10:31,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.713234997476537,76.76542434080619,Minor,Fog,Foggy Surface,3,0,0,Head-on Collision,Daylight
+CHD-2024-0012,2024-09-25,04:08,Dhanas Light Point (Milk Colony),30.7709602325342,76.75037984493677,Moderate,Cloudy,Dry,2,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0013,10/12/2024,12:42,NH-1 GT Road near Karnal,29.6857,76.9905,Moderate,Rain,Wet,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0014,2024-01-03,22:40,Sector 52 / 53 Light Point (Kajheri),30.715039215224245,76.74208440114411,Minor,Clear,Dry,1,N/A,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0015,2024-10-19,15:15,Airport Light Point (Dakshin Marg),999.0,999.0,Severe,Rain,Wet,2,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0016,2024-11-21,20:06,PGI Light Point (Madhya Marg Sector 11/12),30.763070246680368,76.77789075849459,Minor,,Dry,3,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0017,2024-05-15,07:55,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708186135478332,76.76041881639834,Severe,Rain,Wet,1,1,0,Fixed Object Collision,Daylight
+CHD-2024-0018,2024-04-28,12:57,Matka Chowk (Madhya Marg & Jan Marg),30.745263111106038,76.78895641125452,Minor,Rain,Wet,1,N/A,0,Side-impact,Dawn/Dusk
+CHD-2024-0019,19/01/2024,23:34,  HALLOMAJRA LIGHT POINT (DAKSHIN MARG)  ,30.695798978672673,76.79347700898414,Minor,Fog,Foggy Surface,1,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0020,2024-10-03,21:55,Sector 25 / 38 Light Point,30.745601114652406,76.7480582496098,Minor,Clear,Dry,-2,0,0,Rear-end Collision,Daylight
+CHD-2024-0021,2024-05-07,21:45,Sector 52 / 53 Light Point (Kajheri),30.71515226923844,76.73936369845977,Minor,Fog,Foggy Surface,4,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0022,2024-10-04,02:34,Housing Board Light Point (Sector 13),999.0,999.0,Minor,Fog,Foggy Surface,2,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0023,2024-05-20,20:33,Poultry Farm Chowk (Industrial Area),30.700581845730078,76.78893217962262,Minor,Cloudy,Dry,3,-1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0024,2024-04-23,10:13,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70525447909775,76.75901756271458,Moderate,Fog,Foggy Surface,4,2,0,Rear-end Collision,Daylight
+CHD-2024-0025,2024-03-21,08:10,Kisan Bhawan Chowk (Sector 35/36),30.72754086761799,76.76373556538606,Moderate,Cloudy,Dry,4,1,0,Rear-end Collision,Daylight
+CHD-2024-0026,2024-10-18,04:27,Hallomajra Light Point (Dakshin Marg),30.699355902892055,76.79964595019887,Minor,Dense-Fog,Foggy Surface,3,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0027,2024-07-20,23:09,Kalagram Light Point (Madhya Marg),30.719936786346146,76.82529883519145,Severe,Dense Fog,Foggy Surface,2,2,0,Pedestrian Hit,Daylight
+CHD-2024-0028,2024-11-28,23:51,Aroma Light Point (Sector 21/22),30.73842386496148,76.77561713166551,Minor,Rainy,Foggy Surface,1,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0029,2024-04-08,00:42,Cricket Stadium Chowk (Sector 16/23),30.739251908673385,76.77525345499153,Minor,Fog,Foggy Surface,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0030,2024-06-01,03:56,Press Chowk (Madhya Marg Sector 17/18),30.7462951811836,76.78553661163272,Fatal,Dense Fog,Foggy Surface,3,0,1,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0031,2024-02-13,18:12,Aroma Light Point (Sector 21/22),999.0,999.0,Minor,Haze / Smog,Dry,4,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0032,2024-10-11,21:54,Housing Board Light Point (Sector 13),30.730288744859713,76.83270770856218,Minor,Fog,Foggy Surface,3,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0033,2024-07-22,23:57,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.704972877990592,76.76040446333774,Minor,Cloudy,Dry,3,N/A,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0034,2024-08-15,21:13,Sector 52 / 53 Light Point (Kajheri),30.715566615704798,76.73942249229736,Moderate,Haze / Smog,Dry,2,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0035,2024-04-05,00:02,Matka Chowk (Madhya Marg & Jan Marg),30.750327956705572,76.78634640665997,Minor,Rain,Wet,1,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0036,23/11/2024,00:57,  PRESS CHOWK (MADHYA MARG SECTOR 17/18)  ,30.744443771690104,76.77953984439579,Severe,Clear,Dry,4,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0037,2024-03-26,14:42,Matka Chowk (Madhya Marg & Jan Marg),30.752774700144553,76.7853135859919,Moderate,Cloudy,Dry,3,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0038,2024-08-15,08:48,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708159136120766,76.75779157907543,Minor,Haze / Smog,Dry,3,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0039,2024-04-09,10:20,Kisan Bhawan Chowk (Sector 35/36),30.73149872593265,76.7675354486261,Severe,Clear,Dry,2,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0040,2024-09-15,13:03,Airport Light Point (Dakshin Marg),30.691042288507138,76.80027599369666,Minor,Rain,Wet,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0041,2024-06-10,12:54,Sector 52 / 53 Light Point (Kajheri),30.71330381028928,76.73625896083584,Severe,Rain,Wet,2,4,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0042,2024-07-24,05:53,Tribune Chowk (Purv Marg & Dakshin Marg),30.70498857203246,76.79408873620623,Moderate,Dense Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0043,2024-01-09,12:20,PGI Light Point (Madhya Marg Sector 11/12),30.759756994872305,76.77521698444052,Minor,Fog,Foggy Surface,3,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0044,2024-01-24,17:03,PGI Light Point (Madhya Marg Sector 11/12),30.760922715317825,76.77141906232761,Fatal,Fog,Foggy Surface,2,0,3,Fixed Object Collision,Daylight
+CHD-2024-0045,2024-03-08,04:30,Matka Chowk (Madhya Marg & Jan Marg),30.745593606823626,76.7843038001732,Moderate,Cloudy,Dry,2,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0046,2024-12-04,05:19,Poultry Farm Chowk (Industrial Area),30.7022589269256,76.79313734744102,Minor,Clear,Dry,3,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0047,2024-11-08,03:44,Airport Light Point (Dakshin Marg),30.69115996477843,76.80310614415933,Severe,Haze / Smog,Dry,1,5,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0048,2024-01-28,13:52,Cricket Stadium Chowk (Sector 16/23),30.736889567365196,76.77377543254057,Moderate,Rain,Wet,3,2,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0049,2024-09-25,15:29,Sector 25 / 38 Light Point,30.754454737312383,76.74890082396387,Minor,Haze / Smog,Dry,3,N/A,0,Head-on Collision,Daylight
+CHD-2024-0050,2024-11-13,10:01,Matka Chowk (Madhya Marg & Jan Marg),30.75110476281827,76.78979849644679,Moderate,Fog,Foggy Surface,2,2,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0051,2024-05-18,00:33,Aroma Light Point (Sector 21/22),30.733396584880378,76.77746155007938,Fatal,Clear,Dry,2,3,3,Pedestrian Hit,Night - Street Light On
+CHD-2024-0052,2024-05-08,12:44,Dhanas Light Point (Milk Colony),30.76728174549587,76.74077243259347,Minor,Haze / Smog,Dry,3,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0053,2024-05-10,08:14,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70700791297196,76.76322854942185,Minor,,Foggy Surface,3,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0054,,09:06,N/A,30.76556499626969,76.7464958690596,Severe,Fog,Foggy Surface,2,3,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0055,2024-09-10,22:08,Hallomajra Light Point (Dakshin Marg),30.696643113267832,76.80104294931103,Moderate,Rain,Wet,1,1,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0056,2024-05-28,15:07,Railway Station Light Point (Daria),30.707607059325603,76.82355497643138,moderate,Rain,Wet,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0057,2024-07-20,19:50,Housing Board Light Point (Sector 13),30.7307391812271,76.82468451562212,Moderate,Cloudy,Dry,4,2,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0058,2024-10-24,03:48,PGI Light Point (Madhya Marg Sector 11/12),30.761453802443196,76.77681027321071,Minor,Dense Fog,Foggy Surface,3,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0059,2024-12-20,15:18,Housing Board Light Point (Sector 13),30.72236532615443,76.82758517572661,Minor,Fog,Foggy Surface,3,1,0,Pedestrian Hit,Daylight
+CHD-2024-0060,26/11/2024,06:27,  KISAN BHAWAN CHOWK (SECTOR 35/36)  ,30.734978280266468,76.76665058007164,Minor,Dense Fog,Foggy Surface,2,1,0,Head-on Collision,Daylight
+CHD-2024-0061,2024-05-15,03:29,Piccadilly Chowk (Sector 34/35),30.727450440373197,76.7721424030132,Moderate,Haze / Smog,Dry,4,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0062,2024-06-20,08:01,IT Park Kishangarh Chowk,30.726598607841836,76.8391202866416,Minor,Haze / Smog,Dry,1,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0063,2024-05-06,25:70,Poultry Farm Chowk (Industrial Area),30.700905008232517,76.79001509489433,Moderate,Rain,Wet,1,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0064,2024-05-22,,Poultry Farm Chowk (Industrial Area),30.69949803663579,76.79043673673984,Severe,Clear,Dry,4,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0065,2024-09-15,13:03,Sector 25 / 38 Light Point,30.753049272032687,76.74621151067448,Minor,Fog,Foggy Surface,4,-1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0066,2024-02-01,20:38,Piccadilly Chowk (Sector 34/35),30.725881160950724,76.77088250029122,Severe,Haze / Smog,Dry,2,3,0,Two-wheeler Skid,Daylight
+CHD-2024-0067,2024-02-15,03:41,Housing Board Light Point (Sector 13),30.72304700659456,76.83191405681617,Severe,Rain,Wet,-2,5,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0068,2024-09-05,invalid_time,Dhanas Light Point (Milk Colony),30.772602446326037,76.74303730906075,Severe,Cloudy,Dry,2,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0069,2024-10-19,21:31,Tribune Chowk (Purv Marg & Dakshin Marg),30.70392838983283,76.79038555849772,Severe,Rain,Wet,4,3,0,Side-impact,Dawn/Dusk
+CHD-2024-0070,2024-04-19,12:14,Aroma Light Point (Sector 21/22),30.73929601683234,76.78130774631333,Severe,Rain,Wet,1,3,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0071,2024-11-05,15:02,Press Chowk (Madhya Marg Sector 17/18),30.74336078752491,76.78373688829484,Minor,Cloudy,Dry,3,1,0,Pedestrian Hit,Daylight
+CHD-2024-0072,2024-11-05,02:30,Railway Station Light Point (Daria),30.70435347597915,76.81534155415967,Severe,Fog,Foggy Surface,3,5,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0073,2024-07-11,20:45,Aroma Light Point (Sector 21/22),30.73912341336566,76.78009342184168,Severe,Rain,Wet,1,5,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0074,2024-07-04,25:70,Piccadilly Chowk (Sector 34/35),30.731474259229564,76.77136766366738,Severe,Rain,Wet,2,3,0,Rear-end Collision,Daylight
+CHD-2024-0075,2024-04-17,13:36,Piccadilly Chowk (Sector 34/35),30.725084633423005,76.76820686787856,Moderate,Dense Fog,Foggy Surface,2,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0076,15/04/2024,20:16,Ambala Highway Toll Plaza,29.6857,76.9905,Moderate,Haze / Smog,Dry,1,2,0,Side-impact,Night - Street Light On
+CHD-2024-0077,2024-12-09,14:54,Sector 52 / 53 Light Point (Kajheri),30.71249154249124,76.74582029072825,Minor,Rain,Wet,4,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0078,2024-07-09,00:36,Piccadilly Chowk (Sector 34/35),30.721719395978596,76.77220037561493,Severe,Haze / Smog,Dry,1,5,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0079,2024-06-08,20:12,Piccadilly Chowk (Sector 34/35),30.729257409796034,76.7662011839097,Moderate,Haze / Smog,Dry,2,1,-1,Fixed Object Collision,Daylight
+CHD-2024-0080,2024-03-03,09:20,Railway Station Light Point (Daria),30.704533645312456,76.81754861233028,Moderate,Dense Fog,Foggy Surface,2,1,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0081,2024-08-26,09:47,Kisan Bhawan Chowk (Sector 35/36),30.73540472619567,76.76296970084563,Severe,Clear,Dry,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0082,2024-06-03,12:00,Press Chowk (Madhya Marg Sector 17/18),30.749172697473,76.78514587644021,Minor,Clear,Dry,4,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0083,2024-01-20,17:20,Cricket Stadium Chowk (Sector 16/23),30.737283461021992,76.76963821902211,Severe,Dense Fog,Foggy Surface,1,4,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0084,2024-05-16,03:06,Kalagram Light Point (Madhya Marg),30.71779777012507,76.82916261532883,Minor,Cloudy,Dry,2,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0085,2024-08-20,13:17,Hallomajra Light Point (Dakshin Marg),30.702754137838994,76.79784921897493,Minor,Fog,Foggy Surface,2,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0086,02/06/2024,12:17,  CRICKET STADIUM CHOWK (SECTOR 16/23)  ,30.74164465861482,76.77707842529452,Minor,Clear,Dry,4,0,0,Head-on Collision,Daylight
+CHD-2024-0087,2024-10-07,02:53,Aroma Light Point (Sector 21/22),30.733035688971643,76.77275923885308,Severe,Dense Fog,Foggy Surface,2,2,0,Side-impact,Night - Street Light On
+CHD-2024-0088,2024-03-05,17:16,IT Park Kishangarh Chowk,30.726228355514802,76.8433840612638,Severe,Clear,Dry,1,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0089,2024-05-02,04:47,Matka Chowk (Madhya Marg & Jan Marg),30.749488529220503,76.78425781083511,Minor,Clear,Dry,1,0,0,Side-impact,Daylight
+CHD-2024-0090,2024-11-17,09:29,Matka Chowk (Madhya Marg & Jan Marg),30.7530541564297,76.784533650369,Moderate,Clear,Dry,1,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0091,2024-02-11,19:09,Dhanas Light Point (Milk Colony),30.769924013148973,76.74503562329363,Minor,Fog,Foggy Surface,3,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0092,2024-02-28,20:41,IT Park Kishangarh Chowk,30.730501993258237,76.84273096093101,Severe,Cloudy,Dry,-2,4,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0093,2024-06-14,10:42,Railway Station Light Point (Daria),30.708187301842568,76.82119612507634,Minor,Dense Fog,Foggy Surface,4,0,0,Rear-end Collision,Daylight
+CHD-2024-0094,2024-10-18,17:21,Cricket Stadium Chowk (Sector 16/23),30.744317692852775,76.77286370735615,Moderate,Rain,Wet,3,2,0,Fixed Object Collision,Daylight
+CHD-2024-0095,2024-09-07,04:42,IT Park Kishangarh Chowk,30.729324488990876,76.83583600565925,Moderate,Clear,Dry,3,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0096,2024-10-20,21:41,PGI Light Point (Madhya Marg Sector 11/12),30.766851551613286,76.78034546602126,Moderate,Cloudy,Dry,3,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0097,2024-03-28,04:36,Piccadilly Chowk (Sector 34/35),,,Moderate,Clear,Dry,2,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0098,2024-12-11,18:38,Railway Station Light Point (Daria),30.707608959817694,76.81760053092476,Minor,Clear,Dry,2,0,0,Two-wheeler Skid,Daylight
+CHD-2024-0099,2024-10-15,13:17,Kisan Bhawan Chowk (Sector 35/36),30.731531129743303,76.76464014773113,Minor,Cloudy,Dry,1,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0100,2024-01-08,12:38,Sector 52 / 53 Light Point (Kajheri),30.714366327533643,76.74287132558737,Minor,Dense Fog,Foggy Surface,3,two,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0101,2024-03-13,17:45,Tribune Chowk (Purv Marg & Dakshin Marg),30.70607385328613,76.79170655011353,Minor,Cloudy,Dry,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0102,2024-10-14,18:25,Railway Station Light Point (Daria),30.713411624345024,76.82252110013611,Moderate,Rain,Wet,3,1,0,Pedestrian Hit,Daylight
+CHD-2024-0103,2024-12-12,02:27,Poultry Farm Chowk (Industrial Area),30.704213221543103,76.78968125263305,Severe,Dense Fog,Foggy Surface,4,5,0,Pedestrian Hit,Daylight
+CHD-2024-0104,2024-03-03,16:40,Piccadilly Chowk (Sector 34/35),30.728958048264648,76.76611572058894,Minor,Cloudy,Dry,2,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0105,2024-04-06,19:09,Hallomajra Light Point (Dakshin Marg),30.696262688489465,76.79276444218277,Severe,Haze / Smog,Dry,1,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0106,2024-10-21,20:39,Sector 52 / 53 Light Point (Kajheri),30.71709877149608,76.74068905256996,Minor,Haze / Smog,Dry,3,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0107,2024-06-17,02:19,Piccadilly Chowk (Sector 34/35),30.729463296791515,76.76981419756831,Moderate,Clear,Dry,1,2,0,Side-impact,Daylight
+CHD-2024-0108,2024-08-19,17:50,Housing Board Light Point (Sector 13),30.726950083884155,76.82857067817335,Moderate,Clear,Dry,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0109,2024-06-23,02:32,Transport Light Point (Sector 26),999.0,999.0,Moderate,Clear,Dry,2,2,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0110,2024-11-20,01:50,Piccadilly Chowk (Sector 34/35),30.725374165595234,76.77164464788574,Moderate,Fog,Foggy Surface,1,none,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0111,2024-06-10,20:44,Aroma Light Point (Sector 21/22),30.73141501987448,76.77813612106006,Moderate,Dense Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0112,2024-12-22,16:05,Aroma Light Point (Sector 21/22),30.73873184783815,76.77820116399995,Moderate,,Wet,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0113,2024-04-08,04:09,Airport Light Point (Dakshin Marg),30.693817323451317,76.80386156207668,Minor,Clear,Dry,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0114,2024-10-26,05:46,Hallomajra Light Point (Dakshin Marg),30.69552247212088,76.7996134505669,Minor,Rain,Wet,3,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0115,2024-08-27,06:23,Railway Station Light Point (Daria),30.706540029443353,76.81629168497246,Moderate,Cloudy,Dry,4,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0116,2024-10-05,08:03,PGI Light Point (Madhya Marg Sector 11/12),30.76806268153206,76.7787689123958,Moderate,Fog,Foggy Surface,1,1,0,Side-impact,Daylight
+CHD-2024-0117,2024-07-03,07:52,Kisan Bhawan Chowk (Sector 35/36),30.731593192203736,76.76553352737929,Moderate,Fog,Foggy Surface,1,2,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0118,2024-04-01,10:59,Matka Chowk (Madhya Marg & Jan Marg),30.747461661180445,76.78491605437212,Minor,Haze / Smog,Dry,3,N/A,0,Head-on Collision,Daylight
+CHD-2024-0119,2024-10-01,02:01,Hallomajra Light Point (Dakshin Marg),30.701488411547654,76.79599110127155,Minor,Dense Fog,Foggy Surface,4,0,-1,Side-impact,Night - Street Light On
+CHD-2024-0120,2024-10-15,02:07,Transport Light Point (Sector 26),30.721584395034597,76.81358951732173,Severe,Rain,Wet,1,5,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0121,2024-04-19,13:11,Piccadilly Chowk (Sector 34/35),30.725792388931033,76.77004809582776,Moderate,Clear,Dry,3,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0122,2024-06-09,23:01,Dhanas Light Point (Milk Colony),30.76323534425167,76.74446881321526,Minor,Clear,Dry,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0123,2024-06-27,20:11,Aroma Light Point (Sector 21/22),30.731934095898595,76.77502299046114,Severe,Haze / Smog,Dry,4,4,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0124,2024-01-10,06:02,Housing Board Light Point (Sector 13),30.72796045057596,76.83293605150713,Severe,Clear,Dry,3,3,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0125,2024-11-07,09:22,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708433997676767,76.75656620771537,Severe,Clear,Dry,3,3,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0126,11/07/2024,05:31,Zirakpur Flyover Punjab,29.6857,76.9905,Moderate,Fog,Foggy Surface,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0127,2024-06-22,09:19,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706637664190026,76.75722597907783,Minor,Haze / Smog,Dry,4,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0128,2024-11-26,01:04,Cricket Stadium Chowk (Sector 16/23),30.742348514821987,76.77164940504093,Moderate,Rain,Wet,3,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0129,2024-11-12,11:24,Railway Station Light Point (Daria),30.704547989657986,76.81457233363062,Fatal,Clear,Dry,2,3,3,Side-impact,Night - Street Light Off
+CHD-2024-0130,2024-07-11,20:17,Housing Board Light Point (Sector 13),30.726539217783337,76.82879459881536,Minor,Clear,Dry,1,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0131,2024-08-07,19:18,Kalagram Light Point (Madhya Marg),30.719017766765873,76.82230289771141,Moderate,Rain,Wet,2,1,0,Head-on Collision,Daylight
+CHD-2024-0132,2024-06-22,11:45,Railway Station Light Point (Daria),30.71417262404023,76.82200513218358,Minor,Cloudy,Dry,3,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0133,2024-03-08,15:01,Sector 25 / 38 Light Point,30.74704241615246,76.7560513254673,Minor,Cloudy,Dry,3,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0134,2024-12-24,15:33,Housing Board Light Point (Sector 13),30.721457481052674,76.82748159980771,Minor,Rain,Wet,1,0,0,Side-impact,Daylight
+CHD-2024-0135,2024-09-21,18:11,Sector 25 / 38 Light Point,30.748245147807026,76.7549796015165,Severe,Dense Fog,Foggy Surface,4,5,0,Rear-end Collision,Daylight
+CHD-2024-0136,2024-12-08,11:33,Piccadilly Chowk (Sector 34/35),30.723146570798903,76.76712660751154,N/A,Clear,Dry,3,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0137,2024-03-19,18:09,IT Park Kishangarh Chowk,30.731534780297686,76.8398257314474,Minor,Cloudy,Dry,3,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0138,2024-10-09,20:13,Tribune Chowk (Purv Marg & Dakshin Marg),30.701912228548935,76.7968854685397,Severe,Rain,Wet,1,4,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0139,2024-11-13,09:29,Piccadilly Chowk (Sector 34/35),30.726329448181755,76.77194688154216,Minor,Cloudy Skies,Dry,2,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0140,2024-12-28,11:25,Hallomajra Light Point (Dakshin Marg),30.69702582499247,76.79848362885113,Minor,Fog,Foggy Surface,1,-1,0,Pedestrian Hit,Daylight
+CHD-2024-0141,2024-07-28,19:26,Hallomajra Light Point (Dakshin Marg),30.694868116525605,76.7942021200497,Minor,,Foggy Surface,3,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0142,2099-12-31,15:01,  POULTRY FARM CHOWK (INDUSTRIAL AREA)  ,30.7011826554206,76.78864724839231,Minor,Rain,Wet,4,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0143,2024-11-16,09:34,Dhanas Light Point (Milk Colony),30.7687751877101,76.74902849646912,Minor,Clear,Dry,4,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0144,2024-09-07,11:35,Cricket Stadium Chowk (Sector 16/23),30.736652423945113,76.76781157687383,,Rain,Wet,4,1,0,Side-impact,Daylight
+CHD-2024-0145,2024-09-12,04:12,Press Chowk (Madhya Marg Sector 17/18),30.74323198336325,76.78696787664437,Moderate,Rain,Wet,1,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0146,2024-09-05,10:59,Dhanas Light Point (Milk Colony),30.767993327103333,76.74208940664576,Moderate,Dense Fog,Foggy Surface,4,2,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0147,2024-05-16,00:23,Sector 25 / 38 Light Point,30.750123398298758,76.75328739806436,Minor,Clear,Dry,4,0,0,Fixed Object Collision,Daylight
+CHD-2024-0148,2024-10-19,07:46,Kisan Bhawan Chowk (Sector 35/36),30.73677070696172,76.76822903991432,MAJOR,Rain,Wet,2,0,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0149,2024-04-01,14:20,Transport Light Point (Sector 26),30.724925702714042,76.81420520911142,Minor,Rain,Wet,2,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0150,2024-09-11,21:30,Transport Light Point (Sector 26),30.726257752321516,76.8123868321156,Moderate,Fog,Foggy Surface,2,2,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0151,2024-04-09,17:19,Kisan Bhawan Chowk (Sector 35/36),30.733200765800788,76.76232264169137,Minor,Fog,Foggy Surface,3,1,-1,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0152,2024-12-09,09:07,Cricket Stadium Chowk (Sector 16/23),30.74180487590236,76.77664485389258,Moderate,Cloudy,Dry,4,2,0,Side-impact,Night - Street Light On
+CHD-2024-0153,2024-08-21,08:47,Piccadilly Chowk (Sector 34/35),30.731053137176794,76.76469029436011,Moderate,Dense Fog,Foggy Surface,3,2,0,Head-on Collision,Daylight
+CHD-2024-0154,,20:14,N/A,30.711892820659465,76.73670765429958,Minor,Rain,Wet,3,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0155,2024-08-16,20:12,Poultry Farm Chowk (Industrial Area),30.700269074515468,76.79285032098596,Severe,Fog,Foggy Surface,3,3,0,Fixed Object Collision,Daylight
+CHD-2024-0156,2024-12-24,01:58,Housing Board Light Point (Sector 13),30.72732298730419,76.82582220199221,Severe,,Wet,2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0157,2024-10-20,03:59,Piccadilly Chowk (Sector 34/35),30.73026743167918,76.7639926716848,Fatal,Fog,Foggy Surface,4,4,3,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0158,2024-04-26,03:21,Hallomajra Light Point (Dakshin Marg),30.70241059738578,76.79598020769006,Minor,Rain,Wet,3,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0159,2024-10-28,20:57,Sector 52 / 53 Light Point (Kajheri),30.71624401139895,76.73813161287721,Minor,,Wet,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0160,2024-01-09,12:15,Hallomajra Light Point (Dakshin Marg),30.698674540984896,76.80065825387001,Minor,Fog,Foggy Surface,3,-2,0,Fixed Object Collision,Daylight
+CHD-2024-0161,2024-05-06,12:43,Matka Chowk (Madhya Marg & Jan Marg),999.0,999.0,Moderate,Haze / Smog,Dry,3,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0162,2024-03-15,23:38,Matka Chowk (Madhya Marg & Jan Marg),30.745791286009354,76.78543568782197,Minor,Haze / Smog,Dry,4,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0163,2024-08-17,22:23,IT Park Kishangarh Chowk,30.73493135058488,76.83561870306472,Minor,Cloudy,Dry,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0164,2024-08-04,21:13,Hallomajra Light Point (Dakshin Marg),30.695545371565824,76.79984486007395,Minor,Rain,Wet,1,2,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0165,2099-12-31,09:46,  RAILWAY STATION LIGHT POINT (DARIA)  ,30.709839111850986,76.81948797198999,Minor,Fog,Foggy Surface,1,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0166,2024-02-16,01:18,Housing Board Light Point (Sector 13),30.726211635040798,76.82410255631318,Minor,Dense Fog,Foggy Surface,4,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0167,2024-11-28,17:08,Press Chowk (Madhya Marg Sector 17/18),30.743256455338017,76.78392730354102,Moderate,Fog,Foggy Surface,1,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0168,2024-05-15,21:46,Matka Chowk (Madhya Marg & Jan Marg),30.751948216116688,76.7916617941486,Moderate,Cloudy,Dry,4,1,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0169,2024-02-02,21:26,Kisan Bhawan Chowk (Sector 35/36),30.728984804512365,76.76915208174624,Moderate,Clear,Dry,2,1,0,Rear-end Collision,Daylight
+CHD-2024-0170,2024-01-08,23:02,Railway Station Light Point (Daria),30.710177848967316,76.82093286266866,Minor,Dense Fog,Foggy Surface,2,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0171,2024-10-11,18:38,Piccadilly Chowk (Sector 34/35),30.72384161517142,76.77306397033122,Severe,Fog,Foggy Surface,-2,3,0,Head-on Collision,Night - Street Light On
+CHD-2024-0172,2024-12-06,20:43,Kisan Bhawan Chowk (Sector 35/36),30.727709576371065,76.76988520255027,Minor,Rain,Wet,1,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0173,2024-05-13,05:48,Aroma Light Point (Sector 21/22),30.73756308407309,76.7755825917683,Moderate,Dense Fog,Foggy Surface,2,2,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0174,2024-09-17,04:24,Transport Light Point (Sector 26),30.724823859495867,76.81687786188547,Minor,Dense Fog,Foggy Surface,3,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0175,2024-10-20,01:55,Airport Light Point (Dakshin Marg),30.69091536629114,76.7999716797496,Minor,Cloudy,Dry,2,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0176,2024-12-04,23:48,Tribune Chowk (Purv Marg & Dakshin Marg),30.70321807772049,76.7893002369763,Moderate,Dense Fog,Foggy Surface,2,2,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0177,2024-05-09,11:32,Press Chowk (Madhya Marg Sector 17/18),,,Severe,Rain,Wet,1,4,0,Side-impact,Night - Street Light On
+CHD-2024-0178,2024-12-05,,PGI Light Point (Madhya Marg Sector 11/12),30.758857154479813,76.77924084841469,Moderate,Cloudy,Dry,4,2,0,Head-on Collision,Night - Street Light On
+CHD-2024-0179,2024-11-22,10:16,Sector 52 / 53 Light Point (Kajheri),30.71783362715287,76.7411930148237,Severe,Rain,Wet,4,4,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0180,2024-09-21,01:33,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70858316321254,76.76536899389694,Minor,Clear,Dry,1,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0181,2024-04-17,14:23,Matka Chowk (Madhya Marg & Jan Marg),30.744279679416653,76.78561029646465,Minor,Haze / Smog,Dry,4,0,0,Rear-end Collision,Daylight
+CHD-2024-0182,2024-05-18,09:01,PGI Light Point (Madhya Marg Sector 11/12),30.75851850968128,76.77589417646841,Moderate,Haze / Smog,Dry,4,1,0,Rear-end Collision,Daylight
+CHD-2024-0183,2024-06-09,12:05,Matka Chowk (Madhya Marg & Jan Marg),30.745519320569915,76.78936455985401,Minor,Rain,Wet,4,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0184,2024-01-03,12:24,Housing Board Light Point (Sector 13),30.72733735719559,76.83208219159022,Minor,Rain,Wet,1,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0185,2024-02-17,01:14,PGI Light Point (Madhya Marg Sector 11/12),30.764849072419434,76.77391270616992,Minor,Haze / Smog,Dry,4,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0186,2024-06-01,06:37,Sector 52 / 53 Light Point (Kajheri),30.716081092404792,76.73799354503221,Minor,Haze / Smog,Dry,4,1,0,Side-impact,Night - Street Light On
+CHD-2024-0187,2024-09-11,12:48,Sector 52 / 53 Light Point (Kajheri),30.717846505600917,76.74009156607367,Moderate,Haze / Smog,Dry,1,2,0,Rear-end Collision,Daylight
+CHD-2024-0188,2024-10-13,10:01,Housing Board Light Point (Sector 13),30.72420592746475,76.83119005653366,Moderate,Rain,Wet,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0189,2024-10-10,07:45,Sector 52 / 53 Light Point (Kajheri),30.71610671907515,76.73705694117638,Minor,Fog,Foggy Surface,2,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0190,2024-05-15,11:48,Aroma Light Point (Sector 21/22),30.734207002281142,76.77241520428696,,Dense Fog,Foggy Surface,1,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0191,2024-06-28,12:00,Cricket Stadium Chowk (Sector 16/23),30.741742198053974,76.77326924555287,Minor,Rain,Wet,1,1,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0192,2024-05-10,08:31,Poultry Farm Chowk (Industrial Area),30.703053159917946,76.78519501745245,Minor,Dense Fog,Foggy Surface,4,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0193,2024-11-16,19:39,Cricket Stadium Chowk (Sector 16/23),30.73871699737789,76.76976590068347,Minor,Clear,Dry,2,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0194,2024-06-14,20:38,Press Chowk (Madhya Marg Sector 17/18),30.747540764619572,76.7803954171628,Minor,Fog,Foggy Surface,2,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0195,2024-10-26,07:20,Piccadilly Chowk (Sector 34/35),30.728848743654414,76.77022902461968,Minor,Rain,Wet,3,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0196,2024-01-24,14:45,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.705499272126087,76.76387617907749,moderate,Fog,Foggy Surface,1,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0197,2024-07-26,12:04,Matka Chowk (Madhya Marg & Jan Marg),30.746126816849312,76.78564143234456,Minor,Cloudy,Dry,4,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0198,2024-10-21,02:06,Cricket Stadium Chowk (Sector 16/23),30.743216342870554,76.77542296975679,Severe,Haze / Smog,Dry,3,2,0,Fixed Object Collision,Daylight
+CHD-2024-0199,2024-07-04,00:06,Press Chowk (Madhya Marg Sector 17/18),30.749168111335685,76.78041596702082,Minor,Cloudy,Dry,2,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0200,2024-01-16,03:18,Sector 52 / 53 Light Point (Kajheri),30.716404373057223,76.7377074493248,Minor,Clear,Dry,1,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0201,2024-08-12,15:06,Aroma Light Point (Sector 21/22),30.73515332635226,76.77356867326208,Minor,Haze / Smog,Dry,4,0,0,Side-impact,Daylight
+CHD-2024-0202,2024-02-22,05:59,Kalagram Light Point (Madhya Marg),30.71662585115203,76.82313077947558,Fatal,Dense Fog,Foggy Surface,2,1,3,Side-impact,Dawn/Dusk
+CHD-2024-0203,,21:27,NA,30.751577557883042,76.7903976031888,Minor,Haze / Smog,Dry,2,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0204,2024-02-19,03:51,Airport Light Point (Dakshin Marg),30.693183448305152,76.80323759743338,null,Dense Fog,Foggy Surface,3,3,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0205,2024-07-20,12:37,Sector 25 / 38 Light Point,30.754459163999492,76.74933404110051,Minor,Fog,Foggy Surface,4,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0206,2024-02-08,09:07,Sector 52 / 53 Light Point (Kajheri),30.71034751968623,76.73753947769652,Minor,Haze / Smog,Dry,2,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0207,2024-12-21,05:35,PGI Light Point (Madhya Marg Sector 11/12),30.760257536992928,76.77695501642059,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Daylight
+CHD-2024-0208,2024-07-18,16:41,Tribune Chowk (Purv Marg & Dakshin Marg),30.705946089194455,76.78935128491635,Moderate,Haze / Smog,Dry,4,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0209,2024-04-10,01:17,Housing Board Light Point (Sector 13),30.72645397799245,76.83145880889603,Minor,Fog,Foggy Surface,2,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0210,2024-09-27,11:34,Kalagram Light Point (Madhya Marg),30.722127140539452,76.82237888909394,NA,Clear,Dry,4,5,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0211,2024-05-12,02:28,Piccadilly Chowk (Sector 34/35),30.73024809846277,76.7642223039545,Severe,Clear,Dry,2,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0212,2024-03-26,invalid_time,IT Park Kishangarh Chowk,30.732527706309273,76.8364598161769,Minor,Clear,Dry,3,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0213,2024-09-22,03:08,Piccadilly Chowk (Sector 34/35),30.72722735579814,76.77342397345438,Fatal,Rain,Wet,1,1,2,Fixed Object Collision,Night - Street Light On
+CHD-2024-0214,2024-11-13,15:09,Aroma Light Point (Sector 21/22),30.73888481802699,76.7791147358748,Moderate,Fog,Foggy Surface,4,2,0,Pedestrian Hit,Daylight
+CHD-2024-0215,2024-12-12,14:31,Housing Board Light Point (Sector 13),30.72482850773302,76.83099802382874,Minor,Clear,Dry,1,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0216,2024-04-16,08:20,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.707677158681886,76.76588128580076,Severe,Fog,Foggy Surface,2,5,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0217,2024-08-01,03:59,Transport Light Point (Sector 26),30.719659429256588,76.81346179522156,Severe,Rain,Wet,4,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0218,2024-05-03,20:23,Hallomajra Light Point (Dakshin Marg),30.70272147764042,76.79431865504377,Minor,Fog,Foggy Surface,2,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0219,,06:30,NULL,30.747892309407554,76.78501199187217,Minor,Cloudy,Dry,2,0,0,Pedestrian Hit,Daylight
+CHD-2024-0220,2024-03-16,02:14,Kalagram Light Point (Madhya Marg),30.72628154909464,76.82392313933775,severe,Haze / Smog,Dry,1,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0221,2024-10-21,05:28,Hallomajra Light Point (Dakshin Marg),30.694584116075223,76.7969329121447,Minor,Dense Fog,Foggy Surface,2,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0222,2024-02-19,23:24,Housing Board Light Point (Sector 13),30.72976592945609,76.82490013141576,Minor,Rain,Wet,3,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0223,2024-10-10,22:01,Matka Chowk (Madhya Marg & Jan Marg),30.749133966317846,76.79010007867227,Severe,Haze / Smog,Dry,3,2,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0224,2024-04-16,12:07,Piccadilly Chowk (Sector 34/35),30.72796169774641,76.77173801599577,Minor,Haze / Smog,Dry,1,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0225,2024-07-12,17:43,Hallomajra Light Point (Dakshin Marg),30.69776838248825,76.79968973302904,Minor,Rain,Wet,1,-1,0,Rear-end Collision,Daylight
+CHD-2024-0226,2024-05-21,22:32,Transport Light Point (Sector 26),30.72868679996947,76.81117975023885,Severe,Rain,Wet,4,NA,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0227,2024-03-18,10:25,Housing Board Light Point (Sector 13),30.725913046982953,76.82553197493958,Moderate,Haze / Smog,Dry,1,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0228,2024-07-04,14:39,Matka Chowk (Madhya Marg & Jan Marg),30.74417905944023,76.78496212798392,Moderate,Fog,Foggy Surface,2,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0229,2024-09-26,,Poultry Farm Chowk (Industrial Area),30.701164129325228,76.78696705127679,Minor,Dense Fog,Foggy Surface,3,1,0,Rear-end Collision,Daylight
+CHD-2024-0230,2024-10-21,02:31,Kisan Bhawan Chowk (Sector 35/36),999.0,999.0,Moderate,Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0231,2024-11-24,03:14,Kisan Bhawan Chowk (Sector 35/36),30.734833289532578,76.76934268420145,Moderate,Clear,Dry,1,1,0,Head-on Collision,Daylight
+CHD-2024-0232,2024-01-18,22:47,Press Chowk (Madhya Marg Sector 17/18),30.7487022654526,76.77888960933768,Moderate,Dense Fog,Foggy Surface,3,two,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0233,2024-01-06,07:51,Sector 52 / 53 Light Point (Kajheri),30.71322808166738,76.74122040942561,Moderate,Clear,Dry,4,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0234,2024-01-12,06:18,Piccadilly Chowk (Sector 34/35),30.724773009217262,76.76943091395324,Moderate,Fog,Foggy Surface,2,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0235,2024-04-05,00:59,Airport Light Point (Dakshin Marg),30.697724633367393,76.80166559242609,Minor,Dense Fog,Foggy Surface,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0236,2024-12-24,09:06,Tribune Chowk (Purv Marg & Dakshin Marg),30.708689291532135,76.79116274830469,Minor,Dense Fog,Foggy Surface,4,0,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0237,2024-09-14,22:57,Housing Board Light Point (Sector 13),30.721239002657033,76.82581472573409,Minor,Haze / Smog,Dry,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0238,2024-07-22,04:15,Press Chowk (Madhya Marg Sector 17/18),30.7402483048433,76.78277820728289,Minor,Fog,Foggy Surface,4,1,-1,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0239,2024-03-25,18:06,Kisan Bhawan Chowk (Sector 35/36),30.72943611226638,76.7698355468603,Minor,Dense Fog,Foggy Surface,4,0,0,Pedestrian Hit,Daylight
+CHD-2024-0240,2024-02-03,05:51,Airport Light Point (Dakshin Marg),30.69491917076918,76.80083346595056,Moderate,Haze / Smog,Dry,1,1,0,Side-impact,Night - Street Light On
+CHD-2024-0241,2024-01-22,09:16,Matka Chowk (Madhya Marg & Jan Marg),30.753284000041763,76.7880624446268,Severe,Dense Fog,Foggy Surface,1,4,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0242,2024-01-02,07:08,Kalagram Light Point (Madhya Marg),30.72443896753444,76.82109793039274,Minor,Rain,Wet,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0243,07/02/2024,20:28,  KISAN BHAWAN CHOWK (SECTOR 35/36)  ,30.736274285815114,76.76114987180694,Severe,Clear,Dry,3,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0244,2024-08-01,12:43,Sector 52 / 53 Light Point (Kajheri),30.713831563772388,76.74344430847131,Minor,Fog,Foggy Surface,2,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0245,2024-04-21,09:31,Hallomajra Light Point (Dakshin Marg),30.694246494437312,76.79749176548846,MAJOR,Cloudy,Dry,4,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0246,2024-09-26,00:24,Sector 25 / 38 Light Point,30.747291477551368,76.75614087277368,Severe,Fog,Foggy Surface,4,5,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0247,2024-01-11,19:14,Sector 25 / 38 Light Point,30.74801604418668,76.74890435684769,Minor,Fog,Foggy Surface,1,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0248,2024-11-08,08:34,Matka Chowk (Madhya Marg & Jan Marg),999.0,999.0,Severe,Haze / Smog,Dry,1,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0249,2024-12-23,11:58,Poultry Farm Chowk (Industrial Area),30.6979610036758,76.78942519509181,Moderate,Haze / Smog,Dry,3,1,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0250,2024-01-03,01:14,Dhanas Light Point (Milk Colony),30.768221246015212,76.7423555676766,Moderate,Clear,Dry,4,1,0,Side-impact,Night - Street Light On
+CHD-2024-0251,2024-06-02,00:09,Aroma Light Point (Sector 21/22),30.73776937632691,76.78068780787306,Moderate,Dense Fog,Foggy Surface,1,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0252,2024-06-05,05:46,Press Chowk (Madhya Marg Sector 17/18),30.745360166631716,76.7804656107114,Fatal,Cloudy Skies,Dry,4,2,3,Head-on Collision,Night - Street Light Off
+CHD-2024-0253,2024-05-05,05:46,Poultry Farm Chowk (Industrial Area),30.699983841081472,76.79083994973365,Minor,,Dry,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0254,2024-04-21,18:06,Aroma Light Point (Sector 21/22),30.739810382164183,76.78117531685616,Fatal,Dense Fog,Foggy Surface,3,0,3,Head-on Collision,Night - Street Light Off
+CHD-2024-0255,2024-12-22,20:46,Poultry Farm Chowk (Industrial Area),30.702561867702403,76.79313079624539,Severe,Rain,Wet,1,3,0,Head-on Collision,Night - Street Light On
+CHD-2024-0256,2024-01-02,12:28,Cricket Stadium Chowk (Sector 16/23),30.738766579415426,76.76838034601215,Moderate,Dense Fog,Foggy Surface,4,2,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0257,2024-10-21,21:14,Kalagram Light Point (Madhya Marg),30.724688069775663,76.82758729994477,Minor,Clear,Dry,1,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0258,2024-03-24,02:35,Housing Board Light Point (Sector 13),30.724218082011497,76.83237931267735,Fatal,Clear,Dry,3,4,3,Pedestrian Hit,Daylight
+CHD-2024-0259,2024-01-04,10:13,Poultry Farm Chowk (Industrial Area),30.70227317625655,76.78784200384894,Fatal,Rain,Wet,3,2,3,Side-impact,Night - Street Light On
+CHD-2024-0260,2024-03-02,11:00,Press Chowk (Madhya Marg Sector 17/18),30.745217698078577,76.78549854504845,Minor,Fog,Foggy Surface,4,0,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0261,2024-02-10,12:30,Piccadilly Chowk (Sector 34/35),30.731270576959993,76.76863570651142,Moderate,,Dry,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0262,2024-05-15,14:16,Press Chowk (Madhya Marg Sector 17/18),30.74319401664932,76.78155775270794,Minor,Fog,Foggy Surface,1,0,0,Fixed Object Collision,Daylight
+CHD-2024-0263,2024-10-08,17:03,Cricket Stadium Chowk (Sector 16/23),30.74428180157404,76.77143986652871,Severe,Cloudy,Dry,4,5,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0264,2024-12-02,16:36,Matka Chowk (Madhya Marg & Jan Marg),30.748362622810813,76.78488955049775,Severe,Cloudy,Dry,2,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0265,2024-03-02,13:05,Poultry Farm Chowk (Industrial Area),30.705921648783377,76.7915846072132,Fatal,Rain,Wet,2,1,-1,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0266,2024-09-11,08:33,Housing Board Light Point (Sector 13),30.721670274408766,76.8290636420397,FATAL,Clear,Dry,4,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0267,2099-12-31,17:56,  KALAGRAM LIGHT POINT (MADHYA MARG)  ,30.722026837594772,76.82070990442826,Minor,Rain,Wet,3,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0268,2024-12-13,01:25,Press Chowk (Madhya Marg Sector 17/18),30.740938526706266,76.78318655264086,Severe,Fog,Foggy Surface,2,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0269,2024-05-10,08:53,Cricket Stadium Chowk (Sector 16/23),30.736402328885934,76.77547385925305,Moderate,Haze / Smog,Dry,1,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0270,2024-12-14,19:41,Railway Station Light Point (Daria),30.71194030900194,76.8171086831532,Minor,Rain,Wet,2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0271,2024-03-03,09:45,Cricket Stadium Chowk (Sector 16/23),30.744410173923985,76.7724526970261,Moderate,Dense Fog,Foggy Surface,1,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0272,2024-06-23,06:17,Matka Chowk (Madhya Marg & Jan Marg),30.74393071044508,76.78460559281693,Minor,Rain,Wet,4,0,0,Rear-end Collision,Daylight
+CHD-2024-0273,2024-08-19,17:22,Dhanas Light Point (Milk Colony),30.76874043593452,76.74237583694163,Minor,Fog,Foggy Surface,1,0,0,Pedestrian Hit,Daylight
+CHD-2024-0274,2024-04-21,07:43,Sector 52 / 53 Light Point (Kajheri),30.717298301351438,76.73834318587312,Minor,Haze / Smog,Dry,4,0,0,Fixed Object Collision,Daylight
+CHD-2024-0275,2024-01-08,08:38,Hallomajra Light Point (Dakshin Marg),30.700373715541748,76.79731141950495,Severe,Fog,Foggy Surface,3,4,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0276,2024-10-13,18:06,Airport Light Point (Dakshin Marg),30.695066980154973,76.80297196156387,Minor,Haze / Smog,Dry,3,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0277,2024-05-21,10:55,Kalagram Light Point (Madhya Marg),30.72121738418816,76.82306283653888,Minor,Haze / Smog,Dry,3,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0278,2024-03-24,00:41,IT Park Kishangarh Chowk,30.730240984262565,76.83799585738187,Moderate,Fog,Foggy Surface,3,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0279,2024-04-11,23:45,Sector 52 / 53 Light Point (Kajheri),30.71658068959376,76.74192042434038,Minor,Cloudy,Dry,4,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0280,2024-03-10,03:30,Poultry Farm Chowk (Industrial Area),30.704606386945965,76.79226494784342,Minor,Dense-Fog,Foggy Surface,2,1,0,Side-impact,Daylight
+CHD-2024-0281,2024-06-09,18:18,Piccadilly Chowk (Sector 34/35),30.72570472568185,76.77276843549694,Moderate,Clear,Dry,4,1,0,Fixed Object Collision,Daylight
+CHD-2024-0282,2024-07-17,09:26,Airport Light Point (Dakshin Marg),30.695404773744926,76.80487497754697,Minor,Dense Fog,Foggy Surface,2,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0283,2024-03-25,02:31,Railway Station Light Point (Daria),30.705632241522995,76.82252393943337,Minor,Dense Fog,Foggy Surface,3,none,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0284,invalid-date-format,19:27,  SECTOR 52 / 53 LIGHT POINT (KAJHERI)  ,30.71714483736146,76.74109577090631,Moderate,Rain,Wet,4,2,0,Pedestrian Hit,Daylight
+CHD-2024-0285,2024-09-07,00:43,Cricket Stadium Chowk (Sector 16/23),30.745700686154816,76.77622006392197,null,Haze / Smog,Dry,2,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0286,2024-01-10,09:29,Sector 25 / 38 Light Point,30.75068670688168,76.74787020187269,Moderate,Cloudy,Dry,3,2,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0287,2024-07-01,07:14,Dhanas Light Point (Milk Colony),30.766392508863667,76.7424842603389,,Dense Fog,Foggy Surface,2,1,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0288,2024-09-20,01:38,Press Chowk (Madhya Marg Sector 17/18),30.74826544137599,76.77965789173925,Fatal,Haze / Smog,Dry,-2,0,3,Rear-end Collision,Daylight
+CHD-2024-0289,2024-12-05,06:44,Press Chowk (Madhya Marg Sector 17/18),30.740735950629954,76.7796273829307,Moderate,Clear,Dry,3,2,0,Fixed Object Collision,Daylight
+CHD-2024-0290,2024-07-27,03:32,Kisan Bhawan Chowk (Sector 35/36),30.733327977768006,76.76740726346203,Moderate,,Dry,3,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0291,2024-04-12,25:70,Airport Light Point (Dakshin Marg),30.69817958916597,76.80451498820507,Minor,Clear,Dry,4,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0292,2024-10-22,15:09,Tribune Chowk (Purv Marg & Dakshin Marg),30.70781633132465,76.7964688004427,Fatal,Cloudy,Dry,1,0,3,Side-impact,Night - Street Light On
+CHD-2024-0293,2024-03-28,01:54,Piccadilly Chowk (Sector 34/35),30.724141250227714,76.76440080195813,Minor,Haze / Smog,Dry,3,0,0,Rear-end Collision,Daylight
+CHD-2024-0294,2024-11-06,10:22,Transport Light Point (Sector 26),30.71929672327727,76.80858394442673,Severe,,Dry,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0295,2024-07-23,15:51,Press Chowk (Madhya Marg Sector 17/18),30.743502502259783,76.78166538686692,Minor,Dense Fog,Foggy Surface,1,0,0,Fixed Object Collision,Daylight
+CHD-2024-0296,2024-08-26,18:43,Poultry Farm Chowk (Industrial Area),30.697237131057385,76.79261226761272,Minor,Cloudy,Dry,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0297,2024-07-15,01:04,Hallomajra Light Point (Dakshin Marg),30.698730796563652,76.79618122776992,Minor,Fog,Foggy Surface,1,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0298,,13:42,NA,30.735790996790165,76.77838241643462,Moderate,Rain,Wet,3,2,0,Head-on Collision,Daylight
+CHD-2024-0299,2024-03-03,15:20,Sector 25 / 38 Light Point,30.75328845574776,76.75471871151446,Minor,Fog,Foggy Surface,-2,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0300,2024-10-15,02:54,Matka Chowk (Madhya Marg & Jan Marg),30.744388305957546,76.7885418887646,null,Fog,Foggy Surface,1,2,0,Fixed Object Collision,Daylight
+CHD-2024-0301,2024-02-26,19:39,Transport Light Point (Sector 26),30.724771310114047,76.80720169715478,Moderate,Cloudy,Dry,2,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0302,,15:45,NULL,30.752043174396043,76.78741972625555,Moderate,Haze / Smog,Dry,4,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0303,2024-02-02,05:31,Piccadilly Chowk (Sector 34/35),30.726976905816944,76.7676389036046,Minor,,Dry,4,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0304,2024-04-23,10:06,Press Chowk (Madhya Marg Sector 17/18),30.74165589504369,76.78534554143708,Severe,Clear,Dry,1,4,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0305,2024-07-27,18:30,Tribune Chowk (Purv Marg & Dakshin Marg),30.70640364347519,76.78788571605632,Severe,Dense Fog,Foggy Surface,2,2,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0306,2024-07-14,19:58,IT Park Kishangarh Chowk,30.735026958635586,76.83984110119353,Moderate,Dense Fog,Foggy Surface,3,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0307,2024-12-17,09:53,Hallomajra Light Point (Dakshin Marg),30.695281800056453,76.79732524449676,Moderate,Fog,Foggy Surface,2,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0308,2024-03-17,17:44,Hallomajra Light Point (Dakshin Marg),30.703713354962346,76.79780086387807,Moderate,Haze / Smog,Dry,1,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0309,2024-09-10,13:51,PGI Light Point (Madhya Marg Sector 11/12),30.76514243485539,76.77953866001377,Minor,,Dry,1,0,0,Rear-end Collision,Daylight
+CHD-2024-0310,2024-03-27,01:44,Poultry Farm Chowk (Industrial Area),30.70603532393624,76.79033390328665,Severe,Dense Fog,Foggy Surface,1,3,0,Pedestrian Hit,Daylight
+CHD-2024-0311,2024-09-13,07:32,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.712348414852045,76.76362412735872,Severe,Haze / Smog,Dry,-2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0312,2024-12-09,06:39,Aroma Light Point (Sector 21/22),30.74025833213569,76.77203802192308,Severe,Rain,Wet,2,3,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0313,2024-11-03,05:11,Airport Light Point (Dakshin Marg),30.693341777218045,76.79797425898488,Moderate,Clear,Dry,4,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0314,2024-01-11,14:45,Hallomajra Light Point (Dakshin Marg),30.695509288497565,76.7997601419609,Fatal,Clear,Dry,2,4,2,Rear-end Collision,Night - Street Light Off
+CHD-2024-0315,2024-12-11,16:14,Sector 52 / 53 Light Point (Kajheri),30.7150016017972,76.7369288079548,Fatal,Cloudy,Dry,1,1,3,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0316,2024-06-12,09:13,Matka Chowk (Madhya Marg & Jan Marg),30.752433967388672,76.7907333447644,Fatal,Cloudy,Dry,4,0,3,Rear-end Collision,Night - Street Light Off
+CHD-2024-0317,,10:24,N/A,30.735386072991872,76.83723827163867,Severe,Clear,Dry,4,3,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0318,2024-08-02,09:57,Cricket Stadium Chowk (Sector 16/23),30.741343090620845,76.77238735593002,Moderate,Fog,Foggy Surface,1,1,0,Head-on Collision,Daylight
+CHD-2024-0319,,03:13,NULL,30.69710335126143,76.80393582266369,Moderate,Haze / Smog,Dry,4,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0320,2024-05-18,02:36,Transport Light Point (Sector 26),30.720075208979342,76.80774268070891,Severe,Fog,Foggy Surface,4,4,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0321,2024-01-21,23:39,Tribune Chowk (Purv Marg & Dakshin Marg),30.70499501867244,76.78858305761626,Minor,Haze / Smog,Dry,1,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0322,2024-10-03,09:48,Kalagram Light Point (Madhya Marg),30.71929836598835,76.82655878659051,Severe,Rain,Wet,4,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0323,2024-09-10,20:09,Hallomajra Light Point (Dakshin Marg),30.701367539116067,76.79926770437044,,Haze / Smog,Dry,3,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0324,2024-02-10,06:47,Sector 52 / 53 Light Point (Kajheri),30.715466548874534,76.74157152048555,Moderate,Haze / Smog,Dry,3,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0325,2024-02-06,21:51,Matka Chowk (Madhya Marg & Jan Marg),30.749768849232403,76.78662741777855,Moderate,Clear,Dry,4,-1,0,Side-impact,Daylight
+CHD-2024-0326,2024-03-22,20:15,Sector 52 / 53 Light Point (Kajheri),30.714371904101338,76.73950850931683,Minor,Cloudy,Dry,1,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0327,2024-03-19,18:23,IT Park Kishangarh Chowk,30.732794222508794,76.84173458129348,Severe,Rain,Wet,2,1,0,Side-impact,Night - Street Light On
+CHD-2024-0328,2024-11-24,10:56,PGI Light Point (Madhya Marg Sector 11/12),30.761166798350224,76.77419485999751,Moderate,Rain,Wet,3,2,0,Pedestrian Hit,Daylight
+CHD-2024-0329,2024-03-18,06:16,IT Park Kishangarh Chowk,30.727019736930863,76.83760615939637,Moderate,Haze / Smog,Dry,1,1,0,Rear-end Collision,Daylight
+CHD-2024-0330,2024-01-18,08:34,Sector 52 / 53 Light Point (Kajheri),30.713551344675512,76.74210036311841,Severe,Cloudy Skies,Dry,4,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0331,2024-02-13,11:32,Piccadilly Chowk (Sector 34/35),30.722838812594468,76.76891123171377,severe,Dense Fog,Foggy Surface,2,1,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0332,2024-08-08,02:16,Dhanas Light Point (Milk Colony),30.7721917525827,76.74100419826051,Minor,Clear,Dry,2,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0333,2024-11-11,03:45,Railway Station Light Point (Daria),,,Fatal,Haze / Smog,Dry,3,2,3,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0334,2024-02-17,08:24,Press Chowk (Madhya Marg Sector 17/18),30.74315296777991,76.78363336546556,Fatal,Dense Fog,Foggy Surface,4,2,2,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0335,2024-03-08,02:32,Tribune Chowk (Purv Marg & Dakshin Marg),30.706118369844706,76.78878968307077,Moderate,Dense Fog,Foggy Surface,2,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0336,,03:30,,30.723011096429104,76.82384613685096,Moderate,Rain,Wet,2,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0337,2024-11-17,01:57,Hallomajra Light Point (Dakshin Marg),30.69963486511352,76.79291129140368,Moderate,Clear,Dry,2,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0338,2024-12-22,09:05,Sector 52 / 53 Light Point (Kajheri),30.71587622706731,76.74498508982954,Minor,Cloudy,Dry,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0339,2024-03-20,21:32,IT Park Kishangarh Chowk,30.72762712137063,76.84062646137627,Minor,Rainy,Dry,3,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0340,2024-09-22,13:52,Hallomajra Light Point (Dakshin Marg),30.694985701139014,76.79332348549089,Minor,Clear,Dry,2,0,0,Two-wheeler Skid,Daylight
+CHD-2024-0341,2024-08-22,04:57,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708733292081384,76.75737516406575,Moderate,Clear,Dry,4,2,0,Side-impact,Daylight
+CHD-2024-0342,2024-07-12,18:51,PGI Light Point (Madhya Marg Sector 11/12),30.760694862563792,76.77862300196007,Moderate,Haze / Smog,Dry,1,2,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0343,2024-10-18,13:16,Matka Chowk (Madhya Marg & Jan Marg),,,Minor,Haze / Smog,Dry,1,0,0,Rear-end Collision,Daylight
+CHD-2024-0344,2024-06-04,04:27,Airport Light Point (Dakshin Marg),30.69727766736778,76.79935901714629,Moderate,Fog,Foggy Surface,3,2,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0345,2024-09-16,05:23,Press Chowk (Madhya Marg Sector 17/18),30.747049719006096,76.78123228158296,Moderate,Rain,Wet,3,2,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0346,2024-11-04,23:14,Press Chowk (Madhya Marg Sector 17/18),30.746857824306044,76.78564998922823,Minor,Haze / Smog,Dry,2,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0347,2024-01-06,12:40,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.709840253670293,76.76304564446708,Minor,Clear,Dry,2,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0348,2024-01-24,12:59,Kisan Bhawan Chowk (Sector 35/36),30.729317702446195,76.76120039736696,Fatal,Cloudy,Dry,3,4,3,Rear-end Collision,Night - Street Light On
+CHD-2024-0349,2024-09-10,06:02,Railway Station Light Point (Daria),999.0,999.0,Severe,Cloudy,Dry,2,5,0,Head-on Collision,Daylight
+CHD-2024-0350,2024-05-25,12:22,Tribune Chowk (Purv Marg & Dakshin Marg),30.710856459009456,76.78826842812575,Moderate,Rain,Wet,2,1,0,Fixed Object Collision,Daylight
+CHD-2024-0351,2024-10-12,11:52,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706544937870365,76.7644976480245,Minor,Cloudy,Dry,2,-2,0,Pedestrian Hit,Daylight
+CHD-2024-0352,2024-05-11,03:51,Sector 25 / 38 Light Point,30.745864649563927,76.74692385970526,Moderate,Fog,Foggy Surface,3,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0353,2024-08-19,00:30,Aroma Light Point (Sector 21/22),30.740212387253017,76.77608848429334,Minor,Clear,Dry,4,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0354,2024-01-23,08:15,PGI Light Point (Madhya Marg Sector 11/12),30.767954456871234,76.77576504217204,Minor,Rain,Wet,3,0,-1,Head-on Collision,Dawn/Dusk
+CHD-2024-0355,2024-12-22,06:31,Airport Light Point (Dakshin Marg),30.699343162528702,76.79889075782468,Moderate,Dense-Fog,Foggy Surface,2,2,0,Head-on Collision,Night - Street Light On
+CHD-2024-0356,2024-02-03,21:42,IT Park Kishangarh Chowk,30.729760273733437,76.84258938480517,Moderate,Clear,Dry,1,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0357,2024-09-09,12:14,Sector 52 / 53 Light Point (Kajheri),30.718187688356245,76.74110805351607,Severe,Dense Fog,Foggy Surface,1,5,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0358,2024-11-25,05:29,Transport Light Point (Sector 26),,,Fatal,Haze / Smog,Dry,4,0,2,Rear-end Collision,Night - Street Light On
+CHD-2024-0359,2024-05-06,17:16,Kalagram Light Point (Madhya Marg),30.719654361999154,76.82582778096362,Minor,DustStorm_Invalid,Wet,3,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0360,2024-08-06,18:08,Cricket Stadium Chowk (Sector 16/23),30.739850779862277,76.77130592597422,Fatal,Haze / Smog,Dry,2,2,1,Head-on Collision,Dawn/Dusk
+CHD-2024-0361,2024-03-16,00:11,Airport Light Point (Dakshin Marg),30.691858437353375,76.80579147920746,Minor,Dense Fog,Foggy Surface,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0362,2024-03-02,06:52,Sector 52 / 53 Light Point (Kajheri),999.0,999.0,Minor,Haze / Smog,Dry,1,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0363,2024-06-01,13:07,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70927491488247,76.76430015881492,Minor,Haze / Smog,Dry,2,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0364,2024-08-25,23:28,Piccadilly Chowk (Sector 34/35),30.72505109038391,76.77063192840147,Severe,Rain,Wet,3,4,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0365,2024-07-28,02:05,Aroma Light Point (Sector 21/22),30.734818164878433,76.77762310138134,Minor,Dense Fog,Foggy Surface,3,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0366,2024-06-24,18:33,Press Chowk (Madhya Marg Sector 17/18),30.742212481013514,76.78154898387648,Fatal,Rain,Wet,2,0,1,Head-on Collision,Night - Street Light On
+CHD-2024-0367,2024-02-03,15:35,Housing Board Light Point (Sector 13),30.722905714914717,76.82747045583301,Minor,Rain,Wet,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0368,2024-05-15,20:08,Press Chowk (Madhya Marg Sector 17/18),30.742593706535498,76.77957396519315,Minor,Dense Fog,Foggy Surface,1,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0369,2024-05-18,14:08,Railway Station Light Point (Daria),30.7139498154544,76.81930584161393,Fatal,Haze / Smog,Dry,2,4,3,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0370,2024-09-08,02:28,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706796613281142,76.75967168300164,Minor,Rain,Wet,3,0,0,Rear-end Collision,Daylight
+CHD-2024-0371,2024-01-23,15:48,Hallomajra Light Point (Dakshin Marg),30.6973388491725,76.79599197955244,Moderate,Clear,Dry,4,2,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0372,14/09/2024,12:15,Zirakpur Flyover Punjab,29.6857,76.9905,Minor,Haze / Smog,Dry,4,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0373,2024-12-22,08:18,Sector 25 / 38 Light Point,30.752445382940767,76.75529954403439,Moderate,,Dry,3,2,0,Head-on Collision,Daylight
+CHD-2024-0374,2024-08-09,22:39,Piccadilly Chowk (Sector 34/35),30.72260356350518,76.76845343012644,Moderate,,Foggy Surface,1,1,0,Rear-end Collision,Daylight
+CHD-2024-0375,2024-08-24,00:14,Kalagram Light Point (Madhya Marg),30.71922114537576,76.82095039202834,Minor,Clear,Dry,4,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0376,2024-01-11,02:53,Dhanas Light Point (Milk Colony),30.772779634461656,76.74523684467204,Severe,Dense Fog,Foggy Surface,1,3,0,Pedestrian Hit,Daylight
+CHD-2024-0377,2024-07-27,00:07,Poultry Farm Chowk (Industrial Area),30.698121922929264,76.7919153928794,Fatal,,Dry,2,3,2,Head-on Collision,Daylight
+CHD-2024-0378,2024-08-13,21:19,Kalagram Light Point (Madhya Marg),30.72161139120057,76.82952115851407,Fatal,Dense Fog,Foggy Surface,1,-3,3,Two-wheeler Skid,Daylight
+CHD-2024-0379,2024-11-07,03:15,Piccadilly Chowk (Sector 34/35),30.723487236318025,76.77277519576043,Moderate,Fog,Foggy Surface,1,1,0,Side-impact,Daylight
+CHD-2024-0380,2024-12-16,22:38,Matka Chowk (Madhya Marg & Jan Marg),30.743689298558895,76.78451993369022,Minor,Clear,Dry,2,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0381,,03:08,null,30.719797751316094,76.81364574896648,Moderate,Fog,Foggy Surface,3,2,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0382,2024-01-16,22:28,Cricket Stadium Chowk (Sector 16/23),30.743443991578722,76.76980696241101,Moderate,Cloudy,Dry,4,1,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0383,2024-10-28,17:10,Aroma Light Point (Sector 21/22),30.73792402410123,76.77425324462858,Minor,Dense Fog,Foggy Surface,4,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0384,2024-01-20,11:49,Sector 25 / 38 Light Point,30.748590435696666,76.74805534290097,Moderate,Fog,Foggy Surface,1,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0385,2024-11-11,03:06,Hallomajra Light Point (Dakshin Marg),30.700030392423503,76.79452600039913,Moderate,Rainy,Dry,1,1,0,Head-on Collision,Daylight
+CHD-2024-0386,2024-07-22,15:33,Airport Light Point (Dakshin Marg),30.691387535866486,76.80191012181353,Moderate,Cloudy,Dry,3,1,0,Side-impact,Night - Street Light On
+CHD-2024-0387,2024-11-16,02:29,Housing Board Light Point (Sector 13),30.720930861098335,76.83271035209364,Severe,Clear,Dry,3,5,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0388,2024-01-24,02:53,Transport Light Point (Sector 26),30.727436429662774,76.80985815634497,Minor,,Foggy Surface,1,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0389,2024-03-18,23:35,Sector 25 / 38 Light Point,30.751368765137254,76.75190027668963,Minor,Clear,Dry,3,0,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0390,2024-09-11,21:10,Poultry Farm Chowk (Industrial Area),30.704124615977733,76.7889996546657,Moderate,Cloudy,Dry,4,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0391,2024-12-11,19:15,PGI Light Point (Madhya Marg Sector 11/12),30.766041843679044,76.77490588072733,Moderate,Dense Fog,Foggy Surface,4,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0392,2024-05-20,00:33,Press Chowk (Madhya Marg Sector 17/18),30.739501956278556,76.77744662902228,Minor,Fog,Foggy Surface,1,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0393,2024-05-18,16:35,Tribune Chowk (Purv Marg & Dakshin Marg),999.0,999.0,Moderate,Cloudy,Dry,2,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0394,2024-04-08,08:51,Hallomajra Light Point (Dakshin Marg),30.696549881792595,76.80019625352489,Minor,Cloudy,Dry,4,0,0,Head-on Collision,Daylight
+CHD-2024-0395,23/12/2024,18:52,NH-1 GT Road near Karnal,29.6857,76.9905,Severe,Cloudy,Dry,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0396,2024-07-28,03:55,Aroma Light Point (Sector 21/22),30.73407930206953,76.77967141700046,Severe,Haze / Smog,Dry,1,4,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0397,2024-09-23,07:09,Aroma Light Point (Sector 21/22),30.735999297294388,76.77299580019167,Minor,THICK FOG,Dry,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0398,2024-08-19,23:03,Press Chowk (Madhya Marg Sector 17/18),30.740980124006583,76.78046168178041,Moderate,Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0399,2024-04-16,12:41,Hallomajra Light Point (Dakshin Marg),30.701520329196367,76.79610922501976,Moderate,Cloudy,Dry,2,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0400,2024-02-22,13:27,Aroma Light Point (Sector 21/22),30.737447379723502,76.77726018237244,Minor,Dense Fog,Foggy Surface,3,0,0,Fixed Object Collision,Daylight
+CHD-2024-0401,2024-08-20,04:28,Poultry Farm Chowk (Industrial Area),30.70607651916964,76.78966220994454,,Dense Fog,Foggy Surface,2,0,0,Head-on Collision,Daylight
+CHD-2024-0402,2024-05-01,10:44,Matka Chowk (Madhya Marg & Jan Marg),30.753089409150256,76.79336729695109,Severe,Cloudy Skies,Foggy Surface,4,4,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0403,2024-05-18,15:39,Airport Light Point (Dakshin Marg),30.692438013528765,76.80143265881466,Moderate,Dense Fog,Foggy Surface,1,-1,0,Two-wheeler Skid,Daylight
+CHD-2024-0404,2024-05-02,14:41,Piccadilly Chowk (Sector 34/35),30.72350696057001,76.77086526688471,Fatal,Clear,Dry,4,2,3,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0405,2024-07-08,12:32,Tribune Chowk (Purv Marg & Dakshin Marg),30.704024955775395,76.7962340231515,Fatal,,Dry,3,4,2,Two-wheeler Skid,Daylight
+CHD-2024-0406,,01:15,NULL,30.754467913724334,76.75180687541413,Severe,Fog,Foggy Surface,3,4,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0407,2024-09-09,01:40,Cricket Stadium Chowk (Sector 16/23),30.74245230970251,76.76966204765708,Minor,Rain,Wet,1,1,0,Side-impact,Night - Street Light On
+CHD-2024-0408,2024-11-20,20:43,Hallomajra Light Point (Dakshin Marg),30.69477795017137,76.79512207121854,Minor,Dense Fog,Foggy Surface,2,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0409,2024-09-22,06:55,Hallomajra Light Point (Dakshin Marg),30.695967572746607,76.79268576526799,Minor,Haze / Smog,Dry,2,0,-1,Head-on Collision,Night - Street Light On
+CHD-2024-0410,2024-03-11,04:46,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70902961546992,76.76339440505791,Minor,Fog,Foggy Surface,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0411,2024-03-06,00:48,Kisan Bhawan Chowk (Sector 35/36),30.728619570557704,76.76227933602235,Fatal,Cloudy,Dry,3,4,3,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0412,2024-12-25,15:08,Matka Chowk (Madhya Marg & Jan Marg),30.750473778851784,76.78769261334536,Moderate,Cloudy,Dry,4,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0413,25/07/2024,00:59,Shimla Highway Pinjore,29.6857,76.9905,Minor,Rain,Wet,2,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0414,2024-08-08,13:25,IT Park Kishangarh Chowk,30.73109942898511,76.83804895626804,Severe,Cloudy,Dry,4,3,0,Pedestrian Hit,Daylight
+CHD-2024-0415,2024-04-17,17:25,Railway Station Light Point (Daria),30.708769004239663,76.82267766967136,Fatal,Clear,Dry,4,0,3,Head-on Collision,Night - Street Light Off
+CHD-2024-0416,2024-03-14,09:39,Piccadilly Chowk (Sector 34/35),30.729236770125304,76.76675914588432,Severe,Haze / Smog,Dry,2,4,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0417,2024-12-18,04:25,Sector 25 / 38 Light Point,30.745931715862437,76.75398731141875,Minor,Rain,Wet,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0418,2024-12-26,05:45,Housing Board Light Point (Sector 13),30.72330082294077,76.83041717428331,Moderate,Clear,Dry,1,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0419,2024-10-06,12:35,Press Chowk (Madhya Marg Sector 17/18),30.746768738358547,76.78685191425619,Minor,Dense Fog,Foggy Surface,3,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0420,2024-07-10,09:46,Hallomajra Light Point (Dakshin Marg),30.69568866764673,76.7984204748788,Severe,Rain,Wet,3,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0421,2024-08-16,15:34,Tribune Chowk (Purv Marg & Dakshin Marg),30.707325603279873,76.78993110975118,Severe,Cloudy,Dry,4,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0422,2024-04-18,08:39,Railway Station Light Point (Daria),30.704994049173685,76.81990102104295,Moderate,Dense Fog,Foggy Surface,1,1,0,Head-on Collision,Daylight
+CHD-2024-0423,2024-10-27,19:19,Transport Light Point (Sector 26),30.72065374416216,76.80752432091735,Minor,Clear,Dry,1,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0424,2024-10-26,17:11,IT Park Kishangarh Chowk,999.0,999.0,Fatal,Haze / Smog,Dry,3,0,1,Side-impact,Night - Street Light Off
+CHD-2024-0425,2024-09-03,09:30,Press Chowk (Madhya Marg Sector 17/18),30.747702647422823,76.78468441987837,Minor,Haze / Smog,Dry,3,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0426,2024-11-17,02:30,IT Park Kishangarh Chowk,30.7267818458728,76.84051367075516,Moderate,Cloudy,Dry,3,-3,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0427,2024-10-16,16:46,IT Park Kishangarh Chowk,30.729738533443744,76.83609713137554,Moderate,Rain,Wet,2,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0428,2024-02-24,06:51,Tribune Chowk (Purv Marg & Dakshin Marg),30.70228207134485,76.79204885634374,Moderate,Rain,Wet,4,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0429,2024-05-09,02:19,Airport Light Point (Dakshin Marg),30.69051297267978,76.7982118713893,Minor,Cloudy,Dry,3,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0430,2024-03-07,10:53,Sector 52 / 53 Light Point (Kajheri),30.715659933429965,76.73649117381812,Minor,Haze / Smog,Dry,4,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0431,2024-06-15,13:59,Railway Station Light Point (Daria),30.713120583267898,76.81926967544972,Moderate,DustStorm_Invalid,Dry,3,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0432,2024-06-03,04:17,Aroma Light Point (Sector 21/22),30.73859535333486,76.78038029469518,Severe,,Foggy Surface,4,5,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0433,2024-12-28,10:45,Kalagram Light Point (Madhya Marg),30.725045936905023,76.82721540208671,Minor,Rain,Wet,1,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0434,2024-02-12,01:49,Piccadilly Chowk (Sector 34/35),30.723661398792647,76.7669231829863,Minor,,Dry,4,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0435,2024-06-05,03:52,Dhanas Light Point (Milk Colony),30.77012441066756,76.74583627961503,Fatal,Cloudy,Dry,2,0,1,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0436,,19:55,NULL,30.74595835987062,76.7493098131785,Minor,Rain,Wet,1,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0437,,10:49,N/A,30.69360880369846,76.79812545639624,Minor,Clear,Dry,3,0,0,Side-impact,Daylight
+CHD-2024-0438,2024-06-18,10:17,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708840606619596,76.75826577379574,Minor,Haze / Smog,Dry,3,0,-1,Head-on Collision,Daylight
+CHD-2024-0439,2024-01-16,21:03,Aroma Light Point (Sector 21/22),30.736005771020327,76.77200726183727,Minor,Clear,Dry,1,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0440,2024-11-26,17:05,Piccadilly Chowk (Sector 34/35),30.72482332095634,76.76588147138304,Fatal,Rain,Wet,2,3,-1,Rear-end Collision,Dawn/Dusk
+CHD-2024-0441,2024-03-28,19:16,Railway Station Light Point (Daria),30.708905458747722,76.82337448270201,Severe,Rain,Wet,2,3,0,Side-impact,Dawn/Dusk
+CHD-2024-0442,2024-08-28,05:18,Housing Board Light Point (Sector 13),30.725553343620366,76.82701440820685,Severe,Cloudy,Dry,2,5,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0443,18/05/2024,14:25,Zirakpur Flyover Punjab,29.6857,76.9905,Moderate,Dense Fog,Foggy Surface,2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0444,2024-10-26,25:70,Sector 52 / 53 Light Point (Kajheri),30.713811484976436,76.74600205226209,Moderate,Dense Fog,Foggy Surface,1,2,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0445,2024-02-20,03:43,Railway Station Light Point (Daria),30.705961740022005,76.82345883446379,Severe,Rain,Wet,3,4,0,Fixed Object Collision,Daylight
+CHD-2024-0446,2024-11-26,00:48,Hallomajra Light Point (Dakshin Marg),30.70277261536574,76.80033256004714,Minor,,Foggy Surface,4,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0447,2024-11-10,13:45,Aroma Light Point (Sector 21/22),30.733597353342944,76.77944346659729,Fatal,Fog,Foggy Surface,1,0,3,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0448,2024-01-01,22:35,Piccadilly Chowk (Sector 34/35),30.72212410558531,76.77291075695075,Severe,Fog,Foggy Surface,1,3,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0449,2024-07-13,12:27,Sector 52 / 53 Light Point (Kajheri),30.71344268323669,76.7393812730962,Moderate,Haze / Smog,Dry,2,2,0,Head-on Collision,Night - Street Light On
+CHD-2024-0450,2024-11-05,04:00,Cricket Stadium Chowk (Sector 16/23),30.744599626867267,76.76884267290893,Minor,Clear,Dry,2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0451,2024-07-28,14:57,Hallomajra Light Point (Dakshin Marg),30.694746634442897,76.79772242899581,Severe,Cloudy,Dry,4,5,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0452,2024-04-06,13:38,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.71190071424917,76.7600471471783,Minor,Rain,Wet,2,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0453,2024-10-16,22:23,Sector 52 / 53 Light Point (Kajheri),30.713169700252525,76.74598233449444,Minor,Rain,Wet,1,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0454,2024-04-16,20:47,Housing Board Light Point (Sector 13),30.726033567944906,76.82960070609215,Moderate,Haze / Smog,Dry,1,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0455,2024-09-16,18:46,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.71148527133247,76.7608886881034,Minor,Fog,Foggy Surface,3,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0456,2024-10-06,18:03,Sector 52 / 53 Light Point (Kajheri),30.712104431365535,76.74249300053964,,Fog,Foggy Surface,1,2,0,Pedestrian Hit,Daylight
+CHD-2024-0457,2024-05-28,08:00,Kisan Bhawan Chowk (Sector 35/36),999.0,999.0,Moderate,Cloudy,Dry,2,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0458,2024-08-06,16:55,Poultry Farm Chowk (Industrial Area),30.698812525879035,76.79050774872573,Minor,Clear,Dry,2,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0459,24/08/2024,20:10,  PGI LIGHT POINT (MADHYA MARG SECTOR 11/12)  ,30.766103677891433,76.7729794743911,Minor,Haze / Smog,Dry,3,0,0,Side-impact,Daylight
+CHD-2024-0460,,17:14,null,30.70818744802745,76.81691367129953,Minor,Haze / Smog,Dry,4,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0461,2024-11-02,03:58,Press Chowk (Madhya Marg Sector 17/18),30.746284934052504,76.78671762722807,Moderate,Fog,Foggy Surface,4,-1,0,Side-impact,Night - Street Light Off
+CHD-2024-0462,2024-11-24,07:46,Kisan Bhawan Chowk (Sector 35/36),30.733643432815683,76.7643115376369,Moderate,Dense Fog,Foggy Surface,3,1,0,Side-impact,Daylight
+CHD-2024-0463,22/02/2024,14:22,  HOUSING BOARD LIGHT POINT (SECTOR 13)  ,30.720919614110233,76.82447698759476,Minor,Fog,Foggy Surface,3,0,0,Rear-end Collision,Daylight
+CHD-2024-0464,2024-10-21,03:45,IT Park Kishangarh Chowk,30.732766055185646,76.84315459137088,Fatal,Clear,Dry,2,4,2,Head-on Collision,Daylight
+CHD-2024-0465,2024-02-21,14:59,Kisan Bhawan Chowk (Sector 35/36),30.730045686166505,76.76700477846386,Fatal,Rain,Wet,3,1,2,Rear-end Collision,Night - Street Light Off
+CHD-2024-0466,2024-05-27,08:11,Press Chowk (Madhya Marg Sector 17/18),30.74338590427731,76.78705958567113,null,Rain,Wet,2,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0467,2024-08-23,08:06,Airport Light Point (Dakshin Marg),30.696539662909757,76.79726249711756,fatal,Clear,Dry,3,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0468,2024-12-11,12:36,Transport Light Point (Sector 26),30.725846058364993,76.80986436481116,Minor,Haze / Smog,Dry,4,0,0,Pedestrian Hit,Daylight
+CHD-2024-0469,2024-08-04,18:34,Tribune Chowk (Purv Marg & Dakshin Marg),30.70494423873977,76.79429261308447,Fatal,Fog,Foggy Surface,3,2,3,Pedestrian Hit,Daylight
+CHD-2024-0470,2024-06-03,14:48,Housing Board Light Point (Sector 13),30.72445355361511,76.83203342078336,Severe,Haze / Smog,Dry,2,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0471,2024-02-21,22:22,Airport Light Point (Dakshin Marg),30.693388703451742,76.80010104725184,Moderate,,Dry,4,1,0,Head-on Collision,Daylight
+CHD-2024-0472,2024-09-21,25:70,Sector 52 / 53 Light Point (Kajheri),30.711884851313325,76.74008767533475,Moderate,Rain,Wet,1,1,0,Side-impact,Daylight
+CHD-2024-0473,invalid-date-format,14:43,  PRESS CHOWK (MADHYA MARG SECTOR 17/18)  ,30.74068187108723,76.78517103705808,Severe,Cloudy,Dry,2,5,0,Head-on Collision,Daylight
+CHD-2024-0474,2024-10-02,07:44,Dhanas Light Point (Milk Colony),30.76933831526779,76.74531219635809,Moderate,Clear,Dry,2,1,0,Side-impact,Daylight
+CHD-2024-0475,2024-02-04,15:38,Poultry Farm Chowk (Industrial Area),30.704553521569895,76.7841395761533,Severe,Dense Fog,Foggy Surface,1,2,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0476,18/10/2024,04:20,Ambala Highway Toll Plaza,29.6857,76.9905,Severe,Dense Fog,Foggy Surface,1,5,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0477,2024-06-18,05:28,Hallomajra Light Point (Dakshin Marg),30.70147550086194,76.79298050853136,Minor,Cloudy,Dry,1,0,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0478,2024-01-06,02:45,Tribune Chowk (Purv Marg & Dakshin Marg),30.709896269408386,76.78820722607719,Moderate,DustStorm_Invalid,Foggy Surface,4,2,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0479,2024-03-20,22:02,Kisan Bhawan Chowk (Sector 35/36),30.732330868641316,76.764520313245,Moderate,Haze / Smog,Dry,4,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0480,2024-09-04,19:23,Tribune Chowk (Purv Marg & Dakshin Marg),30.706677104034693,76.78931902861875,Severe,Cloudy,Dry,2,none,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0481,2024-08-16,05:10,Kalagram Light Point (Madhya Marg),30.724366129716426,76.82655243754415,Moderate,Clear,Dry,1,2,0,Side-impact,Night - Street Light On
+CHD-2024-0482,2024-08-02,03:47,Aroma Light Point (Sector 21/22),30.7367681935046,76.78040079593349,Minor,Cloudy,Dry,2,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0483,2024-10-19,10:26,Housing Board Light Point (Sector 13),30.72975079174901,76.8307140308056,Minor,Dense-Fog,Dry,3,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0484,2024-04-03,15:37,PGI Light Point (Madhya Marg Sector 11/12),30.767098863029478,76.77435532387878,Moderate,Rain,Wet,2,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0485,2024-11-12,08:12,Cricket Stadium Chowk (Sector 16/23),30.737564046145806,76.77449821216122,Minor,Clear,Dry,1,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0486,2024-05-20,05:50,Poultry Farm Chowk (Industrial Area),30.703803395830363,76.78569853564251,Severe,Cloudy,Dry,2,5,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0487,2024-10-16,14:17,Sector 25 / 38 Light Point,30.749692133985626,76.756156643374,Minor,Rain,Wet,2,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0488,2024-01-14,01:02,Sector 52 / 53 Light Point (Kajheri),30.718962523545994,76.74533754720791,Fatal,Haze / Smog,Dry,1,4,2,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0489,2024-09-25,00:44,Kalagram Light Point (Madhya Marg),30.72092441368217,76.82210511492515,Moderate,Dense Fog,Foggy Surface,2,2,0,Side-impact,Night - Street Light On
+CHD-2024-0490,2024-03-23,14:54,Housing Board Light Point (Sector 13),30.720959301644548,76.83019035608358,Moderate,Cloudy,Dry,1,2,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0491,2024-11-15,22:40,Press Chowk (Madhya Marg Sector 17/18),30.741349457382398,76.78581551799554,Minor,Haze / Smog,Dry,1,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0492,2024-10-18,18:50,Piccadilly Chowk (Sector 34/35),30.725759022530386,76.76659789380565,Minor,Haze / Smog,Dry,1,0,0,Side-impact,Daylight
+CHD-2024-0493,2024-06-15,19:02,Cricket Stadium Chowk (Sector 16/23),30.745079779059555,76.76840966543726,Minor,Dense Fog,Foggy Surface,1,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0494,2024-12-25,18:55,Matka Chowk (Madhya Marg & Jan Marg),30.748996338262675,76.79059038400341,Fatal,Dense Fog,Foggy Surface,2,two,2,Side-impact,Dawn/Dusk
+CHD-2024-0495,2024-09-27,03:30,Cricket Stadium Chowk (Sector 16/23),30.73965226581785,76.77216226905148,Moderate,Haze / Smog,Dry,3,2,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0496,2024-02-03,12:57,Housing Board Light Point (Sector 13),30.722683535824114,76.83233978981211,Minor,Clear,Dry,1,0,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0497,2024-05-14,21:34,Airport Light Point (Dakshin Marg),30.695606876393565,76.80247276197244,Fatal,Rain,Wet,3,3,2,Fixed Object Collision,Daylight
+CHD-2024-0498,2024-09-21,10:26,Housing Board Light Point (Sector 13),30.721020366185293,76.83151989102605,Moderate,Haze / Smog,Dry,3,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0499,2024-03-26,08:14,Sector 52 / 53 Light Point (Kajheri),30.710819542519623,76.74409348261852,Moderate,Fog,Foggy Surface,1,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0500,2099-12-31,05:11,  POULTRY FARM CHOWK (INDUSTRIAL AREA)  ,30.702386302298617,76.78510789882479,Severe,Haze / Smog,Dry,2,2,0,Head-on Collision,Daylight
+CHD-2024-0501,2024-03-07,17:45,Sector 52 / 53 Light Point (Kajheri),30.710764735120602,76.7388040719725,Minor,Fog,Foggy Surface,3,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0502,2024-08-25,04:29,Kalagram Light Point (Madhya Marg),30.725604339759418,76.82374562331223,Severe,Dense Fog,Foggy Surface,1,5,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0503,2024-10-22,04:51,Piccadilly Chowk (Sector 34/35),30.726239106736777,76.76679827182663,Moderate,Rain,Wet,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0504,2024-01-13,19:53,Hallomajra Light Point (Dakshin Marg),30.700680083369534,76.7924687609783,Minor,Fog,Foggy Surface,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0505,2024-04-01,02:34,Matka Chowk (Madhya Marg & Jan Marg),30.7514128335577,76.79177095120832,Severe,Haze / Smog,Dry,1,5,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0506,2024-11-12,12:09,IT Park Kishangarh Chowk,30.732250778218475,76.84423402164101,Moderate,Rain,Wet,3,NA,0,Side-impact,Daylight
+CHD-2024-0507,2024-02-07,23:56,Piccadilly Chowk (Sector 34/35),30.73127523628217,76.77264301735767,Minor,Rain,Wet,4,0,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0508,2024-02-05,06:19,PGI Light Point (Madhya Marg Sector 11/12),30.75979567686882,76.77647180067584,Moderate,Cloudy,Dry,3,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0509,2024-03-18,14:45,PGI Light Point (Madhya Marg Sector 11/12),30.764788059997144,76.77333328858722,Moderate,Dense Fog,Foggy Surface,2,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0510,2024-10-10,15:35,Transport Light Point (Sector 26),30.727427992193867,76.81021992899437,Moderate,Dense Fog,Foggy Surface,1,1,-1,Head-on Collision,Night - Street Light Off
+CHD-2024-0511,2024-05-14,05:31,Dhanas Light Point (Milk Colony),30.764041769243317,76.74725913461839,Severe,Haze / Smog,Dry,2,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0512,2024-08-19,13:55,Housing Board Light Point (Sector 13),30.726788913233992,76.82711759510495,Minor,Haze / Smog,Dry,4,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0513,2024-10-02,04:20,Sector 52 / 53 Light Point (Kajheri),30.709675450805225,76.73879537183963,Moderate,Haze / Smog,Dry,2,N/A,0,Head-on Collision,Daylight
+CHD-2024-0514,2024-11-03,16:12,Cricket Stadium Chowk (Sector 16/23),30.736687149006862,76.77021664097678,Severe,Dense Fog,Foggy Surface,1,5,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0515,2024-06-04,17:37,Piccadilly Chowk (Sector 34/35),30.724214589736274,76.77087967512074,Minor,Dense Fog,Foggy Surface,1,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0516,2024-02-07,04:32,PGI Light Point (Madhya Marg Sector 11/12),30.76180313091285,76.77970787978492,Minor,Dense Fog,Foggy Surface,1,0,0,Rear-end Collision,Daylight
+CHD-2024-0517,2024-06-05,14:56,Tribune Chowk (Purv Marg & Dakshin Marg),30.705895182298736,76.79051573465847,Fatal,DustStorm_Invalid,Dry,3,2,1,Rear-end Collision,Daylight
+CHD-2024-0518,2024-02-30,02:27,  HALLOMAJRA LIGHT POINT (DAKSHIN MARG)  ,30.70078047157426,76.79437428323666,Moderate,Clear,Dry,1,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0519,2024-01-16,03:58,Transport Light Point (Sector 26),30.727130551816508,76.81233479192504,Minor,Clear,Dry,3,0,0,Rear-end Collision,Daylight
+CHD-2024-0520,2024-11-12,00:05,Airport Light Point (Dakshin Marg),30.696276030467537,76.7982002442736,Minor,Haze / Smog,Dry,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0521,2024-09-19,02:06,Sector 25 / 38 Light Point,30.752608021361272,76.75232956428839,Severe,Clear,Dry,2,2,0,Side-impact,Night - Street Light On
+CHD-2024-0522,2024-04-17,22:30,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.703743289286912,76.76345349352499,Minor,Cloudy,Dry,2,0,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0523,2024-07-04,10:07,Press Chowk (Madhya Marg Sector 17/18),30.74374091847347,76.78224251002875,Moderate,Cloudy,Dry,2,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0524,2024-07-10,14:38,Transport Light Point (Sector 26),30.720022479451305,76.81213712798623,Moderate,Haze / Smog,Dry,4,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0525,2024-08-22,11:11,PGI Light Point (Madhya Marg Sector 11/12),30.760287849856674,76.77129609156957,Minor,Haze / Smog,Dry,4,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0526,2024-12-19,03:47,Housing Board Light Point (Sector 13),30.721992178438853,76.8274481146187,Severe,Rainy,Foggy Surface,1,3,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0527,2024-08-09,22:49,Kalagram Light Point (Madhya Marg),30.718728696387863,76.82394704206924,Moderate,Fog,Foggy Surface,4,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0528,2024-02-04,08:31,Sector 25 / 38 Light Point,30.74758890633191,76.75387999555578,Moderate,Haze / Smog,Dry,2,1,0,Rear-end Collision,Daylight
+CHD-2024-0529,2024-07-20,21:20,Dhanas Light Point (Milk Colony),30.76958107440671,76.75032072550498,Minor,Cloudy,Dry,1,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0530,2024-09-09,17:21,Airport Light Point (Dakshin Marg),,,Severe,Cloudy,Dry,1,1,0,Pedestrian Hit,Daylight
+CHD-2024-0531,2024-01-02,05:35,Aroma Light Point (Sector 21/22),30.73912874289277,76.77592556146232,Moderate,Fog,Foggy Surface,2,2,-1,Pedestrian Hit,Night - Street Light On
+CHD-2024-0532,2024-11-16,21:35,Press Chowk (Madhya Marg Sector 17/18),30.744374549266993,76.77819381992883,Moderate,Cloudy,Dry,4,2,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0533,2024-07-20,21:22,Press Chowk (Madhya Marg Sector 17/18),30.742133909843464,76.78301045118651,N/A,Fog,Foggy Surface,3,1,0,Rear-end Collision,Daylight
+CHD-2024-0534,2024-11-11,12:06,Cricket Stadium Chowk (Sector 16/23),30.744295534275626,76.77313966978095,Minor,Fog,Foggy Surface,4,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0535,2024-02-28,09:07,Piccadilly Chowk (Sector 34/35),30.727425316667926,76.77300389018714,Minor,Clear,Dry,3,0,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0536,2024-10-01,invalid_time,PGI Light Point (Madhya Marg Sector 11/12),30.76106618885252,76.77755958476287,Moderate,Fog,Foggy Surface,1,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0537,2024-07-07,15:40,Poultry Farm Chowk (Industrial Area),30.702348278735542,76.78713334305357,Severe,Clear,Dry,2,3,0,Side-impact,Daylight
+CHD-2024-0538,2024-12-03,22:54,Sector 52 / 53 Light Point (Kajheri),30.713520273521887,76.73845885977035,Moderate,Cloudy,Dry,3,2,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0539,2024-05-17,09:27,Cricket Stadium Chowk (Sector 16/23),30.744156517493476,76.77381536813556,Moderate,Fog,Foggy Surface,2,2,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0540,2024-01-21,22:33,Railway Station Light Point (Daria),30.7109156024846,76.81937562488768,Severe,Cloudy,Dry,4,-3,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0541,2024-07-19,23:40,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.711789334787014,76.76472774648138,Minor,Dense Fog,Foggy Surface,3,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0542,2024-02-21,06:54,Piccadilly Chowk (Sector 34/35),30.72994121995832,76.76800260262479,Minor,Fog,Foggy Surface,-2,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0543,,15:35,NULL,30.717899622478477,76.81997704173666,Fatal,Rain,Wet,1,1,1,Side-impact,Night - Street Light On
+CHD-2024-0544,2024-12-16,00:03,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.705459852218947,76.76472521017509,Severe,Clear,Dry,3,5,0,Side-impact,Daylight
+CHD-2024-0545,2024-02-13,23:53,PGI Light Point (Madhya Marg Sector 11/12),30.76736773244168,76.77731672073435,Minor,Clear,Dry,1,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0546,2024-06-11,18:47,Housing Board Light Point (Sector 13),30.72318076855241,76.82472276833454,NA,Haze / Smog,Dry,2,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0547,2024-10-02,15:34,Kisan Bhawan Chowk (Sector 35/36),30.73149475412729,76.76294305920473,Minor,Clear,Dry,3,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0548,2024-05-01,20:57,Hallomajra Light Point (Dakshin Marg),30.697529980122685,76.79845671229123,Moderate,Haze / Smog,Dry,1,1,-1,Side-impact,Dawn/Dusk
+CHD-2024-0549,2024-09-28,07:54,Cricket Stadium Chowk (Sector 16/23),30.745231570986824,76.77415248338596,Minor,Clear,Dry,4,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0550,2024-03-15,20:20,Matka Chowk (Madhya Marg & Jan Marg),30.746574229023633,76.79269416737336,Severe,Haze / Smog,Dry,4,1,0,Side-impact,Daylight
+CHD-2024-0551,2024-06-23,13:56,Dhanas Light Point (Milk Colony),999.0,999.0,Severe,Clear,Dry,2,3,0,Two-wheeler Skid,Daylight
+CHD-2024-0552,,22:01,NA,30.73349231594603,76.84027727731896,Severe,Haze / Smog,Dry,2,4,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0553,2024-03-08,16:45,Piccadilly Chowk (Sector 34/35),30.724637218026505,76.76472232051424,Fatal,Haze / Smog,Dry,2,3,3,Side-impact,Dawn/Dusk
+CHD-2024-0554,,09:12,,30.69650679879587,76.79817466871687,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0555,2024-02-15,06:16,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.710171066893043,76.76246627357519,Moderate,Dense Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0556,2024-10-04,00:45,Hallomajra Light Point (Dakshin Marg),30.69479061267361,76.79497920154111,Moderate,,Wet,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0557,,06:38,NULL,30.729979619728507,76.76534168157742,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0558,2024-06-19,21:41,Matka Chowk (Madhya Marg & Jan Marg),30.74977680240057,76.79317328234974,Moderate,Clear,Dry,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0559,,03:35,N/A,30.74658453166658,76.78446104105392,Minor,Fog,Foggy Surface,2,0,0,Side-impact,Daylight
+CHD-2024-0560,2024-11-12,04:57,IT Park Kishangarh Chowk,30.730009376754055,76.84457523873706,Moderate,Cloudy,Dry,2,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0561,2024-09-14,04:16,Railway Station Light Point (Daria),30.705519195336823,76.81707317386793,Minor,Clear,Dry,2,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0562,17/05/2024,10:27,  PICCADILLY CHOWK (SECTOR 34/35)  ,30.730527926763667,76.76653216388323,Severe,Fog,Foggy Surface,4,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0563,2024-08-09,05:45,Hallomajra Light Point (Dakshin Marg),30.69444567167385,76.79313141321211,Moderate,Clear,Dry,4,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0564,2024-12-28,04:07,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708551995144617,76.76112988550011,Minor,Dense Fog,Foggy Surface,3,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0565,2024-01-17,18:11,Sector 52 / 53 Light Point (Kajheri),30.711623961566655,76.74618004555491,Minor,Clear,Dry,2,1,0,Fixed Object Collision,Daylight
+CHD-2024-0566,2024-02-13,11:37,Tribune Chowk (Purv Marg & Dakshin Marg),30.703942812514402,76.79721334475283,Severe,Clear,Dry,3,2,0,Rear-end Collision,Daylight
+CHD-2024-0567,2024-10-22,00:21,Dhanas Light Point (Milk Colony),30.76734055515143,76.75015201530972,Fatal,Haze / Smog,Dry,4,4,2,Head-on Collision,Night - Street Light On
+CHD-2024-0568,,19:24,NA,30.72473170846687,76.76445535023986,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Daylight
+CHD-2024-0569,2024-11-25,20:09,Poultry Farm Chowk (Industrial Area),999.0,999.0,Minor,Rain,Wet,4,1,0,Side-impact,Night - Street Light On
+CHD-2024-0570,2024-08-15,12:30,Kalagram Light Point (Madhya Marg),30.724720528743227,76.8248265322566,Minor,Cloudy,Dry,4,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0571,2024-09-11,14:43,PGI Light Point (Madhya Marg Sector 11/12),30.764706862564832,76.77152947461012,Minor,Haze / Smog,Dry,2,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0572,2024-05-05,04:43,PGI Light Point (Madhya Marg Sector 11/12),30.75919183130765,76.778615446922,Severe,Dense Fog,Foggy Surface,4,3,0,Two-wheeler Skid,Daylight
+CHD-2024-0573,2024-07-04,14:42,Transport Light Point (Sector 26),30.72433414517847,76.81230651584156,Moderate,Fog,Foggy Surface,3,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0574,2024-03-26,05:53,Tribune Chowk (Purv Marg & Dakshin Marg),30.702239354909995,76.79401578323416,Minor,Clear,Dry,4,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0575,2024-05-11,05:13,Railway Station Light Point (Daria),30.711773542644845,76.81839947905718,Minor,Haze / Smog,Dry,3,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0576,2024-11-16,14:44,Tribune Chowk (Purv Marg & Dakshin Marg),30.70504933842992,76.7875330459991,Minor,Haze / Smog,Dry,4,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0577,2024-03-01,06:07,Press Chowk (Madhya Marg Sector 17/18),30.747546407349603,76.77797635130622,Severe,Haze / Smog,Dry,2,1,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0578,2024-09-07,02:19,Matka Chowk (Madhya Marg & Jan Marg),30.747957884738003,76.7903605915113,Severe,Dense Fog,Foggy Surface,4,4,0,Rear-end Collision,Daylight
+CHD-2024-0579,2024-08-16,25:70,Hallomajra Light Point (Dakshin Marg),30.70128781181742,76.79575265948503,Minor,Dense Fog,Foggy Surface,2,0,0,Pedestrian Hit,Daylight
+CHD-2024-0580,2024-12-19,19:46,PGI Light Point (Madhya Marg Sector 11/12),30.76819486937938,76.77908616261003,Moderate,Fog,Foggy Surface,1,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0581,2024-08-08,22:03,IT Park Kishangarh Chowk,30.73555280953934,76.84385073142175,Moderate,Rain,Wet,3,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0582,2024-06-15,22:27,Kalagram Light Point (Madhya Marg),30.72134788800349,76.82908964476036,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0583,2024-10-28,22:42,Sector 52 / 53 Light Point (Kajheri),30.718590701541675,76.7395915299864,Moderate,Fog,Foggy Surface,4,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0584,2024-12-03,21:30,Poultry Farm Chowk (Industrial Area),30.702418423784316,76.7863245721527,Minor,Dense Fog,Foggy Surface,2,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0585,2024-01-01,11:56,Dhanas Light Point (Milk Colony),30.765836518933977,76.74269432941354,Minor,Haze / Smog,Dry,2,0,0,Two-wheeler Skid,Daylight
+CHD-2024-0586,2024-02-18,07:31,Aroma Light Point (Sector 21/22),30.734906204625517,76.77767562921544,Minor,Fog,Foggy Surface,3,1,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0587,2024-01-15,14:53,Sector 25 / 38 Light Point,30.75084289484542,76.74724142022926,Severe,Clear,Dry,1,5,0,Rear-end Collision,Daylight
+CHD-2024-0588,2024-03-24,09:45,Kalagram Light Point (Madhya Marg),30.72510869474153,76.82880985770537,Minor,Cloudy,Dry,4,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0589,2024-04-15,13:49,Aroma Light Point (Sector 21/22),30.738791607828272,76.7727298346943,Severe,Dense Fog,Foggy Surface,4,3,0,Side-impact,Night - Street Light On
+CHD-2024-0590,2024-11-22,07:09,Cricket Stadium Chowk (Sector 16/23),30.74335199744365,76.77145008607214,Severe,Cloudy,Dry,-2,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0591,2024-09-26,,PGI Light Point (Madhya Marg Sector 11/12),30.767380652575103,76.78011840541157,Fatal,Rain,Wet,2,4,1,Rear-end Collision,Daylight
+CHD-2024-0592,2024-01-22,20:09,Poultry Farm Chowk (Industrial Area),30.70054072278898,76.78743266266281,Severe,Clear,Dry,3,4,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0593,2024-05-17,19:58,Aroma Light Point (Sector 21/22),30.739692308532014,76.77157902233503,Minor,Rain,Wet,4,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0594,2024-02-02,17:21,Press Chowk (Madhya Marg Sector 17/18),30.747254003345763,76.78590974682432,Minor,Cloudy Skies,Dry,2,0,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0595,2024-11-06,00:01,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706822524136406,76.75960708879806,Severe,Cloudy,Dry,3,2,0,Side-impact,Dawn/Dusk
+CHD-2024-0596,2024-05-21,16:22,Kalagram Light Point (Madhya Marg),30.72371986165493,76.82811583440997,Minor,Haze / Smog,Dry,1,0,0,Two-wheeler Skid,Daylight
+CHD-2024-0597,2024-10-23,20:42,Matka Chowk (Madhya Marg & Jan Marg),30.75165387562109,76.793990000789,Moderate,Cloudy,Dry,2,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0598,2024-09-24,07:06,Sector 52 / 53 Light Point (Kajheri),30.716224338020382,76.74334350978864,Minor,Cloudy,Dry,2,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0599,2024-01-14,04:30,PGI Light Point (Madhya Marg Sector 11/12),30.766684376294318,76.77141947163435,Minor,Clear,Dry,3,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0600,2024-08-23,15:46,Sector 52 / 53 Light Point (Kajheri),30.71448827305708,76.74043422194993,,Dense Fog,Foggy Surface,2,1,3,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0601,invalid-date-format,11:58,  AIRPORT LIGHT POINT (DAKSHIN MARG)  ,30.69495432373832,76.79652607389588,Fatal,Cloudy,Dry,4,0,1,Side-impact,Night - Street Light Off
+CHD-2024-0602,2024-05-10,15:01,Kalagram Light Point (Madhya Marg),30.720114673541854,76.82961020101119,Severe,DustStorm_Invalid,Foggy Surface,4,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0603,2024-02-28,01:26,Dhanas Light Point (Milk Colony),30.76282085753697,76.74607537299607,Moderate,Fog,Foggy Surface,4,2,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0604,2024-11-15,14:42,IT Park Kishangarh Chowk,,,Minor,Haze / Smog,Dry,3,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0605,2024-11-15,23:17,Press Chowk (Madhya Marg Sector 17/18),30.742889978821648,76.77755819714353,Moderate,Dense Fog,Foggy Surface,1,2,0,Two-wheeler Skid,Daylight
+CHD-2024-0606,2024-10-25,01:36,Housing Board Light Point (Sector 13),30.722724267333387,76.82968704054817,Moderate,Rain,Wet,1,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0607,2024-12-27,18:28,Kisan Bhawan Chowk (Sector 35/36),30.734967570460274,76.7628528669439,Minor,Cloudy,Dry,3,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0608,2024-01-28,16:20,Tribune Chowk (Purv Marg & Dakshin Marg),30.704499565550464,76.7892050800573,Minor,Clear,Dry,1,none,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0609,2024-07-22,05:03,Kisan Bhawan Chowk (Sector 35/36),30.734783046913865,76.7619422737082,Moderate,Fog,Foggy Surface,2,1,0,Fixed Object Collision,Daylight
+CHD-2024-0610,2024-06-09,12:52,Kalagram Light Point (Madhya Marg),30.719600414638403,76.82382822812,Severe,Clear,Dry,2,2,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0611,2024-01-11,14:35,Sector 25 / 38 Light Point,30.7486504867963,76.74735081371882,Minor,Rain,Wet,1,-3,0,Head-on Collision,Daylight
+CHD-2024-0612,2024-03-10,18:26,Kalagram Light Point (Madhya Marg),30.718863160959106,76.8252470745006,Minor,Haze / Smog,Dry,2,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0613,18/07/2024,14:02,Shimla Highway Pinjore,29.6857,76.9905,Minor,Rain,Wet,3,0,0,Head-on Collision,Daylight
+CHD-2024-0614,2024-07-12,20:13,Kisan Bhawan Chowk (Sector 35/36),30.733078677515007,76.76879487721622,Moderate,Cloudy,Dry,3,1,-1,Head-on Collision,Daylight
+CHD-2024-0615,2024-12-18,08:56,Press Chowk (Madhya Marg Sector 17/18),30.746484293097478,76.78540498107819,Minor,Cloudy,Dry,3,1,0,Side-impact,Night - Street Light Off
+CHD-2024-0616,2024-06-11,06:29,Railway Station Light Point (Daria),30.706930131391132,76.82052277027839,Fatal,Fog,Foggy Surface,1,1,3,Fixed Object Collision,Daylight
+CHD-2024-0617,2024-07-18,22:45,Tribune Chowk (Purv Marg & Dakshin Marg),30.710114449939844,76.79412706404132,Moderate,Rain,Wet,1,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0618,2024-07-27,19:22,Railway Station Light Point (Daria),30.710922459131734,76.8174299473235,Minor,Haze / Smog,Dry,1,0,0,Side-impact,Night - Street Light On
+CHD-2024-0619,2024-11-23,11:12,Matka Chowk (Madhya Marg & Jan Marg),30.751031444452686,76.79168420998462,Minor,Cloudy,Dry,3,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0620,2024-12-23,19:13,Cricket Stadium Chowk (Sector 16/23),30.736567960429248,76.7722283787537,Minor,Haze / Smog,Dry,4,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0621,2024-11-20,18:11,Airport Light Point (Dakshin Marg),30.69699838421187,76.8018570704782,Minor,Dense Fog,Foggy Surface,1,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0622,2024-12-22,17:39,Kisan Bhawan Chowk (Sector 35/36),30.729018515477154,76.76717978716962,Minor,Cloudy,Dry,4,0,0,Pedestrian Hit,Daylight
+CHD-2024-0623,2024-05-04,21:33,Aroma Light Point (Sector 21/22),30.73492548171612,76.78145106476596,Moderate,Fog,Foggy Surface,1,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0624,2024-04-11,02:56,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708188614970165,76.75625159284114,Moderate,,Dry,2,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0625,2024-02-01,15:27,Aroma Light Point (Sector 21/22),30.7337080585765,76.77775994686971,Severe,Cloudy,Dry,3,3,0,Head-on Collision,Daylight
+CHD-2024-0626,2024-09-26,07:04,Aroma Light Point (Sector 21/22),30.738925175125484,76.77971633795899,Severe,Cloudy,Dry,4,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0627,11/07/2024,22:04,NH-1 GT Road near Karnal,29.6857,76.9905,Severe,Clear,Dry,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0628,2024-07-04,19:48,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.704222031433503,76.76469929313224,Minor,Cloudy,Dry,1,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0629,2024-11-26,00:29,IT Park Kishangarh Chowk,30.727212779276044,76.84130921426248,Moderate,Cloudy,Dry,2,1,0,Rear-end Collision,Daylight
+CHD-2024-0630,2024-10-05,20:32,Housing Board Light Point (Sector 13),30.726728864984917,76.8319077946241,Minor,Rain,Wet,4,1,0,Pedestrian Hit,Night - Street Light On
+CHD-2024-0631,2024-07-17,20:48,Transport Light Point (Sector 26),30.719804911828614,76.81031666858081,Minor,Cloudy,Dry,2,0,0,Side-impact,Night - Street Light Off
+CHD-2024-0632,2024-03-02,07:32,Tribune Chowk (Purv Marg & Dakshin Marg),30.706276805897534,76.7939767680614,Severe,Cloudy,Dry,1,4,0,Side-impact,Night - Street Light On
+CHD-2024-0633,2024-11-16,22:44,Airport Light Point (Dakshin Marg),30.69825263807091,76.79961551923672,Fatal,Cloudy,Dry,-2,4,3,Side-impact,Night - Street Light Off
+CHD-2024-0634,2024-01-16,07:58,Poultry Farm Chowk (Industrial Area),30.697248478965037,76.79226105478325,Minor,Dense Fog,Foggy Surface,2,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0635,2024-07-06,00:23,Aroma Light Point (Sector 21/22),30.738672713072607,76.77525911803583,Minor,Fog,Foggy Surface,1,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0636,2024-01-07,06:18,Sector 52 / 53 Light Point (Kajheri),30.718627087650116,76.73979909236759,Minor,Fog,Foggy Surface,2,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0637,2024-02-01,21:08,Tribune Chowk (Purv Marg & Dakshin Marg),30.702860774243092,76.79001788605979,Minor,Clear,Dry,3,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0638,2024-10-14,22:04,Cricket Stadium Chowk (Sector 16/23),30.742809087152136,76.77671161755673,Minor,Dense Fog,Foggy Surface,2,0,-1,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0639,25/01/2024,19:37,  PGI LIGHT POINT (MADHYA MARG SECTOR 11/12)  ,30.768169815402935,76.77304549638934,Minor,Cloudy,Dry,3,1,0,Side-impact,Night - Street Light On
+CHD-2024-0640,2024-10-16,06:46,Kisan Bhawan Chowk (Sector 35/36),30.735828514919167,76.76891502638372,Minor,Rain,Wet,1,0,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0641,2024-09-23,15:45,Railway Station Light Point (Daria),30.705989985174075,76.82102486873373,Fatal,Dense-Fog,Wet,3,3,3,Fixed Object Collision,Daylight
+CHD-2024-0642,2024-05-14,12:36,Railway Station Light Point (Daria),30.712831682636914,76.81785899975438,Minor,Fog,Foggy Surface,3,0,0,Head-on Collision,Daylight
+CHD-2024-0643,2024-08-17,19:21,Sector 25 / 38 Light Point,30.74831574951635,76.7520396222473,Minor,Rain,Wet,4,two,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0644,2024-02-12,02:18,Poultry Farm Chowk (Industrial Area),30.70061688494636,76.78615624878148,N/A,Cloudy,Dry,1,3,0,Head-on Collision,Daylight
+CHD-2024-0645,2024-11-11,08:19,Transport Light Point (Sector 26),30.724660260599872,76.81053757841562,Moderate,Haze / Smog,Dry,3,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0646,2024-05-10,11:50,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.712823825301314,76.75628533878401,Fatal,DustStorm_Invalid,Wet,1,4,2,Head-on Collision,Dawn/Dusk
+CHD-2024-0647,2024-09-25,14:46,Airport Light Point (Dakshin Marg),30.695144382518063,76.80135825350486,Severe,Fog,Foggy Surface,1,3,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0648,2024-09-01,,PGI Light Point (Madhya Marg Sector 11/12),30.760495847535037,76.77509971935547,Moderate,Dense Fog,Foggy Surface,3,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0649,2024-12-18,09:20,PGI Light Point (Madhya Marg Sector 11/12),30.765257628058837,76.77463368717154,Moderate,Cloudy,Dry,1,1,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0650,2024-07-13,06:25,IT Park Kishangarh Chowk,30.735337521952975,76.84053878734312,Minor,Rain,Wet,2,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0651,2024-09-06,01:52,Piccadilly Chowk (Sector 34/35),30.72243241506602,76.76494313177429,Moderate,Rain,Wet,1,1,0,Head-on Collision,Daylight
+CHD-2024-0652,2024-11-17,02:29,Press Chowk (Madhya Marg Sector 17/18),30.742338176206193,76.77943039425992,FATAL,Cloudy,Dry,1,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0653,2024-02-13,06:08,Hallomajra Light Point (Dakshin Marg),30.699264530192195,76.79608251142376,Severe,Fog,Foggy Surface,4,4,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0654,2024-04-01,04:28,Sector 25 / 38 Light Point,30.751967720473175,76.75078956437375,Minor,Rain,Wet,2,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0655,2024-11-15,11:44,Sector 52 / 53 Light Point (Kajheri),30.7098908479018,76.7371110267675,Severe,Fog,Foggy Surface,4,5,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0656,2024-11-06,22:36,IT Park Kishangarh Chowk,30.733532439529306,76.83937828152065,Minor,Haze / Smog,Dry,1,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0657,2024-12-24,23:57,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706618895905216,76.76536296333572,Minor,Rain,Wet,4,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0658,2024-06-14,14:10,Housing Board Light Point (Sector 13),,,Minor,Cloudy,Dry,1,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0659,2024-01-09,03:45,Press Chowk (Madhya Marg Sector 17/18),30.748057731449187,76.78106674327833,Severe,Fog,Foggy Surface,4,4,0,Pedestrian Hit,Daylight
+CHD-2024-0660,2024-08-27,08:53,Matka Chowk (Madhya Marg & Jan Marg),30.75073581539318,76.78847723652574,Minor,Clear,Dry,1,0,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0661,2024-06-06,06:45,Tribune Chowk (Purv Marg & Dakshin Marg),30.707873831417654,76.7889349647731,Minor,Haze / Smog,Dry,2,0,0,Rear-end Collision,Daylight
+CHD-2024-0662,,12:49,,30.725939866844747,76.76988205350375,Minor,Dense Fog,Foggy Surface,3,1,0,Head-on Collision,Daylight
+CHD-2024-0663,2024-11-03,07:56,Tribune Chowk (Purv Marg & Dakshin Marg),30.70447116642449,76.78932151819765,Minor,Haze / Smog,Dry,2,1,0,Rear-end Collision,Dawn/Dusk
+CHD-2024-0664,2024-10-07,17:25,Aroma Light Point (Sector 21/22),30.733826795759953,76.77776786434572,Fatal,Clear,Dry,2,0,1,Side-impact,Night - Street Light Off
+CHD-2024-0665,2024-04-15,07:04,Press Chowk (Madhya Marg Sector 17/18),30.74603992759557,76.77721981378416,Moderate,Fog,Foggy Surface,-2,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0666,2024-12-18,18:10,IT Park Kishangarh Chowk,30.731195760245853,76.84470474291903,Minor,Clear,Dry,3,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0667,2024-12-11,21:30,Hallomajra Light Point (Dakshin Marg),30.69722046547348,76.79765353451683,Minor,Clear,Dry,4,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0668,2024-02-10,07:47,Tribune Chowk (Purv Marg & Dakshin Marg),30.703426059044986,76.79356348674588,Minor,Dense Fog,Foggy Surface,1,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0669,2024-04-24,19:28,Hallomajra Light Point (Dakshin Marg),30.69765747942957,76.79772038896962,Moderate,Fog,Foggy Surface,2,2,0,Side-impact,Daylight
+CHD-2024-0670,2024-01-08,23:21,PGI Light Point (Madhya Marg Sector 11/12),30.764880464250798,76.77348455104459,Minor,Dense Fog,Foggy Surface,1,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0671,2024-06-06,14:40,Matka Chowk (Madhya Marg & Jan Marg),30.749680631976776,76.7879148592056,Minor,Rain,Wet,1,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0672,2024-04-08,16:05,Hallomajra Light Point (Dakshin Marg),30.694817593924228,76.79722630651213,Minor,Rain,Wet,3,0,0,Head-on Collision,Night - Street Light On
+CHD-2024-0673,2024-08-21,06:17,IT Park Kishangarh Chowk,30.728689694304997,76.83765352890018,Severe,Rain,Wet,1,3,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0674,2024-07-25,04:52,Railway Station Light Point (Daria),30.708426972572898,76.81999394220523,Fatal,Rain,Wet,1,3,2,Rear-end Collision,Night - Street Light Off
+CHD-2024-0675,2024-07-15,09:29,Hallomajra Light Point (Dakshin Marg),30.6994285213684,76.79305699317882,Minor,,Dry,4,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0676,2024-12-24,11:31,Airport Light Point (Dakshin Marg),30.69044180550671,76.80481655127262,Minor,Rain,Wet,4,1,0,Side-impact,Dawn/Dusk
+CHD-2024-0677,2024-02-13,18:10,Sector 52 / 53 Light Point (Kajheri),30.710212343559324,76.74504999580971,Minor,Rain,Wet,3,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0678,2024-01-21,12:59,Dhanas Light Point (Milk Colony),30.76914979744915,76.74428180540923,Minor,Dense Fog,Foggy Surface,2,0,0,Side-impact,Daylight
+CHD-2024-0679,2024-11-05,08:15,Hallomajra Light Point (Dakshin Marg),30.69651330698471,76.79585470770182,Moderate,Haze / Smog,Dry,2,1,0,Rear-end Collision,Daylight
+CHD-2024-0680,2024-02-17,06:56,Press Chowk (Madhya Marg Sector 17/18),30.743476669215116,76.7829616042863,Minor,Rain,Wet,3,0,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0681,2024-02-04,20:36,PGI Light Point (Madhya Marg Sector 11/12),30.765924622520537,76.77984320591447,Severe,Fog,Foggy Surface,2,3,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0682,2024-03-27,15:00,Press Chowk (Madhya Marg Sector 17/18),30.746490089961,76.77716420306764,Minor,Haze / Smog,Dry,4,0,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0683,07/03/2024,15:11,  POULTRY FARM CHOWK (INDUSTRIAL AREA)  ,30.697964012975593,76.78536400038779,Moderate,Clear,Dry,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0684,2024-07-15,20:58,Poultry Farm Chowk (Industrial Area),,,Moderate,Haze / Smog,Dry,2,1,0,Side-impact,Daylight
+CHD-2024-0685,2024-04-16,15:43,Kisan Bhawan Chowk (Sector 35/36),30.727742624373892,76.76069666651678,Severe,Clear,Dry,1,3,0,Rear-end Collision,Daylight
+CHD-2024-0686,2024-09-25,08:59,Sector 25 / 38 Light Point,30.752717865366286,76.74995665803276,Moderate,Fog,Foggy Surface,4,2,0,Side-impact,Night - Street Light Off
+CHD-2024-0687,2024-07-20,01:22,Matka Chowk (Madhya Marg & Jan Marg),30.753009910467355,76.79075078285325,Severe,Clear,Dry,1,4,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0688,2024-09-09,22:48,Hallomajra Light Point (Dakshin Marg),30.694156804272673,76.79252894539454,Severe,Fog,Foggy Surface,4,5,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0689,2024-06-01,20:23,Airport Light Point (Dakshin Marg),30.690431291096374,76.80258073257785,Severe,Haze / Smog,Dry,-2,4,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0690,2024-08-22,22:57,IT Park Kishangarh Chowk,30.734139603781802,76.83828333957999,Minor,Rain,Wet,3,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0691,2024-01-05,15:50,Sector 52 / 53 Light Point (Kajheri),30.71734861943549,76.74336665629333,Minor,Haze / Smog,Dry,4,0,0,Pedestrian Hit,Daylight
+CHD-2024-0692,2024-11-23,02:06,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.706109016135585,76.75831640821177,Minor,Haze / Smog,Dry,1,0,0,Side-impact,Dawn/Dusk
+CHD-2024-0693,2024-11-04,21:08,Matka Chowk (Madhya Marg & Jan Marg),30.750791749830366,76.79075932681235,Severe,Haze / Smog,Dry,4,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0694,2024-11-11,12:58,Sector 52 / 53 Light Point (Kajheri),30.717163373866963,76.74220679420417,Moderate,Haze / Smog,Dry,4,-2,0,Head-on Collision,Night - Street Light On
+CHD-2024-0695,2024-10-07,23:07,Housing Board Light Point (Sector 13),30.72191382522353,76.82690237853978,Moderate,Dense Fog,Foggy Surface,3,2,-1,Two-wheeler Skid,Daylight
+CHD-2024-0696,2024-07-11,11:51,Sector 52 / 53 Light Point (Kajheri),30.714856030403812,76.74467118596645,Moderate,Dense Fog,Foggy Surface,2,1,0,Pedestrian Hit,Daylight
+CHD-2024-0697,2024-05-27,07:31,Railway Station Light Point (Daria),30.707359262250712,76.82206147960297,Moderate,Dense Fog,Foggy Surface,3,1,0,Fixed Object Collision,Daylight
+CHD-2024-0698,28/05/2024,22:36,  PICCADILLY CHOWK (SECTOR 34/35)  ,30.726523779942866,76.77078599997189,Moderate,Dense Fog,Foggy Surface,4,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0699,2024-12-26,07:44,Aroma Light Point (Sector 21/22),30.732127022334033,76.77866766306836,Moderate,Dense Fog,Foggy Surface,4,2,0,Side-impact,Night - Street Light On
+CHD-2024-0700,2024-08-12,12:25,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.70762285573016,76.76042437471732,Minor,Haze / Smog,Dry,3,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0701,2024-01-28,22:19,Aroma Light Point (Sector 21/22),30.738122664799636,76.77730383679761,Moderate,Dense Fog,Foggy Surface,2,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0702,2024-04-24,20:00,Hallomajra Light Point (Dakshin Marg),30.695997663448612,76.79934358443234,Minor,Cloudy,Dry,1,0,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0703,2024-01-04,11:30,PGI Light Point (Madhya Marg Sector 11/12),30.76519445265544,76.77228222918555,Minor,Clear,Dry,1,1,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0704,2024-01-04,07:25,Hallomajra Light Point (Dakshin Marg),30.700169725465962,76.79533993995823,Moderate,Haze / Smog,Dry,2,2,0,Fixed Object Collision,Daylight
+CHD-2024-0705,2024-06-01,03:07,Press Chowk (Madhya Marg Sector 17/18),30.74225216040256,76.78363195473888,Minor,Rain,Wet,2,two,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0706,2024-11-23,13:19,Sector 52 / 53 Light Point (Kajheri),30.711310965939163,76.74104191477299,Moderate,Clear,Dry,-2,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0707,2024-09-16,02:33,Tribune Chowk (Purv Marg & Dakshin Marg),30.705037965449396,76.79557462843182,Severe,,Dry,1,2,0,Fixed Object Collision,Daylight
+CHD-2024-0708,2024-08-26,10:07,IT Park Kishangarh Chowk,30.733152158896623,76.83485324002763,Minor,Cloudy,Dry,2,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0709,2024-05-12,17:10,Transport Light Point (Sector 26),30.720046103279287,76.80844717120128,Minor,Haze / Smog,Dry,1,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0710,2024-06-17,11:38,Railway Station Light Point (Daria),30.705598550463993,76.81880442825071,Moderate,,Foggy Surface,1,1,0,Head-on Collision,Daylight
+CHD-2024-0711,2024-03-20,17:13,Piccadilly Chowk (Sector 34/35),30.730060851725387,76.76605212940852,Moderate,Fog,Foggy Surface,2,-3,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0712,2024-05-22,13:44,Poultry Farm Chowk (Industrial Area),30.700200593755845,76.78433254076128,Minor,Dense Fog,Foggy Surface,1,0,0,Side-impact,Night - Street Light On
+CHD-2024-0713,06/10/2024,13:52,NH-1 GT Road near Karnal,29.6857,76.9905,Minor,Rain,Wet,4,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0714,,20:05,null,30.704799901324808,76.76168368784836,Minor,Fog,Foggy Surface,3,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0715,2024-02-06,16:46,Matka Chowk (Madhya Marg & Jan Marg),30.747386323513968,76.78515002729466,Severe,Cloudy,Dry,4,1,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0716,,10:48,N/A,30.727015422319703,76.769974669443,Minor,Fog,Foggy Surface,4,0,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0717,2024-10-24,08:03,Hallomajra Light Point (Dakshin Marg),30.700475629348034,76.79272670142493,Severe,Haze / Smog,Dry,3,2,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0718,2024-08-17,09:17,Poultry Farm Chowk (Industrial Area),30.700589600082207,76.78704001416254,Fatal,Cloudy,Dry,2,0,2,Side-impact,Dawn/Dusk
+CHD-2024-0719,2024-04-03,05:36,Housing Board Light Point (Sector 13),30.72714676680561,76.82426693212464,Minor,Haze / Smog,Dry,3,0,0,Pedestrian Hit,Daylight
+CHD-2024-0720,2024-03-16,15:32,PGI Light Point (Madhya Marg Sector 11/12),30.76517033063089,76.77992441418847,Moderate,Haze / Smog,Dry,1,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0721,2024-12-12,07:47,Tribune Chowk (Purv Marg & Dakshin Marg),30.708241600729895,76.79442591713774,Moderate,Cloudy,Dry,1,2,0,Head-on Collision,Night - Street Light On
+CHD-2024-0722,2024-01-14,15:24,Cricket Stadium Chowk (Sector 16/23),30.744594089351096,76.77243684484014,Minor,Clear,Dry,3,1,0,Head-on Collision,Daylight
+CHD-2024-0723,21/12/2024,18:25,  DHANAS LIGHT POINT (MILK COLONY)  ,30.765735450394807,76.74273065944628,Minor,Fog,Foggy Surface,1,1,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0724,2024-06-04,00:22,Tribune Chowk (Purv Marg & Dakshin Marg),30.70725530248436,76.79068551801282,Severe,Dense Fog,Foggy Surface,4,3,0,Rear-end Collision,Daylight
+CHD-2024-0725,2024-03-14,03:58,Airport Light Point (Dakshin Marg),,,Moderate,Dense Fog,Foggy Surface,3,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0726,,14:42,NA,30.740483414698556,76.76912182040337,Severe,Dense Fog,Foggy Surface,2,3,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0727,2024-07-14,23:21,Kalagram Light Point (Madhya Marg),30.718295670688516,76.82010256307525,null,Dense Fog,Foggy Surface,2,4,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0728,2024-03-11,12:32,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.708655675959573,76.76301736482041,Moderate,Haze / Smog,Dry,4,1,0,Rear-end Collision,Daylight
+CHD-2024-0729,2024-11-08,01:43,Hallomajra Light Point (Dakshin Marg),30.695455419887907,76.79630000931425,Severe,Rain,Wet,1,two,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0730,2024-09-06,07:17,PGI Light Point (Madhya Marg Sector 11/12),30.760877472992064,76.77212495724926,Severe,Fog,Foggy Surface,2,4,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0731,2024-03-07,18:40,Kalagram Light Point (Madhya Marg),30.72341144954044,76.82472333943629,Moderate,Dense Fog,Foggy Surface,1,none,0,Pedestrian Hit,Daylight
+CHD-2024-0732,28/02/2024,01:24,Shimla Highway Pinjore,29.6857,76.9905,Minor,Fog,Foggy Surface,2,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0733,2024-05-12,22:26,Transport Light Point (Sector 26),30.722242899899932,76.80989246089187,Minor,Rainy,Dry,2,0,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0734,2024-03-09,invalid_time,Kisan Bhawan Chowk (Sector 35/36),30.736184819749482,76.76140761699907,Minor,Clear,Dry,1,0,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0735,invalid-date-format,06:37,  SECTOR 52 / 53 LIGHT POINT (KAJHERI)  ,30.71478862063622,76.73991592285024,Minor,Clear,Dry,2,0,0,Two-wheeler Skid,Daylight
+CHD-2024-0736,2024-02-18,19:21,Airport Light Point (Dakshin Marg),30.69744660053892,76.80545500639518,null,Rain,Wet,2,0,0,Head-on Collision,Daylight
+CHD-2024-0737,2024-09-12,11:28,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.710816031293014,76.76511586652973,Moderate,Clear,Dry,4,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0738,2024-05-23,04:18,Sector 25 / 38 Light Point,30.752708851729473,76.74786935127968,Minor,Cloudy,Dry,1,1,0,Fixed Object Collision,Night - Street Light On
+CHD-2024-0739,2024-09-03,05:28,Press Chowk (Madhya Marg Sector 17/18),30.74445025900637,76.78242469852792,Severe,Foggy,Wet,4,4,0,Two-wheeler Skid,Night - Street Light Off
+CHD-2024-0740,2024-01-26,16:29,Poultry Farm Chowk (Industrial Area),30.701918979777233,76.78942112755006,Moderate,Haze / Smog,Dry,3,2,0,Head-on Collision,Night - Street Light Off
+CHD-2024-0741,2024-09-08,09:02,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.704891033957235,76.75843929450257,Moderate,Fog,Foggy Surface,2,2,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0742,2024-06-21,25:70,Airport Light Point (Dakshin Marg),30.695745949241235,76.79621399961476,Minor,Haze / Smog,Dry,3,1,0,Pedestrian Hit,Night - Street Light Off
+CHD-2024-0743,2024-05-06,08:01,Tribune Chowk (Purv Marg & Dakshin Marg),30.709339317860863,76.78959279592712,Moderate,Cloudy,Dry,1,2,0,Fixed Object Collision,Night - Street Light Off
+CHD-2024-0744,2024-04-11,08:13,IT Park Kishangarh Chowk,999.0,999.0,Moderate,Rain,Wet,2,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0745,2024-03-27,05:12,Dhanas Light Point (Milk Colony),30.76373691062152,76.74241513543869,Moderate,Haze / Smog,Dry,2,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0746,2024-04-03,04:04,Poultry Farm Chowk (Industrial Area),30.704374992009566,76.790373668254,Minor,Rain,Wet,4,0,0,Two-wheeler Skid,Night - Street Light On
+CHD-2024-0747,2024-01-04,00:48,Tribune Chowk (Purv Marg & Dakshin Marg),30.707132935164847,76.7911787512976,fatal,Clear,Dry,2,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0748,2024-12-27,10:54,Tribune Chowk (Purv Marg & Dakshin Marg),30.71067617691097,76.78846338944602,Moderate,Dense Fog,Foggy Surface,2,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0749,2024-01-18,22:17,Piccadilly Chowk (Sector 34/35),30.724817563196936,76.76544513323634,null,Clear,Dry,1,1,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0750,2024-04-14,12:09,Hallomajra Light Point (Dakshin Marg),30.693912104206692,76.79354312745214,Minor,Fog,Foggy Surface,2,1,0,Fixed Object Collision,Dawn/Dusk
+CHD-2024-0013,10/12/2024,12:42,NH-1 GT Road near Karnal,29.6857,76.9905,Moderate,Rain,Wet,4,1,0,Head-on Collision,Night - Street Light On
+CHD-2024-0046,2024-12-04,05:19,Poultry Farm Chowk (Industrial Area),30.7022589269256,76.79313734744102,Minor,Clear,Dry,3,0,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0089,2024-05-02,04:47,Matka Chowk (Madhya Marg & Jan Marg),30.749488529220503,76.78425781083511,Minor,Clear,Dry,1,0,0,Side-impact,Daylight
+CHD-2024-0121,2024-04-19,13:11,Piccadilly Chowk (Sector 34/35),30.725792388931033,76.77004809582776,Moderate,Clear,Dry,3,1,0,Two-wheeler Skid,Daylight
+CHD-2024-0251,2024-06-02,00:09,Aroma Light Point (Sector 21/22),30.73776937632691,76.78068780787306,Moderate,Dense Fog,Foggy Surface,1,2,0,Rear-end Collision,Night - Street Light Off
+CHD-2024-0311,2024-09-13,07:32,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),30.712348414852045,76.76362412735872,Severe,Haze / Smog,Dry,-2,1,0,Pedestrian Hit,Dawn/Dusk
+CHD-2024-0421,2024-08-16,15:34,Tribune Chowk (Purv Marg & Dakshin Marg),30.707325603279873,76.78993110975118,Severe,Cloudy,Dry,4,2,0,Head-on Collision,Dawn/Dusk
+CHD-2024-0016-DUP,2024-11-21,20:06, PGI Light Point (Madhya Marg Sector 11/12) ,30.763070246680368,76.77789075849459,Minor,,Dry,3,1,0,Rear-end Collision,Night - Street Light On
+CHD-2024-0061-DUP,2024-05-15,03:29, Piccadilly Chowk (Sector 34/35) ,30.727450440373197,76.7721424030132,Moderate,Haze / Smog,Dry,4,2,0,Two-wheeler Skid,Dawn/Dusk
+CHD-2024-0181-DUP,2024-04-17,14:23, Matka Chowk (Madhya Marg & Jan Marg) ,30.744279679416653,76.78561029646465,Minor,Haze / Smog,Dry,4,0,0,Rear-end Collision,Daylight
+CHD-2024-0341-DUP,2024-08-22,04:57, Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg) ,30.708733292081384,76.75737516406575,Moderate,Clear,Dry,4,2,0,Side-impact,Daylight

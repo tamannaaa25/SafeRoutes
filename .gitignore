@@ -24,3 +24,18 @@ dist-ssr
 *.sln
 *.sw?
 
+
+# Environment
+.env
+*.env
+backend/.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
