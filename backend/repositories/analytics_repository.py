@@ -215,3 +215,4 @@ class AnalyticsRepository:
             }
             for row in results
         ]
+

@@ -7,7 +7,6 @@ import ChartsSection from './components/ChartsSection';
 import SafetyInsightsSection from './components/SafetyInsightsSection';
 import BlackspotsSection from './components/BlackspotsSection';
 import AccidentTable from './components/AccidentTable';
-import DatabaseExplorerSection from './components/DatabaseExplorerSection';
 import DataQualitySection from './components/DataQualitySection';
 import DataValidationModal from './components/DataValidationModal';
 import { sampleAccidents } from './data/sampleAccidents';
@@ -298,8 +297,6 @@ export default function App() {
           <BlackspotsSection accidents={filteredAccidents} />
 
           <AccidentTable records={filteredAccidents} />
-
-          <DatabaseExplorerSection />
 
           <DataQualitySection
             qualityReport={processedDataset}

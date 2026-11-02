@@ -11,7 +11,7 @@ SafeRoutes follows a clean, decoupled full-stack architecture:
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                      React (Vite) Frontend                              │
-│   Dashboard UI • Recharts • Database Explorer • Data Quality Studio     │
+│   Dashboard UI • Recharts • Data Quality Studio • Decision Support      │
 └─────────────────────────────────┬───────────────────────────────────────┘
                                   │ HTTP / REST (/api/*)
                                   ▼
@@ -143,7 +143,65 @@ All SQL queries and database operations execute exclusively in the backend repos
 
 ---
 
-## 🤖 Google Gemini AI Grounding & Decision Support
+## 🖥️ Inspecting PostgreSQL via pgAdmin or Desktop Client
+
+PostgreSQL runs completely server-side in the backend. To inspect the relational database tables, relationships, and raw records directly in a desktop database management tool such as **pgAdmin 4**, use the following configuration:
+
+### Connection Parameters
+
+| Parameter | Value | Notes |
+|---|---|---|
+| **Host name/address** | `localhost` or `127.0.0.1` | Local PostgreSQL 17 server |
+| **Port** | `5432` | Standard PostgreSQL port |
+| **Maintenance Database** | `saferoutes_db` | Primary application database |
+| **Username** | Configured local PostgreSQL user (e.g. `tamanna` or `postgres`) | Matches user configured in `backend/.env` |
+| **Password** | Read from local `backend/.env` | Left empty if local trusted OS authentication is active |
+
+> [!NOTE]
+> Database credentials are kept strictly in `backend/.env` and are never exposed in frontend code, API responses, or version control.
+
+### Step-by-Step pgAdmin Setup Guide
+
+1. **Install pgAdmin 4** (if not already installed on macOS):
+   ```bash
+   brew install --cask pgadmin4
+   ```
+   *Or download the installer directly from [pgadmin.org/download](https://www.pgadmin.org/download/).*
+
+2. **Open pgAdmin 4** from your Applications folder.
+
+3. **Register Local PostgreSQL Server**:
+   - In the left sidebar tree, right-click on **Servers** → **Register** → **Server...**
+   - **General Tab**:
+     - Name: `SafeRoutes PostgreSQL`
+   - **Connection Tab**:
+     - Host name/address: `localhost`
+     - Port: `5432`
+     - Maintenance database: `saferoutes_db`
+     - Username: `tamanna` *(or your configured PostgreSQL username)*
+     - Password: *(leave blank if trust auth is active, or enter password from `backend/.env`)*
+   - Click **Save**.
+
+4. **Navigate Database Tables**:
+   - In the Object Explorer tree, expand:
+     `Servers` → `SafeRoutes PostgreSQL` → `Databases` → `saferoutes_db` → `Schemas` → `public` → `Tables`.
+   - You will see the 4 core relational tables:
+     - `datasets` (registered datasets and batch quality metrics)
+     - `accidents` (normalized accident records with foreign keys and flags)
+     - `data_quality_issues` (detailed audit trail of data anomalies)
+     - `investigation_recommendations` (prioritized engineering interventions)
+
+5. **View Table Data**:
+   - Right-click any table (e.g. `accidents`) → Select **View/Edit Data** → **All Rows**.
+   - You can run ad-hoc SQL queries using the pgAdmin **Query Tool** (accessible via the lightning bolt icon or `Tools` → `Query Tool`).
+
+6. **Instant Terminal Inspection (`psql`)**:
+   Alternatively, you can inspect the database directly via terminal using `psql`:
+   ```bash
+   psql -h localhost -U tamanna -d saferoutes_db -c "SELECT current_database(), count(*) FROM accidents;"
+   ```
+
+---
 
 The AI safety module connects to Google Gemini (`gemini-1.5-flash`):
 - Receives aggregated metrics computed strictly from the active PostgreSQL database.

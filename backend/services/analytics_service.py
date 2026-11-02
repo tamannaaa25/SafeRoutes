@@ -51,3 +51,4 @@ class AnalyticsService:
             "success": True,
             "data": data
         }
+

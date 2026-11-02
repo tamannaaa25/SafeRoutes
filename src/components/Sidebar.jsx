@@ -10,7 +10,6 @@ import {
   X,
   ShieldCheck,
   Lightbulb,
-  Database,
 } from 'lucide-react';
 
 export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, currentSource }) {
@@ -20,7 +19,6 @@ export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, curre
     { id: 'insights', label: 'Safety Insights', icon: Lightbulb },
     { id: 'blackspots', label: 'Priority Corridors', icon: AlertTriangle },
     { id: 'records', label: 'Crash Records', icon: FileSpreadsheet },
-    { id: 'database', label: 'Database Explorer', icon: Database },
     { id: 'quality', label: 'Data Quality', icon: ShieldCheck },
   ];
 
