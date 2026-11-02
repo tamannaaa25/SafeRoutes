@@ -22,10 +22,10 @@ SafeRoutes follows a clean, decoupled full-stack architecture:
                    │                               │
                    ▼                               ▼
 ┌─────────────────────────────────────┐  ┌────────────────────────────────┐
-│   Pandas & NumPy Data Pipeline      │  │     Google Gemini API          │
-│ • Column Synonym Standardization    │  │ • Observational Safety Summaries│
+│   Pandas & NumPy Data Pipeline      │  │       Google Gemini API        │
+│ • Column Synonym Standardization    │  │ • Contextual Safety Summaries  │
 │ • Date/Time & Coordinate Validation │  │ • Engineering Interventions    │
-│ • Composite Key Duplicate Detection │  │ • Strict SQL Database Grounding│
+│ • Duplicate & Outlier Detection     │  │ • Strict SQL Database Grounding│
 │ • Deterministic Data Quality Report │  │ • Fallback Rule Engine         │
 └──────────────────┬──────────────────┘  └────────────────────────────────┘
                    │
@@ -44,14 +44,14 @@ SafeRoutes follows a clean, decoupled full-stack architecture:
 
 | Component | Technology | Description |
 |---|---|---|
-| **Frontend** | React 18, Vite | Component-based dashboard and responsive layouts |
-| **Data Visualization** | Recharts | SVG bar charts, trend lines, and distribution donuts |
-| **Client CSV Handling** | PapaParse | Client-side CSV preview and export |
-| **Icons & Design** | Lucide React, Custom CSS | Modern slate design system (`#0f172a`), Inter typography |
-| **Backend API** | Python 3.13, FastAPI, Uvicorn | High-performance asynchronous REST API |
-| **Database** | PostgreSQL 17, SQLAlchemy, psycopg2 | Relational tables, foreign keys, indexes, and aggregation queries |
-| **Data Processing** | Pandas, NumPy | Automated cleaning, validation, outlier detection, and duplicate identification |
-| **AI Decision Support** | Google Gemini API (`gemini-1.5-flash`) | Context-grounded executive summaries and engineering interventions |
+| **Frontend** | React 18, Vite | Modular dashboard with Inter typography and responsive layouts |
+| **Data Visualization** | Recharts | Interactive SVG bar charts, temporal distributions, and severity donuts |
+| **Client CSV Handling** | PapaParse | Client-side CSV parsing, data validation preview, and filtered exports |
+| **Design System** | Lucide React, Custom CSS | Modern slate design system (`#0f172a`), consistent spacing and contrast |
+| **Backend API** | Python 3.13, FastAPI, Uvicorn | High-performance asynchronous REST API with structured schemas |
+| **Database** | PostgreSQL 17, SQLAlchemy, psycopg2 | Relational tables, foreign keys, indexes, and parameterized SQL queries |
+| **Data Processing** | Pandas, NumPy | Automated cleaning, validation, boundary checks, and duplicate detection |
+| **AI Decision Support** | Google Gemini API (`gemini-3.5-flash-lite`, `gemini-3.5-flash`) | Empirically grounded executive summaries and specific civil engineering audits |
 
 ---
 
@@ -65,11 +65,11 @@ The PostgreSQL database is organized into normalized relational tables:
    - `original_filename` (VARCHAR)
    - `upload_date` (TIMESTAMP)
    - `total_records`, `valid_records`, `invalid_records`, `duplicate_records` (INTEGER)
-   - `processing_status` (VARCHAR)
+   - `processing_status` (VARCHAR: `completed`, `processing`, `failed`)
 
 2. **`accidents`**
    - `id` (SERIAL PRIMARY KEY)
-   - `dataset_id` (INTEGER, FOREIGN KEY → datasets.id ON DELETE CASCADE)
+   - `dataset_id` (INTEGER, FOREIGN KEY → `datasets.id` ON DELETE CASCADE)
    - `source_record_id` (VARCHAR)
    - `accident_date` (DATE)
    - `accident_time` (TIME)
@@ -86,9 +86,9 @@ The PostgreSQL database is organized into normalized relational tables:
 
 3. **`data_quality_issues`**
    - `id` (SERIAL PRIMARY KEY)
-   - `dataset_id` (INTEGER, FOREIGN KEY → datasets.id)
-   - `accident_id` (INTEGER, FOREIGN KEY → accidents.id ON DELETE CASCADE)
-   - `issue_type` (VARCHAR: MISSING_VALUE, INVALID_VALUE, OUT_OF_BOUNDS, DUPLICATE)
+   - `dataset_id` (INTEGER, FOREIGN KEY → `datasets.id` ON DELETE CASCADE)
+   - `accident_id` (INTEGER, FOREIGN KEY → `accidents.id` ON DELETE CASCADE)
+   - `issue_type` (VARCHAR: `MISSING_VALUE`, `INVALID_VALUE`, `OUT_OF_BOUNDS`, `EXACT_DUPLICATE`, `DUPLICATE_ID`, `POTENTIAL_DUPLICATE`)
    - `field_name` (VARCHAR)
    - `issue_description` (TEXT)
    - `detected_value` (TEXT)
@@ -96,118 +96,127 @@ The PostgreSQL database is organized into normalized relational tables:
 
 4. **`investigation_recommendations`**
    - `id` (SERIAL PRIMARY KEY)
-   - `dataset_id` (INTEGER, FOREIGN KEY → datasets.id)
+   - `dataset_id` (INTEGER, FOREIGN KEY → `datasets.id` ON DELETE SET NULL)
    - `location` (VARCHAR)
    - `recommendation` (TEXT)
-   - `priority` (VARCHAR: CRITICAL, HIGH, MEDIUM)
+   - `priority` (VARCHAR: `CRITICAL`, `HIGH`, `MEDIUM`)
    - `evidence` (TEXT)
    - `status` (VARCHAR)
    - `created_at` (TIMESTAMP)
 
 ---
 
-## 🧪 Included Synthetic Evaluation Dataset
+## 🧪 Included Demonstration Dataset
 
-To demonstrate data cleaning, validation, duplicate detection, and PostgreSQL querying during academic evaluations, SafeRoutes includes:
+SafeRoutes includes a dedicated demonstration dataset designed specifically for academic evaluation and pipeline verification:
 
-- **Path**: `datasets/chandigarh_road_accidents_messy.csv`
-- **Total Records**: 761 rows
-- **Deliberate Pedagogical Anomalies**:
-  - Inconsistent column name casings (`accident_location`, `Crash_Time`, `SEVERITY`)
-  - Missing required fields (missing locations, dates, or casualty counts)
-  - Negative injury/fatality numbers (`-2`, `-1`)
-  - Unparseable dates and impossible 24-hour clock times (`27:15:00`, `99:99`)
-  - Geographical coordinates outside Chandigarh limits (latitude < 30.60 or > 30.88)
-  - Text case variants and synonyms (`DENSE FOG`, `dense-fog`, `Wet Surface`, `water logged`)
-  - Exact and composite-key duplicates (matching date, location, time, severity, casualties)
-- **Ethical Integrity**: Clearly labeled as synthetic demonstration data; does not fabricate official police statistics.
+- **Path**: `datasets/chandigarh_road_accidents_demo.csv` (synced to `public/sample_accidents.csv` and `public/chandigarh_road_accidents_demo.csv`)
+- **Total Records**: Exactly **10 rows** (excluding header)
+- **Standardized Columns**:
+  `accident_id`, `accident_date`, `accident_time`, `location`, `latitude`, `longitude`, `severity`, `weather_condition`, `road_condition`, `number_of_vehicles`, `injuries`, `fatalities`, `accident_type`, `light_condition`
+
+### Deliberate Pedagogical Data-Quality Anomalies Included
+
+| Row # | Accident ID | Location | Planted Data-Quality Issues |
+|---|---|---|---|
+| **1** | `CHD-2024-0001` | Hallomajra Light Point (Dakshin Marg) | **Valid baseline record** (High severity, 2 injuries, 0 fatalities, daylight). |
+| **2** | `CHD-2024-0002` | Piccadilly Chowk (Sector 34/35) | **Valid fatal record** (Fatal severity, 1 injury, 1 fatality, fog/wet). |
+| **3** | `CHD-2024-0002` | Piccadilly Chowk (Sector 34/35) | **Exact duplicate row** (Identical across all 14 columns; tests row deduplication). |
+| **4** | `CHD-2024-0001` | Hallomajra Light Point (Dakshin Marg) | **Duplicate ID & Near Duplicate** (`CHD-2024-0001` ID already assigned to Row 1; same date & location, close time 08:45 vs 08:30). |
+| **5** | `CHD-2024-0005` | `   ` (whitespace only) | **Missing location & missing coordinates** (Null latitude and longitude). |
+| **6** | `CHD-2024-0006` | Tribune Chowk (Purv Marg) | **Negative injury count** (`-2`), informal severity casing (`severe`), weather casing (`dense fog`), road casing (`DAMP`). |
+| **7** | `CHD-2024-0007` | Transport Chowk (Madhya Marg) | **Missing accident date** (empty string) and **invalid negative vehicle count** (`-1`). |
+| **8** | `CHD-2024-0008` | Sector 17 Bus Stand (Jan Marg) | **Out-of-bounds GPS coordinates** (Lat: `45.1234`, Lon: `12.5678` outside Chandigarh bounds $30.60$–$30.88$, $76.65$–$76.92$), **missing severity** (empty). |
+| **9** | `CHD-2024-0009` | `  Housing Board Light Point (Sector 13)  ` | **Inconsistent date format** (`15/05/2024` DD/MM/YYYY), **extra leading/trailing whitespace**, informal severity (`minor` $\rightarrow$ Low). |
+| **10** | `CHD-2024-0010` | Airport Light Point (Purv Marg) | **Invalid calendar date** (`2024-02-30`), **impossible clock time** (`25:70:00`), **unrecognized severity** (`UNKNOWN_SEVERITY`), **negative fatalities** (`-1`). |
+
+> An extended synthetic bulk dataset (`datasets/chandigarh_road_accidents_messy.csv`, 761 records) is also preserved for large-scale stress testing.
+
+---
+
+## 🔍 Data Quality & Record Audit Studio
+
+SafeRoutes features an in-depth data validation module that processes raw records between CSV parsing and the analytics engine:
+
+1. **Non-Destructive Audit Trail**:
+   - Records are **never deleted automatically**.
+   - Exact duplicates, duplicate identifiers, and near-duplicates are flagged (`is_duplicate = True`) and retained for human-in-the-loop audit.
+2. **Transparent Diagnostic Badging**:
+   - Each record receives a clear status badge: `Valid`, `Warning`, or `Invalid`.
+   - Specific issue tags explain exact anomalies (e.g., negative counts, out-of-bounds coordinates, unparseable dates).
+3. **Balanced 7-Column Audit Table**:
+   - **Row**: Row index reference (`#1`, `#2`, ...)
+   - **Audit Status**: Status badge (`Valid`, `Warning`, `Invalid`)
+   - **Validation Diagnostics**: Stacked diagnostic issue badges with specific error/warning descriptions
+   - **Date**: Formatted ISO accident date
+   - **Location & Sector**: Primary blackspot identifier and corridor hierarchy
+   - **Severity**: Standardized severity badge (Fatal, High, Medium, Low)
+   - **Casualties**: Validated injuries and fatalities count
+4. **Dynamic Quality Score Formula**:
+   $$\text{Quality Score} = \left( \frac{\text{Valid Records} \times 1.0 + \text{Warning Records} \times 0.5}{\text{Total Records}} \right) \times 100\%$$
 
 ---
 
 ## 🗄️ Server-Side SQL Analytics & Repository Architecture
 
-All SQL queries and database operations execute exclusively in the backend repository layer (`backend/repositories/analytics_repository.py`). The frontend receives structured, processed JSON responses and never renders or exposes raw SQL statements:
+All SQL queries and database operations execute exclusively in the backend repository layer (`backend/repositories/analytics_repository.py`). The frontend receives clean, structured JSON responses and never exposes raw SQL queries:
 
 - **Routes (`backend/routes/analytics.py`)**: Handle HTTP requests and pass parameters (`dataset_id`, `severity`).
-- **Services (`backend/services/analytics_service.py`)**: Implement business logic and wrap results into structured responses (`{"success": true, "data": [...]}`).
-- **Repositories (`backend/repositories/analytics_repository.py`)**: Direct SQL execution in PostgreSQL via SQLAlchemy `text()`:
-  1. **Monthly Incident & Casualty Aggregation**:
-     - Extracts the month using `TO_CHAR(accident_date, 'YYYY-Mon')` and `EXTRACT(MONTH FROM accident_date)`.
-     - Calculates incident count, total injuries (`SUM(injuries)`), and total fatalities (`SUM(fatalities)`).
-     - Groups results by month and sorts chronologically.
-     - Restricts to valid records with non-null accident dates.
-  2. **Severity Classification Distribution**: Groups records by severity classification with casualty aggregations.
-  3. **High-Frequency Crash Corridor Rankings**: Uses `GROUP BY location` ordered by total crash frequency, fatalities, and injuries.
-  4. **Atmospheric / Weather Incident Impact**: Groups by `weather_condition` with casualty totals.
-  5. **Safety Engineering Recommendations**: Queries prioritized intervention records from `investigation_recommendations`.
+- **Services (`backend/services/analytics_service.py`)**: Implement business logic and wrap results into structured responses.
+- **Repository (`backend/repositories/analytics_repository.py`)**:
+  - Automatically resolves active dataset scope via `_resolve_dataset_id()`, preventing multi-dataset count conflation.
+  - Executes server-side relational SQL aggregations:
+    1. **Monthly Incident & Casualty Distribution**: Chronological grouping with `TO_CHAR(accident_date, 'YYYY-Mon')`.
+    2. **Severity Breakdown**: Grouping by severity with casualty sums.
+    3. **Crash Corridor Rankings**: Blackspot identification ordered by crash frequency and fatal casualties.
+    4. **Atmospheric / Weather Impact**: Correlation between adverse weather (fog, rain) and collision frequency.
+    5. **Investigation Recommendations**: Prioritized engineering recommendations with evidence grounding.
 
 ---
 
-## 🖥️ Inspecting PostgreSQL via pgAdmin or Desktop Client
+## 🤖 Gemini AI-Generated Safety Recommendations
 
-PostgreSQL runs completely server-side in the backend. To inspect the relational database tables, relationships, and raw records directly in a desktop database management tool such as **pgAdmin 4**, use the following configuration:
+SafeRoutes integrates Google Gemini (`gemini-3.5-flash-lite`, `gemini-3.5-flash`) to generate contextual, evidence-backed safety insights:
+
+- **Strict Empirical Grounding**: The prompt includes only real, calculated metrics from the active PostgreSQL dataset (total accidents, casualty numbers, top crash locations, weather distribution).
+- **Civil Engineering Focus**: Gemini generates natural, professional engineering recommendations detailing specific on-site audits (e.g., split-phase signal timing, raised pedestrian refuge islands, retroreflective cat's eyes).
+- **No Hallucinated Statistics**: Gemini is strictly instructed not to invent statistics, alter counts, or claim definitive crash causation.
+- **Automated Fallback Rule Engine**: If `GEMINI_API_KEY` is not configured, the system falls back to a deterministic recommendation engine so the dashboard remains fully functional.
+
+---
+
+## 🖥️ Inspecting PostgreSQL via pgAdmin 4 or Desktop Client
+
+To inspect the live PostgreSQL database tables, relationships, and records in **pgAdmin 4**:
 
 ### Connection Parameters
 
 | Parameter | Value | Notes |
 |---|---|---|
-| **Host name/address** | `localhost` or `127.0.0.1` | Local PostgreSQL 17 server |
+| **Host name/address** | `localhost` or `127.0.0.1` | Local PostgreSQL server |
 | **Port** | `5432` | Standard PostgreSQL port |
-| **Maintenance Database** | `saferoutes_db` | Primary application database |
-| **Username** | Configured local PostgreSQL user (e.g. `tamanna` or `postgres`) | Matches user configured in `backend/.env` |
-| **Password** | Read from local `backend/.env` | Left empty if local trusted OS authentication is active |
+| **Maintenance Database** | `saferoutes_db` | Application database |
+| **Username** | `tamanna` (or configured user) | Configured in `backend/.env` |
+| **Password** | Read from local `backend/.env` | Left empty if local trust auth is active |
 
-> [!NOTE]
-> Database credentials are kept strictly in `backend/.env` and are never exposed in frontend code, API responses, or version control.
+### Step-by-Step pgAdmin Setup
 
-### Step-by-Step pgAdmin Setup Guide
-
-1. **Install pgAdmin 4** (if not already installed on macOS):
+1. **Install pgAdmin 4** (macOS):
    ```bash
    brew install --cask pgadmin4
    ```
-   *Or download the installer directly from [pgadmin.org/download](https://www.pgadmin.org/download/).*
-
-2. **Open pgAdmin 4** from your Applications folder.
-
-3. **Register Local PostgreSQL Server**:
-   - In the left sidebar tree, right-click on **Servers** → **Register** → **Server...**
-   - **General Tab**:
-     - Name: `SafeRoutes PostgreSQL`
-   - **Connection Tab**:
-     - Host name/address: `localhost`
-     - Port: `5432`
-     - Maintenance database: `saferoutes_db`
-     - Username: `tamanna` *(or your configured PostgreSQL username)*
-     - Password: *(leave blank if trust auth is active, or enter password from `backend/.env`)*
+2. **Register Server**:
+   - Right-click **Servers** → **Register** → **Server...**
+   - **General**: Name: `SafeRoutes PostgreSQL`
+   - **Connection**: Host: `localhost`, Port: `5432`, Database: `saferoutes_db`, Username: `tamanna`
    - Click **Save**.
-
-4. **Navigate Database Tables**:
-   - In the Object Explorer tree, expand:
-     `Servers` → `SafeRoutes PostgreSQL` → `Databases` → `saferoutes_db` → `Schemas` → `public` → `Tables`.
-   - You will see the 4 core relational tables:
-     - `datasets` (registered datasets and batch quality metrics)
-     - `accidents` (normalized accident records with foreign keys and flags)
-     - `data_quality_issues` (detailed audit trail of data anomalies)
-     - `investigation_recommendations` (prioritized engineering interventions)
-
-5. **View Table Data**:
-   - Right-click any table (e.g. `accidents`) → Select **View/Edit Data** → **All Rows**.
-   - You can run ad-hoc SQL queries using the pgAdmin **Query Tool** (accessible via the lightning bolt icon or `Tools` → `Query Tool`).
-
-6. **Instant Terminal Inspection (`psql`)**:
-   Alternatively, you can inspect the database directly via terminal using `psql`:
+3. **Inspect Tables**:
+   - Expand: `Servers` → `SafeRoutes PostgreSQL` → `Databases` → `saferoutes_db` → `Schemas` → `public` → `Tables`.
+   - Right-click `accidents` → **View/Edit Data** → **All Rows**.
+4. **Terminal Inspection (`psql`)**:
    ```bash
    psql -h localhost -U tamanna -d saferoutes_db -c "SELECT current_database(), count(*) FROM accidents;"
    ```
-
----
-
-The AI safety module connects to Google Gemini (`gemini-1.5-flash`):
-- Receives aggregated metrics computed strictly from the active PostgreSQL database.
-- Strictly instructed not to hallucinate, predict future crashes, or assume definitive causality.
-- Produces executive summaries, corridor observations, visibility assessments, and engineering interventions.
-- Features an automated deterministic fallback rule engine when `GEMINI_API_KEY` is not configured.
 
 ---
 
@@ -215,7 +224,7 @@ The AI safety module connects to Google Gemini (`gemini-1.5-flash`):
 
 ### 1. Prerequisites
 - Python 3.10+
-- PostgreSQL 14+ (e.g., Homebrew PostgreSQL on macOS)
+- PostgreSQL 14+ (running on `localhost:5432`)
 - Node.js 18+ and npm
 
 ### 2. Backend Setup & Database Seeding
@@ -227,11 +236,11 @@ cd SafeRoutes
 # Install Python dependencies
 pip install -r backend/requirements.txt
 
-# Verify or configure PostgreSQL credentials in backend/.env:
-# DATABASE_URL=postgresql+psycopg2://<user>@/saferoutes_db?host=/tmp
-# GEMINI_API_KEY=your_key_here  (optional)
+# Configure environment variables in backend/.env:
+# DATABASE_URL=postgresql+psycopg2://tamanna@localhost:5432/saferoutes_db
+# GEMINI_API_KEY=your_gemini_api_key  (optional)
 
-# Run database migration and seeding
+# Run database migration and seeding (seeds the 10-record demonstration dataset)
 python3 backend/seed_db.py
 
 # Start FastAPI backend server
@@ -257,18 +266,17 @@ npm run dev
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/health` | Service health check |
-| `GET` | `/api/database/status` | Live PostgreSQL connection, ping latency, and table counts |
-| `GET` | `/api/datasets` | List all registered datasets in PostgreSQL |
-| `GET` | `/api/datasets/{id}/quality-report` | Retrieve transparent data quality report for a dataset |
-| `GET` | `/api/datasets/{id}/records` | Paginated accident records with issues and flags |
+| `GET` | `/api/datasets` | List registered datasets in PostgreSQL |
+| `GET` | `/api/datasets/{id}` | Dataset metadata and summary counts |
+| `GET` | `/api/datasets/{id}/quality-report` | Full data quality report with issue counts |
 | `POST` | `/api/datasets/upload` | Upload CSV, run Pandas cleaning/validation, and save to database |
 | `GET` | `/api/analytics/overview` | Core KPI metrics (accidents, casualties, top location) |
-| `GET` | `/api/analytics/monthly` | Monthly incident trends |
-| `GET` | `/api/analytics/severity` | Severity distribution (High, Medium, Low) |
-| `GET` | `/api/analytics/locations` | Ranked crash blackspots with injury and fatality counts |
+| `GET` | `/api/analytics/monthly` | Chronological monthly incident trends |
+| `GET` | `/api/analytics/severity` | Severity distribution (High, Medium, Low, Fatal) |
+| `GET` | `/api/analytics/locations` | Ranked crash blackspots with casualty counts |
 | `GET` | `/api/analytics/weather` | Weather condition incident distribution |
 | `GET` | `/api/analytics/recommendations` | Prioritized engineering safety interventions |
-| `POST` | `/api/ai/insights` | Generate AI decision support grounded in PostgreSQL stats |
+| `POST` | `/api/ai/insights` | Generate Gemini AI safety decision support grounded in PostgreSQL data |
 
 ---
 
@@ -276,4 +284,4 @@ npm run dev
 
 1. **Synthetic Demonstration Data**: The dataset contains intentionally planted anomalies for evaluating data cleaning and validation pipelines. It does not represent official Chandigarh Traffic Police or MoRTH records.
 2. **Observational Insights**: High-frequency crash locations and weather correlations represent empirical patterns requiring on-site civil and traffic engineering audits, not proven causation.
-3. **No Unsubstantiated Predictions**: The application does not attempt to predict future accidents.
+3. **No Unsubstantiated Predictions**: The application does not attempt to predict future accidents or assign individual blame.
