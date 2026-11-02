@@ -86,7 +86,7 @@ export default function HeaderActionBar({
           <div className="header-breadcrumbs">
             <span className="breadcrumb-muted">SafeRoutes</span>
             <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-active">Chandigarh Analytics</span>
+            <span className="breadcrumb-active">Road Safety & Decision Support</span>
             <span className="breadcrumb-separator">/</span>
             <span className={`dataset-status-tag ${currentSource.isCustom ? 'tag-custom' : ''}`}>
               {currentSource.isCustom
@@ -103,7 +103,7 @@ export default function HeaderActionBar({
               </button>
             )}
           </div>
-          <h1 className="action-bar-title">Road Safety Overview</h1>
+          <h1 className="action-bar-title">Road Safety Analytics & Decision Support</h1>
         </div>
       </div>
 

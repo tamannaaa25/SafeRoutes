@@ -60,6 +60,18 @@ export default function ChartsSection({
   weatherData = [],
   severityData = [],
 }) {
+  const monthTotal = monthlyData.reduce((sum, d) => sum + (d.accidents || 0), 0);
+  const peakMonth = [...monthlyData].sort((a, b) => b.accidents - a.accidents)[0];
+
+  const dayTotal = dayOfWeekData.reduce((sum, d) => sum + (d.accidents || 0), 0);
+  const peakDay = [...dayOfWeekData].sort((a, b) => b.accidents - a.accidents)[0];
+
+  const weatherTotal = weatherData.reduce((sum, d) => sum + (d.value || 0), 0);
+  const topWeather = [...weatherData].sort((a, b) => b.value - a.value)[0];
+
+  const severityTotal = severityData.reduce((sum, d) => sum + (d.value || 0), 0);
+  const topSeverity = [...severityData].sort((a, b) => b.value - a.value)[0];
+
   return (
     <section id="analytics" className="charts-section">
       <div className="charts-grid">
@@ -78,6 +90,12 @@ export default function ChartsSection({
               </BarChart>
             </ResponsiveContainer>
           </div>
+          <div className="chart-interpretation-box">
+            <span className="interp-scope">Scope: {monthTotal} records</span>
+            {peakMonth && peakMonth.accidents > 0 && (
+              <span className="interp-highlight">Peak Month: {peakMonth.month} ({peakMonth.accidents} crashes)</span>
+            )}
+          </div>
         </div>
 
         <div className="card chart-card">
@@ -94,6 +112,12 @@ export default function ChartsSection({
                 <Bar dataKey="accidents" fill="#475569" radius={[3, 3, 0, 0]} maxBarSize={32} />
               </BarChart>
             </ResponsiveContainer>
+          </div>
+          <div className="chart-interpretation-box">
+            <span className="interp-scope">Scope: {dayTotal} records</span>
+            {peakDay && peakDay.accidents > 0 && (
+              <span className="interp-highlight">Peak Day: {peakDay.day} ({peakDay.accidents} crashes)</span>
+            )}
           </div>
         </div>
 
@@ -130,6 +154,12 @@ export default function ChartsSection({
               </PieChart>
             </ResponsiveContainer>
           </div>
+          <div className="chart-interpretation-box">
+            <span className="interp-scope">Scope: {weatherTotal} records</span>
+            {topWeather && (
+              <span className="interp-highlight">Prevalent: {topWeather.name} ({topWeather.value} crashes)</span>
+            )}
+          </div>
         </div>
 
         <div className="card chart-card">
@@ -164,6 +194,12 @@ export default function ChartsSection({
                 />
               </PieChart>
             </ResponsiveContainer>
+          </div>
+          <div className="chart-interpretation-box">
+            <span className="interp-scope">Scope: {severityTotal} records</span>
+            {topSeverity && (
+              <span className="interp-highlight">Most Frequent: {topSeverity.name} ({topSeverity.value} crashes)</span>
+            )}
           </div>
         </div>
       </div>

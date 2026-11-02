@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import HeaderActionBar from './components/HeaderActionBar';
 import StatCards from './components/StatCards';
 import ChartsSection from './components/ChartsSection';
+import SafetyInsightsSection from './components/SafetyInsightsSection';
 import BlackspotsSection from './components/BlackspotsSection';
 import AccidentTable from './components/AccidentTable';
 import DataQualitySection from './components/DataQualitySection';
@@ -16,6 +17,7 @@ import {
   getAccidentsByDayOfWeek,
   getAccidentsByWeather,
   getAccidentSeverityDistribution,
+  generateSafetyInsights,
 } from './utils/analytics';
 
 export default function App() {
@@ -60,6 +62,7 @@ export default function App() {
   const dayOfWeekData = useMemo(() => getAccidentsByDayOfWeek(filteredAccidents), [filteredAccidents]);
   const weatherData = useMemo(() => getAccidentsByWeather(filteredAccidents), [filteredAccidents]);
   const severityData = useMemo(() => getAccidentSeverityDistribution(filteredAccidents), [filteredAccidents]);
+  const safetyInsights = useMemo(() => generateSafetyInsights(filteredAccidents, severityFilter), [filteredAccidents, severityFilter]);
 
   const handleResetFilters = () => {
     setSeverityFilter('All');
@@ -203,6 +206,8 @@ export default function App() {
             severityData={severityData}
           />
 
+          <SafetyInsightsSection insights={safetyInsights} />
+
           <BlackspotsSection accidents={filteredAccidents} />
 
           <AccidentTable records={filteredAccidents} />
@@ -216,6 +221,17 @@ export default function App() {
             currentSource={dataSource}
           />
         </main>
+
+        <footer className="footer">
+          <div className="footer-content">
+            <div>
+              <strong>SafeRoutes</strong> — Road Safety Analytics and Decision Support System
+            </div>
+            <div style={{ color: '#71717a', fontSize: '0.75rem', marginTop: '3px' }}>
+              A data-driven platform that helps users manage, process and analyse road accident datasets, identify accident patterns and high-frequency locations, and generate meaningful insights to support road safety planning.
+            </div>
+          </div>
+        </footer>
       </div>
 
       <DataValidationModal

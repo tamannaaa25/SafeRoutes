@@ -213,3 +213,184 @@ export function normalizeCsvRecord(rawRow, index) {
     fatalities,
   };
 }
+
+
+export function generateSafetyInsights(accidents = [], activeFilter = 'All') {
+  if (!accidents.length) {
+    return {
+      hasData: false,
+      totalCount: 0,
+      observations: [],
+      recommendations: [],
+    };
+  }
+
+  const total = accidents.length;
+  const locationMap = {};
+  const fatalityLocationMap = {};
+  const severityMap = {};
+  const weatherMap = {};
+  const dayMap = {};
+  let totalFatalities = 0;
+  let fogCount = 0;
+  let weekendCount = 0;
+
+  accidents.forEach((item) => {
+    const loc = (item.location || 'Unknown').trim();
+    locationMap[loc] = (locationMap[loc] || 0) + 1;
+
+    const fats = Number(item.fatalities) || 0;
+    totalFatalities += fats;
+    if (fats > 0) {
+      fatalityLocationMap[loc] = (fatalityLocationMap[loc] || 0) + fats;
+    }
+
+    const sev = (item.severity || 'Unknown').trim();
+    severityMap[sev] = (severityMap[sev] || 0) + 1;
+
+    const weather = (item.weatherCondition || 'Unknown').trim();
+    weatherMap[weather] = (weatherMap[weather] || 0) + 1;
+    if (/fog/i.test(weather)) {
+      fogCount++;
+    }
+
+    const d = parseDate(item.date);
+    if (d) {
+      const dayName = DAY_NAMES[d.getDay()];
+      dayMap[dayName] = (dayMap[dayName] || 0) + 1;
+      if (d.getDay() === 0 || d.getDay() === 6) {
+        weekendCount++;
+      }
+    }
+  });
+
+  const getTop = (map) => {
+    const entries = Object.entries(map);
+    if (!entries.length) return null;
+    entries.sort((a, b) => b[1] - a[1]);
+    return { name: entries[0][0], count: entries[0][1] };
+  };
+
+  const topLoc = getTop(locationMap);
+  const topSev = getTop(severityMap);
+  const topWeather = getTop(weatherMap);
+  const topDay = getTop(dayMap);
+  const topFatalLoc = getTop(fatalityLocationMap);
+
+  const observations = [];
+
+  if (topLoc) {
+    const pct = Math.round((topLoc.count / total) * 100);
+    observations.push({
+      id: 'obs-location',
+      type: 'location',
+      title: 'Highest Crash Concentration',
+      text: `"${topLoc.name}" accounts for ${topLoc.count} recorded incidents (${pct}% of active dataset).`,
+      metric: `${topLoc.count} crashes`,
+    });
+  }
+
+  if (topSev) {
+    const pct = Math.round((topSev.count / total) * 100);
+    observations.push({
+      id: 'obs-severity',
+      type: 'severity',
+      title: 'Dominant Severity Level',
+      text: `"${topSev.name}" severity represents the largest recorded volume (${topSev.count} incidents, ${pct}%).`,
+      metric: `${pct}% share`,
+    });
+  }
+
+  if (topDay) {
+    const pct = Math.round((topDay.count / total) * 100);
+    observations.push({
+      id: 'obs-day',
+      type: 'day',
+      title: 'Peak Weekday Distribution',
+      text: `"${topDay.name}" recorded the highest incident volume among weekdays (${topDay.count} incidents, ${pct}%).`,
+      metric: topDay.name,
+    });
+  }
+
+  if (topWeather) {
+    const pct = Math.round((topWeather.count / total) * 100);
+    observations.push({
+      id: 'obs-weather',
+      type: 'weather',
+      title: 'Prevalent Environmental Condition',
+      text: `"${topWeather.name}" was the most frequent recorded atmospheric state (${topWeather.count} crashes, ${pct}%).`,
+      metric: topWeather.name,
+    });
+  }
+
+  if (topFatalLoc && topFatalLoc.count > 0) {
+    observations.push({
+      id: 'obs-fatal',
+      type: 'fatal',
+      title: 'Highest Fatal Casualties',
+      text: `"${topFatalLoc.name}" recorded the highest fatal casualty count (${topFatalLoc.count} fatalities).`,
+      metric: `${topFatalLoc.count} fatalities`,
+    });
+  }
+
+  if (activeFilter !== 'All') {
+    observations.push({
+      id: 'obs-filter',
+      type: 'filter',
+      title: 'Active Filter Context',
+      text: `Analyzing ${total} records under severity filter "${activeFilter}".`,
+      metric: `${total} records`,
+    });
+  }
+
+  const recommendations = [];
+
+  if (topLoc && topLoc.count >= 2) {
+    recommendations.push({
+      id: 'rec-corridor',
+      priority: 'high',
+      target: topLoc.name,
+      category: 'Infrastructure & Traffic Management',
+      text: `Recommend conducting an engineering safety review at "${topLoc.name}" to examine intersection geometry, signal timings, and lane channelization due to repeated incidents (${topLoc.count} crashes).`,
+    });
+  }
+
+  if (topFatalLoc && topFatalLoc.count > 0) {
+    recommendations.push({
+      id: 'rec-fatal',
+      priority: 'critical',
+      target: topFatalLoc.name,
+      category: 'Speed & Collision Mitigation',
+      text: `Recommend site-specific safety inspection at "${topFatalLoc.name}" focusing on vehicle operating speeds, vulnerable road user crossings, and roadside barrier protection following ${topFatalLoc.count} recorded fatal casualties.`,
+    });
+  }
+
+  if (fogCount >= 3 || (fogCount / total) >= 0.15) {
+    const fogPct = Math.round((fogCount / total) * 100);
+    recommendations.push({
+      id: 'rec-weather',
+      priority: 'medium',
+      target: 'Arterial Road Network',
+      category: 'Visibility & Delineation',
+      text: `With ${fogCount} crashes (${fogPct}%) recorded in fog/dense fog, evaluate retro-reflective road markings, cat's-eye stud maintenance, and dynamic low-visibility advisory signage along major corridors.`,
+    });
+  }
+
+  if (weekendCount >= 3 && (weekendCount / total) >= 0.35) {
+    const wkPct = Math.round((weekendCount / total) * 100);
+    recommendations.push({
+      id: 'rec-weekend',
+      priority: 'medium',
+      target: 'Citywide Grid',
+      category: 'Enforcement & Patrol Allocation',
+      text: `Weekend volume accounts for ${weekendCount} incidents (${wkPct}%). Recommend reviewing traffic police patrol scheduling and speed-monitoring deployment on weekend peak hours.`,
+    });
+  }
+
+  return {
+    hasData: true,
+    totalCount: total,
+    observations,
+    recommendations,
+  };
+}

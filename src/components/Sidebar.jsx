@@ -9,13 +9,15 @@ import {
   ChevronDown,
   X,
   ShieldCheck,
+  Lightbulb,
 } from 'lucide-react';
 
 export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, currentSource }) {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'analytics', label: 'Analytics', icon: BarChart2 },
-    { id: 'blackspots', label: 'Blackspots', icon: AlertTriangle },
+    { id: 'insights', label: 'Safety Insights', icon: Lightbulb },
+    { id: 'blackspots', label: 'Priority Corridors', icon: AlertTriangle },
     { id: 'records', label: 'Crash Records', icon: FileSpreadsheet },
     { id: 'quality', label: 'Data Quality', icon: ShieldCheck },
   ];
@@ -54,7 +56,7 @@ export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, curre
               <MapPin size={14} strokeWidth={1.75} className="workspace-icon" />
               <div className="workspace-details">
                 <span className="workspace-name">Chandigarh UT</span>
-                <span className="workspace-scope">Road Safety Grid</span>
+                <span className="workspace-scope">Decision Support Grid</span>
               </div>
             </div>
             <ChevronDown size={14} strokeWidth={1.75} className="workspace-chevron" />
