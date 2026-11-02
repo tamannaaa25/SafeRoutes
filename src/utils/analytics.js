@@ -109,23 +109,23 @@ export function getAccidentsByWeather(accidents = []) {
 
 export function getAccidentSeverityDistribution(accidents = []) {
   const severityMap = {
-    Minor: 0,
-    Moderate: 0,
-    Severe: 0,
-    Fatal: 0,
+    'Fatal': 0,
+    'High / Severe': 0,
+    'Medium / Moderate': 0,
+    'Low / Minor': 0,
   };
 
   accidents.forEach((record) => {
-    const raw = (record.severity || 'Minor').trim().toLowerCase();
+    const raw = (record.severity || 'Low').trim().toLowerCase();
 
     if (raw.includes('fatal') || raw.includes('death') || raw.includes('killed')) {
-      severityMap.Fatal += 1;
-    } else if (raw.includes('severe') || raw.includes('grievous') || raw.includes('major')) {
-      severityMap.Severe += 1;
-    } else if (raw.includes('mod') || raw.includes('simple') || raw.includes('medium')) {
-      severityMap.Moderate += 1;
+      severityMap['Fatal'] += 1;
+    } else if (raw.includes('severe') || raw.includes('grievous') || raw.includes('major') || raw === 'high') {
+      severityMap['High / Severe'] += 1;
+    } else if (raw.includes('mod') || raw.includes('simple') || raw.includes('medium') || raw === 'med') {
+      severityMap['Medium / Moderate'] += 1;
     } else {
-      severityMap.Minor += 1;
+      severityMap['Low / Minor'] += 1;
     }
   });
 
@@ -148,46 +148,55 @@ export function getTopAccidentLocations(accidents = [], limit = 5) {
     .slice(0, limit);
 }
 
-import { standardizeWeather, standardizeSeverity, validateDate, getFieldFromRow } from './dataValidation';
+import {
+  standardizeWeather,
+  standardizeSeverity,
+  standardizeRoadCondition,
+  validateAndFormatDate,
+  getFieldValue
+} from './dataProcessing.js';
 
 export function normalizeCsvRecord(rawRow, index) {
-  const rawDate = getFieldFromRow(rawRow, [
-    'Accident Date', 'accidentDate', 'Date of Crash', 'Crash Date', 'Date', 'date', 'CRASH_DATE'
+  const rawDate = getFieldValue(rawRow, [
+    'date', 'accident_date', 'accidentDate', 'crash_date', 'crashDate',
+    'date_of_crash', 'incident_date', 'incidentDate', 'CRASH_DATE'
   ]);
-  const dateRes = validateDate(rawDate);
+  const dateRes = validateAndFormatDate(rawDate);
   const date = dateRes.isValid ? dateRes.formatted : (rawDate || '');
 
-  const location = getFieldFromRow(rawRow, [
-    'Location', 'location', 'Black Spot', 'Blackspot', 'Chowk', 'Light Point', 'Intersection', 'Place of Occurrence', 'Road Name'
+  const location = getFieldValue(rawRow, [
+    'location', 'accident_location', 'accidentLocation', 'black_spot', 'blackspot',
+    'place_of_occurrence', 'chowk', 'intersection', 'light_point', 'road_name'
   ]) || 'Unspecified Location';
 
-  const sector = getFieldFromRow(rawRow, [
-    'Sector', 'sector', 'Area', 'Police Station', 'PS', 'Zone'
+  const sector = getFieldValue(rawRow, [
+    'sector', 'area', 'zone', 'police_station', 'ps'
   ]) || '';
 
-  const corridor = getFieldFromRow(rawRow, [
-    'Corridor', 'corridor', 'Arterial Road', 'Highway', 'Road'
+  const corridor = getFieldValue(rawRow, [
+    'corridor', 'arterial_road', 'highway', 'road'
   ]) || '';
 
-  const rawWeather = getFieldFromRow(rawRow, [
-    'Weather Condition', 'weatherCondition', 'Weather', 'weather', 'Atmospheric Condition'
+  const rawWeather = getFieldValue(rawRow, [
+    'weather', 'weather_condition', 'weatherCondition', 'atmospheric_condition'
   ]);
   const weatherCondition = standardizeWeather(rawWeather).standardized;
 
-  const roadCondition = getFieldFromRow(rawRow, [
-    'Road Condition', 'roadCondition', 'Road Surface', 'Road'
-  ]) || 'Unspecified';
+  const rawRoad = getFieldValue(rawRow, [
+    'road_condition', 'roadCondition', 'surface_condition', 'road_surface', 'surface'
+  ]);
+  const roadCondition = standardizeRoadCondition(rawRoad).standardized;
 
-  const rawSeverity = getFieldFromRow(rawRow, [
-    'Severity', 'severity', 'Crash Severity', 'Injury Severity', 'Accident Classification'
+  const rawSeverity = getFieldValue(rawRow, [
+    'severity', 'crash_severity', 'accident_severity', 'injury_severity', 'severity_level'
   ]);
   const severity = standardizeSeverity(rawSeverity).standardized;
 
-  const injuriesRaw = getFieldFromRow(rawRow, ['Injuries', 'injuries', 'Injured', 'Total Injuries', 'Persons Injured']);
+  const injuriesRaw = getFieldValue(rawRow, ['injuries', 'injury_count', 'injured', 'persons_injured', 'total_injuries']);
   const injuriesNum = parseInt(injuriesRaw, 10);
   const injuries = !isNaN(injuriesNum) && injuriesNum >= 0 ? injuriesNum : 0;
 
-  const fatalitiesRaw = getFieldFromRow(rawRow, ['Fatalities', 'fatalities', 'Killed', 'Deaths', 'Total Fatalities', 'Persons Killed']);
+  const fatalitiesRaw = getFieldValue(rawRow, ['fatalities', 'fatality_count', 'deaths', 'killed', 'persons_killed', 'total_fatalities']);
   const fatalitiesNum = parseInt(fatalitiesRaw, 10);
   const fatalities = !isNaN(fatalitiesNum) && fatalitiesNum >= 0 ? fatalitiesNum : 0;
 

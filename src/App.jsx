@@ -6,8 +6,10 @@ import StatCards from './components/StatCards';
 import ChartsSection from './components/ChartsSection';
 import BlackspotsSection from './components/BlackspotsSection';
 import AccidentTable from './components/AccidentTable';
+import DataQualitySection from './components/DataQualitySection';
 import DataValidationModal from './components/DataValidationModal';
 import { sampleAccidents } from './data/sampleAccidents';
+import { processCsvDataset } from './utils/dataProcessing';
 import {
   calculateOverviewStats,
   getAccidentsByMonth,
@@ -17,7 +19,7 @@ import {
 } from './utils/analytics';
 
 export default function App() {
-  const [accidents, setAccidents] = useState(sampleAccidents);
+  const [processedDataset, setProcessedDataset] = useState(() => processCsvDataset(sampleAccidents));
   const [dataSource, setDataSource] = useState({
     name: 'CTP Baseline 2024',
     isCustom: false,
@@ -34,12 +36,22 @@ export default function App() {
 
   const [severityFilter, setSeverityFilter] = useState('All');
 
+  const accidents = useMemo(() => {
+    return (processedDataset.processedRecords || [])
+      .filter((r) => !r.isExcluded)
+      .map((r) => r.cleaned);
+  }, [processedDataset]);
+
   const filteredAccidents = useMemo(() => {
     return accidents.filter((item) => {
-      if (severityFilter !== 'All' && item.severity.toLowerCase() !== severityFilter.toLowerCase()) {
-        return false;
-      }
-      return true;
+      if (severityFilter === 'All') return true;
+      const s = (item.severity || '').toLowerCase();
+      const f = severityFilter.toLowerCase();
+      if (f === 'high' || f === 'severe') return s === 'high' || s === 'severe';
+      if (f === 'medium' || f === 'moderate') return s === 'medium' || s === 'moderate';
+      if (f === 'low' || f === 'minor') return s === 'low' || s === 'minor';
+      if (f === 'fatal') return s === 'fatal';
+      return s === f;
     });
   }, [accidents, severityFilter]);
 
@@ -69,14 +81,12 @@ export default function App() {
     });
   };
 
-  const handleConfirmImport = (approvedRecords, importStats) => {
-    setAccidents(approvedRecords);
+  const handleConfirmImport = (updatedDataset) => {
+    setProcessedDataset(updatedDataset);
     setDataSource({
       name: validationModal.fileName,
       isCustom: true,
       isVerified: true,
-      totalUploaded: importStats.totalUploaded,
-      excludedCount: importStats.excludedCount,
     });
     setValidationModal({
       isOpen: false,
@@ -85,8 +95,43 @@ export default function App() {
     });
   };
 
+  const handleToggleRecordExclusion = (recordId) => {
+    setProcessedDataset((prev) => ({
+      ...prev,
+      processedRecords: prev.processedRecords.map((r) =>
+        r.id === recordId ? { ...r, isExcluded: !r.isExcluded } : r
+      ),
+    }));
+  };
+
+  const handleBatchExcludeInvalid = () => {
+    setProcessedDataset((prev) => ({
+      ...prev,
+      processedRecords: prev.processedRecords.map((r) =>
+        r.status === 'invalid' || r.isDuplicate ? { ...r, isExcluded: true } : r
+      ),
+    }));
+  };
+
+  const handleBatchRestoreAll = () => {
+    setProcessedDataset((prev) => ({
+      ...prev,
+      processedRecords: prev.processedRecords.map((r) => ({ ...r, isExcluded: false })),
+    }));
+  };
+
+  const handleBatchIncludeOnlyValid = () => {
+    setProcessedDataset((prev) => ({
+      ...prev,
+      processedRecords: prev.processedRecords.map((r) => ({
+        ...r,
+        isExcluded: r.status !== 'valid',
+      })),
+    }));
+  };
+
   const handleResetSample = () => {
-    setAccidents(sampleAccidents);
+    setProcessedDataset(processCsvDataset(sampleAccidents));
     setDataSource({
       name: 'CTP Baseline 2024',
       isCustom: false,
@@ -161,6 +206,15 @@ export default function App() {
           <BlackspotsSection accidents={filteredAccidents} />
 
           <AccidentTable records={filteredAccidents} />
+
+          <DataQualitySection
+            qualityReport={processedDataset}
+            onToggleRecordExclusion={handleToggleRecordExclusion}
+            onBatchExcludeInvalid={handleBatchExcludeInvalid}
+            onBatchRestoreAll={handleBatchRestoreAll}
+            onBatchIncludeOnlyValid={handleBatchIncludeOnlyValid}
+            currentSource={dataSource}
+          />
         </main>
       </div>
 

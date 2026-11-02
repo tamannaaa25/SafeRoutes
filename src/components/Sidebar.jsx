@@ -8,7 +8,7 @@ import {
   MapPin,
   ChevronDown,
   X,
-  CheckCircle2,
+  ShieldCheck,
 } from 'lucide-react';
 
 export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, currentSource }) {
@@ -17,6 +17,7 @@ export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, curre
     { id: 'analytics', label: 'Analytics', icon: BarChart2 },
     { id: 'blackspots', label: 'Blackspots', icon: AlertTriangle },
     { id: 'records', label: 'Crash Records', icon: FileSpreadsheet },
+    { id: 'quality', label: 'Data Quality', icon: ShieldCheck },
   ];
 
   const handleNavClick = (id) => {

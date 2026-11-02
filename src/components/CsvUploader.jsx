@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Papa from 'papaparse';
 import { UploadCloud, RotateCcw, FileText, CheckCircle2, Download, AlertCircle } from 'lucide-react';
-import { normalizeCsvRecord } from '../utils/analytics';
+import { processCsvDataset } from '../utils/dataProcessing';
 
 export default function CsvUploader({ currentSource, recordCount, onDataLoaded, onResetSample }) {
   const fileInputRef = useRef(null);
@@ -24,16 +24,14 @@ export default function CsvUploader({ currentSource, recordCount, onDataLoaded, 
             return;
           }
 
-          const parsedRecords = results.data
-            .filter((row) => Object.values(row).some((val) => val && String(val).trim() !== ''))
-            .map((row, idx) => normalizeCsvRecord(row, idx));
+          const processed = processCsvDataset(results.data);
 
-          if (parsedRecords.length === 0) {
+          if (processed.totalRecords === 0) {
             setUploadError('Could not find valid accident records in the uploaded file.');
             return;
           }
 
-          onDataLoaded(parsedRecords, file.name);
+          onDataLoaded(processed, file.name);
           if (fileInputRef.current) {
             fileInputRef.current.value = '';
           }
@@ -56,7 +54,7 @@ export default function CsvUploader({ currentSource, recordCount, onDataLoaded, 
         <span className="source-label">Dataset:</span>
         <span className={`source-pill ${currentSource.isCustom ? 'custom-file' : ''}`}>
           <CheckCircle2 size={12} />
-          {currentSource.name} ({recordCount} total records)
+          {currentSource.name} ({recordCount} active records)
         </span>
       </div>
 

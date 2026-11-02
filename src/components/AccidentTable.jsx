@@ -41,14 +41,17 @@ export default function AccidentTable({ records = [] }) {
   }, [filteredRecords, currentPage, itemsPerPage]);
 
   const getSeverityBadgeClass = (severity) => {
-    switch (severity.toLowerCase()) {
+    switch (String(severity || '').toLowerCase()) {
       case 'fatal':
         return 'badge-fatal';
       case 'severe':
+      case 'high':
         return 'badge-severe';
       case 'moderate':
+      case 'medium':
         return 'badge-moderate';
       case 'minor':
+      case 'low':
       default:
         return 'badge-minor';
     }

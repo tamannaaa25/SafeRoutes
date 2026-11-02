@@ -7,7 +7,7 @@ import {
   RotateCcw,
   Upload,
 } from 'lucide-react';
-import { validateAndCleanDataset } from '../utils/dataValidation';
+import { processCsvDataset } from '../utils/dataProcessing';
 
 export default function HeaderActionBar({
   severityFilter,
@@ -39,7 +39,7 @@ export default function HeaderActionBar({
             return;
           }
 
-          const validationResult = validateAndCleanDataset(results.data);
+          const validationResult = processCsvDataset(results.data);
 
           if (validationResult.totalRecords === 0) {
             alert('No valid record rows found in the uploaded CSV file.');
@@ -90,8 +90,8 @@ export default function HeaderActionBar({
             <span className="breadcrumb-separator">/</span>
             <span className={`dataset-status-tag ${currentSource.isCustom ? 'tag-custom' : ''}`}>
               {currentSource.isCustom
-                ? `${currentSource.name} (Verified)`
-                : 'CTP Baseline (Demo)'} ({totalCount} recs)
+                ? `Custom: ${currentSource.name}`
+                : 'CTP Baseline (Demo)'} ({totalCount} active)
             </span>
             {currentSource.isCustom && (
               <button
@@ -117,10 +117,10 @@ export default function HeaderActionBar({
             aria-label="Severity Filter"
           >
             <option value="All">All Severities</option>
-            <option value="Minor">Minor</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Severe">Severe</option>
             <option value="Fatal">Fatal</option>
+            <option value="High">High / Severe</option>
+            <option value="Medium">Medium / Moderate</option>
+            <option value="Low">Low / Minor</option>
           </select>
         </div>
 
@@ -137,16 +137,16 @@ export default function HeaderActionBar({
         <button
           className="btn-action btn-action-subtle"
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
-          title="Import CSV dataset to validate and analyze"
+          title="Upload and validate CSV dataset"
         >
           <Upload size={14} strokeWidth={1.75} />
-          <span>Import CSV</span>
+          <span>Upload CSV</span>
         </button>
 
         <button
           className="btn-action btn-action-primary"
           onClick={onExportCSV}
-          title="Export filtered records to CSV"
+          title="Export active records to CSV"
         >
           <Download size={14} strokeWidth={1.75} />
           <span>Export CSV</span>

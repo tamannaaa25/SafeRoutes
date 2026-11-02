@@ -27,10 +27,16 @@ const WEATHER_COLORS = {
 const DEFAULT_WEATHER_COLORS = ['#3b82f6', '#475569', '#1d4ed8', '#0284c7', '#94a3b8', '#64748b', '#cbd5e1'];
 
 const SEVERITY_COLORS = {
-  Minor: '#0284c7',
-  Moderate: '#d97706',
-  Severe: '#ea580c',
   Fatal: '#dc2626',
+  'High / Severe': '#ea580c',
+  'Medium / Moderate': '#d97706',
+  'Low / Minor': '#0284c7',
+  Severe: '#ea580c',
+  Moderate: '#d97706',
+  Minor: '#0284c7',
+  High: '#ea580c',
+  Medium: '#d97706',
+  Low: '#0284c7',
 };
 
 const CustomTooltip = ({ active, payload, label, unit = 'crashes' }) => {

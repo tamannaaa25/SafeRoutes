@@ -32,12 +32,7 @@ export default function BlackspotsSection({ accidents = [] }) {
       <div className="section-header">
         <div>
           <h2 className="section-title">Priority High-Frequency Corridors</h2>
-          <div className="morth-disclaimer-note">
-            <Info size={13} className="disclaimer-icon" />
-            <span>
-              Empirical incident frequency within active dataset. Official MoRTH blackspot designation requires formal engineering audit (≥5 fatal/grievous crashes within 500m over 3 years).
-            </span>
-          </div>
+          
         </div>
       </div>
 
