@@ -6,7 +6,15 @@ class AnalyticsRepository:
     def __init__(self, db: Session):
         self.db = db
 
+    def _resolve_dataset_id(self, dataset_id: Optional[int]) -> Optional[int]:
+        if dataset_id is not None:
+            return dataset_id
+        res = self.db.execute(text("SELECT id FROM datasets ORDER BY upload_date DESC, id DESC LIMIT 1;")).scalar()
+        return res
+
     def get_overview_stats(self, dataset_id: Optional[int] = None, severity: Optional[str] = "All") -> Dict[str, Any]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT 
                 COUNT(id) AS total_accidents,
@@ -21,7 +29,7 @@ class AnalyticsRepository:
         """)
 
         res = self.db.execute(query, {
-            "dataset_id": dataset_id,
+            "dataset_id": target_dataset_id,
             "severity": severity or "All"
         }).fetchone()
 
@@ -37,7 +45,7 @@ class AnalyticsRepository:
         """)
 
         top_loc_res = self.db.execute(top_loc_query, {
-            "dataset_id": dataset_id,
+            "dataset_id": target_dataset_id,
             "severity": severity or "All"
         }).fetchone()
 
@@ -50,7 +58,7 @@ class AnalyticsRepository:
             WHERE is_valid = FALSE
               AND (:dataset_id IS NULL OR dataset_id = :dataset_id);
         """)
-        invalid_count = self.db.execute(invalid_query, {"dataset_id": dataset_id}).scalar() or 0
+        invalid_count = self.db.execute(invalid_query, {"dataset_id": target_dataset_id}).scalar() or 0
 
         ds_name_query = text("""
             SELECT dataset_name FROM datasets
@@ -58,11 +66,11 @@ class AnalyticsRepository:
             ORDER BY upload_date DESC
             LIMIT 1;
         """)
-        ds_name = self.db.execute(ds_name_query, {"dataset_id": dataset_id}).scalar() or "All Datasets"
+        ds_name = self.db.execute(ds_name_query, {"dataset_id": target_dataset_id}).scalar() or "All Datasets"
 
         return {
             "dataset_name": ds_name,
-            "dataset_id": dataset_id,
+            "dataset_id": target_dataset_id,
             "total_accidents": res[0] if res else 0,
             "total_injuries": int(res[1]) if res else 0,
             "total_fatalities": int(res[2]) if res else 0,
@@ -75,6 +83,8 @@ class AnalyticsRepository:
         }
 
     def get_monthly_distribution(self, dataset_id: Optional[int] = None, severity: Optional[str] = "All") -> List[Dict[str, Any]]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT 
                 TO_CHAR(accident_date, 'YYYY-Mon') AS month,
@@ -92,7 +102,7 @@ class AnalyticsRepository:
         """)
 
         results = self.db.execute(query, {
-            "dataset_id": dataset_id,
+            "dataset_id": target_dataset_id,
             "severity": severity or "All"
         }).fetchall()
 
@@ -109,6 +119,8 @@ class AnalyticsRepository:
         return data
 
     def get_severity_breakdown(self, dataset_id: Optional[int] = None) -> List[Dict[str, Any]]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT 
                 severity,
@@ -122,7 +134,7 @@ class AnalyticsRepository:
             ORDER BY count DESC;
         """)
 
-        results = self.db.execute(query, {"dataset_id": dataset_id}).fetchall()
+        results = self.db.execute(query, {"dataset_id": target_dataset_id}).fetchall()
         return [
             {
                 "name": row[0] or "Unknown",
@@ -134,6 +146,8 @@ class AnalyticsRepository:
         ]
 
     def get_location_rankings(self, dataset_id: Optional[int] = None, limit: int = 10) -> List[Dict[str, Any]]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT 
                 location,
@@ -149,7 +163,7 @@ class AnalyticsRepository:
         """)
 
         results = self.db.execute(query, {
-            "dataset_id": dataset_id,
+            "dataset_id": target_dataset_id,
             "limit": limit
         }).fetchall()
 
@@ -165,6 +179,8 @@ class AnalyticsRepository:
         return rankings
 
     def get_weather_distribution(self, dataset_id: Optional[int] = None) -> List[Dict[str, Any]]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT 
                 COALESCE(weather_condition, 'Clear') AS weather,
@@ -178,7 +194,7 @@ class AnalyticsRepository:
             ORDER BY count DESC;
         """)
 
-        results = self.db.execute(query, {"dataset_id": dataset_id}).fetchall()
+        results = self.db.execute(query, {"dataset_id": target_dataset_id}).fetchall()
         return [
             {
                 "name": row[0],
@@ -190,6 +206,8 @@ class AnalyticsRepository:
         ]
 
     def get_recommendations(self, dataset_id: Optional[int] = None) -> List[Dict[str, Any]]:
+        target_dataset_id = self._resolve_dataset_id(dataset_id)
+
         query = text("""
             SELECT id, location, recommendation, priority, evidence, status
             FROM investigation_recommendations
@@ -203,7 +221,7 @@ class AnalyticsRepository:
               END, id ASC;
         """)
 
-        results = self.db.execute(query, {"dataset_id": dataset_id}).fetchall()
+        results = self.db.execute(query, {"dataset_id": target_dataset_id}).fetchall()
         return [
             {
                 "id": row[0],
@@ -215,4 +233,3 @@ class AnalyticsRepository:
             }
             for row in results
         ]
-

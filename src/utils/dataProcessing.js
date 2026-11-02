@@ -244,7 +244,9 @@ export function checkChandigarhLocation(location = '', sector = '', corridor = '
 
 export function processCsvDataset(rawRows = []) {
   const processedRecords = [];
+  const seenIds = new Map();
   const duplicateFingerprints = new Map();
+  const nearFingerprints = new Map();
 
   let validCount = 0;
   let warningCount = 0;
@@ -384,22 +386,52 @@ export function processCsvDataset(rawRows = []) {
     let isDuplicate = false;
     let duplicateOfRow = null;
 
+    const rawId = getFieldValue(row, ['accident_id', 'id', 'record_id', 'incident_id']);
+    if (rawId) {
+      if (seenIds.has(rawId)) {
+        isDuplicate = true;
+        duplicateOfRow = seenIds.get(rawId);
+        issues.push({
+          field: 'Duplicate ID',
+          severity: 'warning',
+          message: `Duplicate accident ID "${rawId}" (already assigned to Row #${duplicateOfRow})`
+        });
+      } else {
+        seenIds.set(rawId, rowNumber);
+      }
+    }
+
     if (dateResult.isValid && cleanedLocation !== 'Unknown') {
       const timeComponent = cleanedTime ? cleanedTime.toLowerCase() : '';
       const dupKey = `${cleanedDate}|${cleanedLocation.toLowerCase()}|${timeComponent}|${cleanedSeverity.toLowerCase()}|${cleanedInjuries}|${cleanedFatalities}`;
+      const nearKey = `${cleanedDate}|${cleanedLocation.toLowerCase()}`;
 
       if (duplicateFingerprints.has(dupKey)) {
         isDuplicate = true;
         duplicateOfRow = duplicateFingerprints.get(dupKey);
-        duplicateCount++;
         issues.push({
           field: 'Duplicate',
           severity: 'warning',
-          message: `Potential duplicate of Row #${duplicateOfRow} (matching Date, Location, Severity, and Casualties)`
+          message: `Exact duplicate of Row #${duplicateOfRow} (matching Date, Location, Time, Severity, and Casualties)`
+        });
+      } else if (nearFingerprints.has(nearKey)) {
+        const nearRow = nearFingerprints.get(nearKey);
+        issues.push({
+          field: 'Duplicate',
+          severity: 'warning',
+          message: `Potential near-duplicate of Row #${nearRow} (matching Date and Location with slight variance)`
         });
       } else {
+        nearFingerprints.set(nearKey, rowNumber);
+      }
+
+      if (!duplicateFingerprints.has(dupKey)) {
         duplicateFingerprints.set(dupKey, rowNumber);
       }
+    }
+
+    if (isDuplicate) {
+      duplicateCount++;
     }
 
     totalMissingFields += missingFields.length;

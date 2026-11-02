@@ -8,13 +8,9 @@ import {
   FileSpreadsheet,
   Search,
   RotateCcw,
-  Eye,
-  EyeOff,
   Info,
   SlidersHorizontal,
-  Layers,
-  ChevronDown,
-  ChevronUp
+  Layers
 } from 'lucide-react';
 
 export default function DataQualitySection({
@@ -27,7 +23,6 @@ export default function DataQualitySection({
 }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [expandedRawRowId, setExpandedRawRowId] = useState(null);
 
   const {
     totalRecords = 0,
@@ -72,10 +67,6 @@ export default function DataQualitySection({
       return true;
     });
   }, [processedRecords, activeFilter, searchTerm]);
-
-  const toggleRawDetails = (rowId) => {
-    setExpandedRawRowId((prev) => (prev === rowId ? null : rowId));
-  };
 
   return (
     <section id="quality" className="data-quality-section">
@@ -254,142 +245,87 @@ export default function DataQualitySection({
           <table className="quality-table">
             <thead>
               <tr>
-                <th style={{ width: '110px' }}>Engine Status</th>
                 <th style={{ width: '60px' }}>Row</th>
-                <th style={{ width: '90px' }}>Audit Status</th>
-                <th>Validation Diagnostics</th>
-                <th>Date</th>
-                <th>Location & Sector</th>
-                <th>Severity</th>
-                <th>Casualties</th>
-                <th style={{ textAlign: 'right', width: '130px' }}>Original Raw Data</th>
+                <th style={{ width: '120px' }}>Audit Status</th>
+                <th style={{ minWidth: '240px' }}>Validation Diagnostics</th>
+                <th style={{ width: '110px' }}>Date</th>
+                <th style={{ minWidth: '240px' }}>Location & Sector</th>
+                <th style={{ width: '100px' }}>Severity</th>
+                <th style={{ width: '120px' }}>Casualties</th>
               </tr>
             </thead>
             <tbody>
               {filteredRecords.length > 0 ? (
                 filteredRecords.map((item) => {
-                  const isExpanded = expandedRawRowId === item.id;
                   const isExcluded = item.isExcluded;
 
                   return (
-                    <React.Fragment key={item.id}>
-                      <tr className={`quality-row ${isExcluded ? 'row-is-excluded' : ''} ${item.status === 'invalid' ? 'row-is-invalid' : ''}`}>
-                        <td>
-                          <button
-                            className={`btn-exclusion-toggle ${isExcluded ? 'btn-is-excluded' : 'btn-is-active'}`}
-                            onClick={() => onToggleRecordExclusion(item.id)}
-                            title={isExcluded ? 'Click to include this record in analytics' : 'Click to exclude this record from analytics'}
-                          >
-                            {isExcluded ? (
-                              <>
-                                <EyeOff size={12} />
-                                <span>Excluded</span>
-                              </>
-                            ) : (
-                              <>
-                                <Eye size={12} />
-                                <span>Active</span>
-                              </>
-                            )}
-                          </button>
-                        </td>
-                        <td className="row-num">#{item.rowNumber}</td>
-                        <td>
-                          {item.status === 'valid' && (
-                            <span className="val-badge badge-valid">
-                              <CheckCircle2 size={12} /> Valid
-                            </span>
-                          )}
-                          {item.status === 'warning' && (
-                            <span className="val-badge badge-warning">
-                              <AlertTriangle size={12} /> Warning
-                            </span>
-                          )}
-                          {item.status === 'invalid' && (
-                            <span className="val-badge badge-invalid">
-                              <AlertCircle size={12} /> Invalid
-                            </span>
-                          )}
-                        </td>
-                        <td>
-                          {item.issues.length > 0 ? (
-                            <div className="quality-issues-stack">
-                              {item.issues.map((iss, i) => (
-                                <div
-                                  key={i}
-                                  className={`issue-tag ${iss.severity === 'error' ? 'issue-error' : 'issue-warn'}`}
-                                >
-                                  {iss.severity === 'error' ? (
-                                    <AlertCircle size={11} />
-                                  ) : (
-                                    <AlertTriangle size={11} />
-                                  )}
-                                  <span>{iss.message}</span>
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <span className="clean-label">No issues detected</span>
-                          )}
-                        </td>
-                        <td className="cell-date">{item.cleaned.date || '—'}</td>
-                        <td>
-                          <div className="val-cell-primary">{item.cleaned.location}</div>
-                          {(item.cleaned.sector !== 'Unknown' || item.cleaned.corridor !== 'Unknown') && (
-                            <div className="val-cell-secondary">
-                              {[item.cleaned.sector, item.cleaned.corridor].filter((v) => v && v !== 'Unknown').join(' • ')}
-                            </div>
-                          )}
-                        </td>
-                        <td>
-                          <span className={`badge badge-${item.cleaned.severity.toLowerCase()}`}>
-                            {item.cleaned.severity}
+                    <tr
+                      key={item.id}
+                      className={`quality-row ${isExcluded ? 'row-is-excluded' : ''} ${item.status === 'invalid' ? 'row-is-invalid' : ''}`}
+                    >
+                      <td className="row-num">#{item.rowNumber}</td>
+                      <td>
+                        {item.status === 'valid' && (
+                          <span className="val-badge badge-valid">
+                            <CheckCircle2 size={12} /> Valid
                           </span>
-                        </td>
-                        <td className="val-casualties">
-                          {item.cleaned.injuries} inj / {item.cleaned.fatalities} fat
-                        </td>
-                        <td style={{ textAlign: 'right' }}>
-                          <button
-                            className="btn-view-raw"
-                            onClick={() => toggleRawDetails(item.id)}
-                            title="Inspect unedited raw fields from source CSV"
-                          >
-                            <span>{isExpanded ? 'Hide Raw' : 'View Raw'}</span>
-                            {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                          </button>
-                        </td>
-                      </tr>
-
-                      {isExpanded && (
-                        <tr className="raw-viewer-row">
-                          <td colSpan={9}>
-                            <div className="raw-viewer-box">
-                              <div className="raw-viewer-header">
-                                <strong>Original Uploaded CSV Row #{item.rowNumber} (Unmodified)</strong>
+                        )}
+                        {item.status === 'warning' && (
+                          <span className="val-badge badge-warning">
+                            <AlertTriangle size={12} /> Warning
+                          </span>
+                        )}
+                        {item.status === 'invalid' && (
+                          <span className="val-badge badge-invalid">
+                            <AlertCircle size={12} /> Invalid
+                          </span>
+                        )}
+                      </td>
+                      <td>
+                        {item.issues.length > 0 ? (
+                          <div className="quality-issues-stack">
+                            {item.issues.map((iss, i) => (
+                              <div
+                                key={i}
+                                className={`issue-tag ${iss.severity === 'error' ? 'issue-error' : 'issue-warn'}`}
+                              >
+                                {iss.severity === 'error' ? (
+                                  <AlertCircle size={11} />
+                                ) : (
+                                  <AlertTriangle size={11} />
+                                )}
+                                <span>{iss.message}</span>
                               </div>
-                              <div className="raw-viewer-grid">
-                                {Object.entries(item.raw).map(([key, val]) => (
-                                  <div key={key} className="raw-field-item">
-                                    <span className="raw-field-key">{key}:</span>
-                                    <span className="raw-field-val">
-                                      {val !== undefined && val !== null && String(val).trim() !== ''
-                                        ? String(val)
-                                        : <em className="text-muted">(empty / null)</em>}
-                                    </span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="clean-label">No issues detected</span>
+                        )}
+                      </td>
+                      <td className="cell-date">{item.cleaned.date || '—'}</td>
+                      <td>
+                        <div className="val-cell-primary">{item.cleaned.location}</div>
+                        {(item.cleaned.sector !== 'Unknown' || item.cleaned.corridor !== 'Unknown') && (
+                          <div className="val-cell-secondary">
+                            {[item.cleaned.sector, item.cleaned.corridor].filter((v) => v && v !== 'Unknown').join(' • ')}
+                          </div>
+                        )}
+                      </td>
+                      <td>
+                        <span className={`badge badge-${item.cleaned.severity.toLowerCase()}`}>
+                          {item.cleaned.severity}
+                        </span>
+                      </td>
+                      <td className="val-casualties">
+                        {item.cleaned.injuries} inj / {item.cleaned.fatalities} fat
+                      </td>
+                    </tr>
                   );
                 })
               ) : (
                 <tr>
-                  <td colSpan={9} className="validation-empty-cell">
+                  <td colSpan={7} className="validation-empty-cell">
                     No records found.
                   </td>
                 </tr>

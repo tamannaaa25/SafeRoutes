@@ -161,9 +161,7 @@ Return your response strictly as a JSON object matching this schema:
                     }
                     for r in formatted_recs
                 ],
-                "caveat_note": "Recommendations generated dynamically by Google Gemini grounded in verified PostgreSQL crash data. Requires on-site engineering safety review.",
-                "supporting_metrics": supporting_metrics
-            }
+                }
         except Exception as e:
             last_error = str(e)
             continue

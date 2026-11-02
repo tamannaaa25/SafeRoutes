@@ -91,7 +91,7 @@ export default function HeaderActionBar({
             <span className={`dataset-status-tag ${currentSource.isCustom ? 'tag-custom' : ''}`}>
               {currentSource.isCustom
                 ? `Custom: ${currentSource.name}`
-                : 'CTP Baseline (Demo)'} ({totalCount} active)
+                : (currentSource.name || 'Chandigarh Demo Dataset')} ({totalCount} active)
             </span>
             {currentSource.isCustom && (
               <button

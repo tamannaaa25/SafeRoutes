@@ -89,21 +89,10 @@ export default function SafetyInsightsSection({ insights }) {
             <Lightbulb size={18} className="text-amber" />
             <h2 className="section-title">Safety Insights & Decision Support</h2>
           </div>
-          <p className="section-subtitle">
-            Database-backed empirical crash patterns and Gemini-powered road safety engineering recommendations.
-          </p>
+         
         </div>
 
-        <div className="section-actions">
-          <button
-            className="action-btn action-btn-primary"
-            onClick={handleFetchAiInsights}
-            disabled={isLoadingAi}
-          >
-            <Sparkles size={14} className={isLoadingAi ? 'spin-icon' : ''} />
-            <span>{isLoadingAi ? 'Synthesizing AI Recommendations...' : 'Generate AI Safety Analysis'}</span>
-          </button>
-        </div>
+        
       </div>
 
       {aiError && (
@@ -160,9 +149,8 @@ export default function SafetyInsightsSection({ insights }) {
                   gap: '6px',
                 }}
               >
-                <ShieldCheck size={13} />
-                <span>{aiInsights.caveat_note || 'Recommendations generated dynamically by Google Gemini based on verified crash data.'}</span>
-              </div>
+               
+                 </div>
             </div>
           )}
         </div>

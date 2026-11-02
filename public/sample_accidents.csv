@@ -1,38 +1,11 @@
-Accident Date,Location,Sector,Corridor,Weather Condition,Road Condition,Severity,Injuries,Fatalities
-2024-01-08,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Dense Fog,Foggy Surface,Severe,2,1
-2024-01-14,Poultry Farm Chowk (Industrial Area),Industrial Area Phase 2,Dakshin Marg Extension,Dense Fog,Foggy Surface,Moderate,2,0
-2024-01-22,Kalagram Light Point (Madhya Marg),Manimajra / Kalagram,Madhya Marg,Dense Fog,Dry,Fatal,1,1
-2024-02-02,Housing Board Light Point (Sector 13),Sector 13 (Manimajra),Madhya Marg,Fog,Dry,Moderate,1,0
-2024-02-12,Tribune Chowk (Purv Marg & Dakshin Marg),Sector 29 / 31 / Ind Area,Dakshin Marg,Clear,Dry,Minor,0,0
-2024-02-20,Transport Light Point (Sector 26),Sector 26,Purv Marg,Clear,Dry,Moderate,1,0
-2024-03-04,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Clear,Dry,Severe,3,1
-2024-03-15,Airport Light Point (Dakshin Marg),Near CRPF Campus / Behlana,Dakshin Marg (NH-05),Clear,Dry,Severe,2,1
-2024-03-23,Aroma Light Point (Sector 21/22),Sector 21 / 22,Himalaya Marg,Clear,Dry,Minor,0,0
-2024-03-29,Dhanas Light Point (Milk Colony),Dhanas / Milk Colony,Dhanas Road,Clear,Dry,Moderate,2,0
-2024-04-06,Kalagram Light Point (Madhya Marg),Manimajra / Kalagram,Madhya Marg,Clear,Dry,Moderate,1,0
-2024-04-16,Tribune Chowk (Purv Marg & Dakshin Marg),Sector 29 / 31 / Ind Area,Dakshin Marg,Clear,Dry,Severe,2,0
-2024-04-24,Matka Chowk (Madhya Marg & Jan Marg),Sector 9 / 10 / 16 / 17,Madhya Marg,Clear,Dry,Minor,0,0
-2024-05-03,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Clear,Dry,Fatal,2,1
-2024-05-14,Sector 25 / 38 Light Point,Sector 25 / 38 (Rally Ground),Sector Dividing Road,Clear,Dry,Moderate,1,0
-2024-05-25,Housing Board Light Point (Sector 13),Sector 13 (Manimajra),Madhya Marg,Clear,Dry,Minor,1,0
-2024-06-05,Poultry Farm Chowk (Industrial Area),Industrial Area Phase 2,Dakshin Marg Extension,Clear,Dry,Severe,3,1
-2024-06-17,Sector 35 / 36 Roundabout (Dakshin Marg),Sector 35 / 36,Dakshin Marg,Clear,Dry,Minor,0,0
-2024-06-27,Railway Station Light Point,Daria / Vikas Nagar,Railway Road,Rain,Wet,Moderate,1,0
-2024-07-06,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Rain,Wet,Severe,2,0
-2024-07-15,Kalagram Light Point (Madhya Marg),Manimajra / Kalagram,Madhya Marg,Rain,Wet,Moderate,2,0
-2024-07-25,Transport Light Point (Sector 26),Sector 26,Purv Marg,Rain,Wet,Minor,0,0
-2024-08-04,Sector 45 / 46 / 49 / 50 Chowk (Vikas Marg),Sector 45 / 46 / 49 / 50,Vikas Marg,Rain,Wet,Moderate,1,0
-2024-08-16,Tribune Chowk (Purv Marg & Dakshin Marg),Sector 29 / 31 / Ind Area,Dakshin Marg,Cloudy,Dry,Minor,0,0
-2024-08-27,Poultry Farm Chowk (Industrial Area),Industrial Area Phase 2,Dakshin Marg Extension,Rain,Wet,Severe,2,0
-2024-09-07,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Rain,Wet,Fatal,2,1
-2024-09-18,Dhanas Light Point (Milk Colony),Dhanas / Milk Colony,Dhanas Road,Clear,Dry,Moderate,1,0
-2024-09-28,Housing Board Light Point (Sector 13),Sector 13 (Manimajra),Madhya Marg,Clear,Dry,Minor,1,0
-2024-10-08,Kalagram Light Point (Madhya Marg),Manimajra / Kalagram,Madhya Marg,Haze,Dry,Severe,3,0
-2024-10-19,Sector 17 / 18 Light Point,Sector 17 / 18,Madhya Marg,Clear,Dry,Minor,0,0
-2024-10-30,Sector 52 / 53 Light Point (Kajheri),Sector 52 / 53,Vikas Marg / Kajheri,Haze,Dry,Minor,1,0
-2024-11-09,Poultry Farm Chowk (Industrial Area),Industrial Area Phase 2,Dakshin Marg Extension,Haze / Smog,Dry,Moderate,1,0
-2024-11-20,Airport Light Point (Dakshin Marg),Near CRPF Campus / Behlana,Dakshin Marg (NH-05),Fog,Dry,Severe,2,1
-2024-12-04,Hallomajra Light Point (Dakshin Marg),Sector 31 / Hallomajra,Dakshin Marg (NH-05),Dense Fog,Foggy Surface,Severe,3,0
-2024-12-15,Kalagram Light Point (Madhya Marg),Manimajra / Kalagram,Madhya Marg,Dense Fog,Foggy Surface,Fatal,2,1
-2024-12-23,Housing Board Light Point (Sector 13),Sector 13 (Manimajra),Madhya Marg,Dense Fog,Foggy Surface,Severe,2,0
-2024-12-28,Tribune Chowk (Purv Marg & Dakshin Marg),Sector 29 / 31 / Ind Area,Dakshin Marg,Dense Fog,Foggy Surface,Moderate,1,0
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+CHD-2024-0001,2024-01-15,08:30:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,2,0,Side Impact,Daylight
+CHD-2024-0002,2024-02-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-0002,2024-02-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-0001,2024-01-15,08:45:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,1,0,Rear End,Daylight
+CHD-2024-0005,2024-03-10,14:20:00,   ,,,Medium,Clear,Dry,1,1,0,Skid,Daylight
+CHD-2024-0006,2024-03-22,04:10:00,Tribune Chowk (Purv Marg),30.7058,76.7905,severe,dense fog,DAMP,3,-2,0,Multi-Vehicle,Darkness (No Lights)
+CHD-2024-0007,,11:00:00,Transport Chowk (Madhya Marg),30.7258,76.8042,Medium,Rain,Wet,-1,1,0,Side Impact,Daylight
+CHD-2024-0008,2024-04-05,16:45:00,Sector 17 Bus Stand (Jan Marg),45.1234,12.5678,,Sunny,Dry,1,0,0,Pedestrian,Dusk
+CHD-2024-0009,15/05/2024,19:10:00,  Housing Board Light Point (Sector 13)  ,30.7180,76.8320,minor,Clear,dry ,2,0,0,Rear End,Night (Streetlights)
+CHD-2024-0010,2024-02-30,25:70:00,Airport Light Point (Purv Marg),30.6980,76.8010,UNKNOWN_SEVERITY,THICK FOG,Waterlogged,2,1,-1,Overturn,Darkness (No Lights)

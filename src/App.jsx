@@ -29,7 +29,7 @@ import {
 export default function App() {
   const [processedDataset, setProcessedDataset] = useState(() => processCsvDataset(sampleAccidents));
   const [dataSource, setDataSource] = useState({
-    name: 'CTP Baseline 2024',
+    name: 'Chandigarh Demonstration Dataset',
     isCustom: false,
     isVerified: false,
   });
@@ -222,7 +222,7 @@ export default function App() {
   const handleResetSample = () => {
     setProcessedDataset(processCsvDataset(sampleAccidents));
     setDataSource({
-      name: 'CTP Baseline 2024',
+      name: 'Chandigarh Demonstration Dataset',
       isCustom: false,
       isVerified: false,
     });

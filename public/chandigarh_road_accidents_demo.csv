@@ -1,0 +1,12 @@
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+CHD-2024-0001,2024-01-15,08:30:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,2,0,Side Impact,Daylight
+CHD-2024-0002,2024-02-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-0002,2024-02-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-0001,2024-01-15,08:45:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,1,0,Rear End,Daylight
+CHD-2024-0005,2024-03-10,14:20:00,   ,,,Medium,Clear,Dry,1,1,0,Skid,Daylight
+CHD-2024-0006,2024-03-22,04:10:00,Tribune Chowk (Purv Marg),30.7058,76.7905,severe,dense fog,DAMP,3,-2,0,Multi-Vehicle,Darkness (No Lights)
+CHD-2024-0007,,11:00:00,Transport Chowk (Madhya Marg),30.7258,76.8042,Medium,Rain,Wet,-1,1,0,Side Impact,Daylight
+CHD-2024-0008,2024-04-05,16:45:00,Sector 17 Bus Stand (Jan Marg),45.1234,12.5678,,Sunny,Dry,1,0,0,Pedestrian,Dusk
+CHD-2024-0009,15/05/2024,19:10:00,  Housing Board Light Point (Sector 13)  ,30.7180,76.8320,minor,Clear,dry ,2,0,0,Rear End,Night (Streetlights)
+CHD-2024-0010,2024-02-30,25:70:00,Airport Light Point (Purv Marg),30.6980,76.8010,UNKNOWN_SEVERITY,THICK FOG,Waterlogged,2,1,-1,Overturn,Darkness (No Lights)
+
