@@ -8,9 +8,10 @@ import {
   MapPin,
   ChevronDown,
   X,
+  CheckCircle2,
 } from 'lucide-react';
 
-export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose }) {
+export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose, currentSource }) {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'analytics', label: 'Analytics', icon: BarChart2 },
@@ -81,8 +82,15 @@ export default function Sidebar({ activeNav, onNavSelect, isOpen, onClose }) {
 
         <div className="sidebar-footer">
           <div className="dataset-status-box">
-            <div className="status-indicator-dot" />
-            <span className="status-title">MoRTH Baseline Active</span>
+            <div className={`status-indicator-dot ${currentSource?.isVerified ? 'dot-verified' : ''}`} />
+            <div className="status-text-stack">
+              <span className="status-title">
+                {currentSource?.isCustom ? 'Custom Verified Dataset' : 'MoRTH Baseline Active'}
+              </span>
+              <span className="status-subtitle">
+                {currentSource?.isCustom ? currentSource.name : 'Demonstration Data'}
+              </span>
+            </div>
           </div>
         </div>
       </aside>

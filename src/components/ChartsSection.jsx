@@ -93,7 +93,7 @@ export default function ChartsSection({
 
         <div className="card chart-card">
           <div className="chart-header">
-            <h3 className="chart-title">Weather Distribution</h3>
+            <h3 className="chart-title">Recorded Weather Conditions</h3>
           </div>
           <div className="chart-container">
             <ResponsiveContainer width="100%" height="100%">

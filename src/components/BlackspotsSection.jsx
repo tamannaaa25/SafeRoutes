@@ -1,4 +1,5 @@
 import React from 'react';
+import { Info } from 'lucide-react';
 
 export default function BlackspotsSection({ accidents = [] }) {
   const locationStats = React.useMemo(() => {
@@ -29,7 +30,15 @@ export default function BlackspotsSection({ accidents = [] }) {
   return (
     <section id="blackspots" className="blackspots-section">
       <div className="section-header">
-        <h2 className="section-title">Priority Blackspot Corridors</h2>
+        <div>
+          <h2 className="section-title">Priority High-Frequency Corridors</h2>
+          <div className="morth-disclaimer-note">
+            <Info size={13} className="disclaimer-icon" />
+            <span>
+              Empirical incident frequency within active dataset. Official MoRTH blackspot designation requires formal engineering audit (≥5 fatal/grievous crashes within 500m over 3 years).
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="blackspots-grid">
@@ -44,7 +53,7 @@ export default function BlackspotsSection({ accidents = [] }) {
                 <div className="blackspot-card-header">
                   <span className="blackspot-rank">#{index + 1}</span>
                   <span className={`risk-tag ${item.fatalities > 0 ? 'risk-tag-critical' : 'risk-tag-high'}`}>
-                    {item.fatalities > 0 ? 'Critical' : 'High Risk'}
+                    {item.fatalities > 0 ? 'Critical Casualties' : 'High Frequency'}
                   </span>
                 </div>
 
@@ -81,7 +90,7 @@ export default function BlackspotsSection({ accidents = [] }) {
           })
         ) : (
           <div className="card empty-state-box">
-            No blackspot data available for the selected filters.
+            No incident data available for the selected filters.
           </div>
         )}
       </div>

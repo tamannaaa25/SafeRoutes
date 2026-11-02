@@ -7,7 +7,7 @@ import {
   RotateCcw,
   Upload,
 } from 'lucide-react';
-import { normalizeCsvRecord } from '../utils/analytics';
+import { validateAndCleanDataset } from '../utils/dataValidation';
 
 export default function HeaderActionBar({
   severityFilter,
@@ -18,7 +18,7 @@ export default function HeaderActionBar({
   filteredCount,
   totalCount,
   currentSource,
-  onDataLoaded,
+  onInitiateValidation,
   onResetSample,
 }) {
   const fileInputRef = useRef(null);
@@ -39,16 +39,15 @@ export default function HeaderActionBar({
             return;
           }
 
-          const parsedRecords = results.data
-            .filter((row) => Object.values(row).some((val) => val && String(val).trim() !== ''))
-            .map((row, idx) => normalizeCsvRecord(row, idx));
+          const validationResult = validateAndCleanDataset(results.data);
 
-          if (parsedRecords.length === 0) {
-            alert('No valid accident records found in the uploaded file.');
+          if (validationResult.totalRecords === 0) {
+            alert('No valid record rows found in the uploaded CSV file.');
             return;
           }
 
-          onDataLoaded(parsedRecords, file.name);
+          onInitiateValidation(validationResult, file.name);
+
           if (fileInputRef.current) {
             fileInputRef.current.value = '';
           }
@@ -90,7 +89,9 @@ export default function HeaderActionBar({
             <span className="breadcrumb-active">Chandigarh Analytics</span>
             <span className="breadcrumb-separator">/</span>
             <span className={`dataset-status-tag ${currentSource.isCustom ? 'tag-custom' : ''}`}>
-              {currentSource.isCustom ? currentSource.name : 'CTP Baseline'} ({totalCount} recs)
+              {currentSource.isCustom
+                ? `${currentSource.name} (Verified)`
+                : 'CTP Baseline (Demo)'} ({totalCount} recs)
             </span>
             {currentSource.isCustom && (
               <button
@@ -98,7 +99,7 @@ export default function HeaderActionBar({
                 onClick={onResetSample}
                 title="Reset to CTP baseline dataset"
               >
-                Reset
+                Reset Baseline
               </button>
             )}
           </div>
@@ -136,7 +137,7 @@ export default function HeaderActionBar({
         <button
           className="btn-action btn-action-subtle"
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
-          title="Import CSV dataset to analyze"
+          title="Import CSV dataset to validate and analyze"
         >
           <Upload size={14} strokeWidth={1.75} />
           <span>Import CSV</span>

@@ -148,72 +148,48 @@ export function getTopAccidentLocations(accidents = [], limit = 5) {
     .slice(0, limit);
 }
 
+import { standardizeWeather, standardizeSeverity, validateDate, getFieldFromRow } from './dataValidation';
+
 export function normalizeCsvRecord(rawRow, index) {
-  const getVal = (possibleKeys, fallback = '') => {
-    for (const key of possibleKeys) {
-      if (rawRow[key] !== undefined && rawRow[key] !== null && String(rawRow[key]).trim() !== '') {
-        return String(rawRow[key]).trim();
-      }
-    }
-    const rowKeys = Object.keys(rawRow);
-    for (const key of possibleKeys) {
-      const match = rowKeys.find(
-        (k) => k.toLowerCase().replace(/[^a-z0-9]/g, '') === key.toLowerCase().replace(/[^a-z0-9]/g, '')
-      );
-      if (match && rawRow[match] !== undefined && rawRow[match] !== null) {
-        return String(rawRow[match]).trim();
-      }
-    }
-    return fallback;
-  };
+  const rawDate = getFieldFromRow(rawRow, [
+    'Accident Date', 'accidentDate', 'Date of Crash', 'Crash Date', 'Date', 'date', 'CRASH_DATE'
+  ]);
+  const dateRes = validateDate(rawDate);
+  const date = dateRes.isValid ? dateRes.formatted : (rawDate || '');
 
-  let date = getVal(
-    ['Accident Date', 'accidentDate', 'Date of Crash', 'Crash Date', 'Date', 'date', 'CRASH_DATE'],
-    '2024-01-01'
-  );
-  if (date.includes(' ')) {
-    date = date.split(' ')[0];
-  }
+  const location = getFieldFromRow(rawRow, [
+    'Location', 'location', 'Black Spot', 'Blackspot', 'Chowk', 'Light Point', 'Intersection', 'Place of Occurrence', 'Road Name'
+  ]) || 'Unspecified Location';
 
-  const location = getVal(
-    ['Location', 'location', 'Black Spot', 'Blackspot', 'Chowk', 'Light Point', 'Intersection', 'Place of Occurrence', 'Road Name'],
-    'Tribune Chowk (Dakshin Marg)'
-  );
+  const sector = getFieldFromRow(rawRow, [
+    'Sector', 'sector', 'Area', 'Police Station', 'PS', 'Zone'
+  ]) || '';
 
-  const sector = getVal(
-    ['Sector', 'sector', 'Area', 'Police Station', 'PS', 'Zone'],
-    'Chandigarh'
-  );
+  const corridor = getFieldFromRow(rawRow, [
+    'Corridor', 'corridor', 'Arterial Road', 'Highway', 'Road'
+  ]) || '';
 
-  const corridor = getVal(
-    ['Corridor', 'corridor', 'Arterial Road', 'Highway', 'Road'],
-    ''
-  );
+  const rawWeather = getFieldFromRow(rawRow, [
+    'Weather Condition', 'weatherCondition', 'Weather', 'weather', 'Atmospheric Condition'
+  ]);
+  const weatherCondition = standardizeWeather(rawWeather).standardized;
 
-  const weatherCondition = getVal(
-    ['Weather Condition', 'weatherCondition', 'Weather', 'weather', 'Atmospheric Condition'],
-    'Clear'
-  );
+  const roadCondition = getFieldFromRow(rawRow, [
+    'Road Condition', 'roadCondition', 'Road Surface', 'Road'
+  ]) || 'Unspecified';
 
-  const roadCondition = getVal(
-    ['Road Condition', 'roadCondition', 'Road Surface', 'Road Condition', 'Road'],
-    'Dry'
-  );
+  const rawSeverity = getFieldFromRow(rawRow, [
+    'Severity', 'severity', 'Crash Severity', 'Injury Severity', 'Accident Classification'
+  ]);
+  const severity = standardizeSeverity(rawSeverity).standardized;
 
-  let severity = getVal(
-    ['Severity', 'severity', 'Crash Severity', 'Injury Severity', 'Accident Classification'],
-    'Minor'
-  );
-  if (/fatal|death|killed/i.test(severity)) severity = 'Fatal';
-  else if (/severe|grievous|major|incapacitating/i.test(severity)) severity = 'Severe';
-  else if (/moderate|simple|medium/i.test(severity)) severity = 'Moderate';
-  else severity = 'Minor';
+  const injuriesRaw = getFieldFromRow(rawRow, ['Injuries', 'injuries', 'Injured', 'Total Injuries', 'Persons Injured']);
+  const injuriesNum = parseInt(injuriesRaw, 10);
+  const injuries = !isNaN(injuriesNum) && injuriesNum >= 0 ? injuriesNum : 0;
 
-  const injuriesRaw = getVal(['Injuries', 'injuries', 'Injured', 'Total Injuries', 'Persons Injured'], '0');
-  const injuries = parseInt(injuriesRaw, 10) || 0;
-
-  const fatalitiesRaw = getVal(['Fatalities', 'fatalities', 'Killed', 'Deaths', 'Total Fatalities', 'Persons Killed'], '0');
-  const fatalities = parseInt(fatalitiesRaw, 10) || (severity === 'Fatal' ? 1 : 0);
+  const fatalitiesRaw = getFieldFromRow(rawRow, ['Fatalities', 'fatalities', 'Killed', 'Deaths', 'Total Fatalities', 'Persons Killed']);
+  const fatalitiesNum = parseInt(fatalitiesRaw, 10);
+  const fatalities = !isNaN(fatalitiesNum) && fatalitiesNum >= 0 ? fatalitiesNum : 0;
 
   return {
     id: rawRow.id || `chd-csv-${index + 1}`,

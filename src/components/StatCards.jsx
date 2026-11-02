@@ -45,7 +45,7 @@ export default function StatCards({ stats }) {
 
       <div className="card stat-card stat-card-blackspot">
         <div className="stat-header">
-          <span className="stat-label">Top Blackspot Corridor</span>
+          <span className="stat-label">Top Incident Corridor</span>
         </div>
         <div className="stat-value-location" title={topLocation}>
           {topLocation}
@@ -53,7 +53,7 @@ export default function StatCards({ stats }) {
         <div className="stat-meta">
           {topLocationCount > 0 ? (
             <span>
-              <strong>{topLocationCount} crashes</strong> 
+              <strong>{topLocationCount} crashes</strong> recorded
             </span>
           ) : (
             <span>No location data available</span>

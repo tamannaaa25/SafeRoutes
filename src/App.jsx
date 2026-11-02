@@ -6,6 +6,7 @@ import StatCards from './components/StatCards';
 import ChartsSection from './components/ChartsSection';
 import BlackspotsSection from './components/BlackspotsSection';
 import AccidentTable from './components/AccidentTable';
+import DataValidationModal from './components/DataValidationModal';
 import { sampleAccidents } from './data/sampleAccidents';
 import {
   calculateOverviewStats,
@@ -20,9 +21,16 @@ export default function App() {
   const [dataSource, setDataSource] = useState({
     name: 'CTP Baseline 2024',
     isCustom: false,
+    isVerified: false,
   });
   const [activeNav, setActiveNav] = useState('overview');
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  const [validationModal, setValidationModal] = useState({
+    isOpen: false,
+    fileName: '',
+    result: null,
+  });
 
   const [severityFilter, setSeverityFilter] = useState('All');
 
@@ -45,11 +53,35 @@ export default function App() {
     setSeverityFilter('All');
   };
 
-  const handleDataLoaded = (parsedRecords, filename) => {
-    setAccidents(parsedRecords);
+  const handleInitiateValidation = (validationResult, fileName) => {
+    setValidationModal({
+      isOpen: true,
+      fileName,
+      result: validationResult,
+    });
+  };
+
+  const handleCloseValidationModal = () => {
+    setValidationModal({
+      isOpen: false,
+      fileName: '',
+      result: null,
+    });
+  };
+
+  const handleConfirmImport = (approvedRecords, importStats) => {
+    setAccidents(approvedRecords);
     setDataSource({
-      name: filename,
+      name: validationModal.fileName,
       isCustom: true,
+      isVerified: true,
+      totalUploaded: importStats.totalUploaded,
+      excludedCount: importStats.excludedCount,
+    });
+    setValidationModal({
+      isOpen: false,
+      fileName: '',
+      result: null,
     });
   };
 
@@ -58,6 +90,7 @@ export default function App() {
     setDataSource({
       name: 'CTP Baseline 2024',
       isCustom: false,
+      isVerified: false,
     });
   };
 
@@ -98,6 +131,7 @@ export default function App() {
         onNavSelect={setActiveNav}
         isOpen={isMobileSidebarOpen}
         onClose={() => setIsMobileSidebarOpen(false)}
+        currentSource={dataSource}
       />
 
       <div className="main-wrapper">
@@ -110,7 +144,7 @@ export default function App() {
           filteredCount={filteredAccidents.length}
           totalCount={accidents.length}
           currentSource={dataSource}
-          onDataLoaded={handleDataLoaded}
+          onInitiateValidation={handleInitiateValidation}
           onResetSample={handleResetSample}
         />
 
@@ -128,18 +162,15 @@ export default function App() {
 
           <AccidentTable records={filteredAccidents} />
         </main>
-
-        <footer className="footer">
-          <div className="footer-content">
-            <div>
-              <strong>SafeRoutes</strong> — Chandigarh Road Safety Analytics Platform
-            </div>
-            <div style={{ color: '#71717a', fontSize: '0.75rem' }}>
-              MoRTH Incident Protocol / Client-Side Analytics Engine
-            </div>
-          </div>
-        </footer>
       </div>
+
+      <DataValidationModal
+        isOpen={validationModal.isOpen}
+        fileName={validationModal.fileName}
+        validationResult={validationModal.result}
+        onClose={handleCloseValidationModal}
+        onConfirmImport={handleConfirmImport}
+      />
     </div>
   );
 }
