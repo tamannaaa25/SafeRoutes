@@ -1,0 +1,7 @@
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+VAL-001,2024-01-10,08:30:00,Tribune Chowk (Purv Marg),30.7058,76.7905,High,Clear,Dry,2,1,0,Side Impact,Daylight
+VAL-002,2024-01-15,14:00:00,Transport Chowk (Madhya Marg),30.7258,76.8042,Medium,Clear,Dry,1,0,0,Rear End,Daylight
+VAL-003,2024-01-20,22:45:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,Fatal,Dense Fog,Wet,2,2,1,Head On,Night (Streetlights)
+VAL-004,2024-02-05,11:20:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Low,Clear,Dry,1,0,0,Minor Scratch,Daylight
+VAL-005,2024-02-18,17:15:00,Housing Board Light Point (Sector 13),30.7180,76.8320,High,Rain,Wet,2,3,0,Side Impact,Dusk
+

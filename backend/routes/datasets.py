@@ -8,22 +8,24 @@ from sqlalchemy import desc
 
 try:
     from database import get_db
-    from models import Dataset, Accident, DataQualityIssue
+    from models import Dataset, Accident, DataQualityIssue, InvestigationRecommendation
     from schemas import DatasetResponse
     from processing.data_loader import load_csv_data
     from processing.data_cleaner import clean_dataset_dataframe
     from processing.data_validator import validate_row
     from processing.duplicate_detector import detect_duplicates_in_records
     from processing.quality_report import generate_data_quality_report
+    from processing.recommendation_engine import generate_deterministic_recommendations
 except ImportError:
     from backend.database import get_db
-    from backend.models import Dataset, Accident, DataQualityIssue
+    from backend.models import Dataset, Accident, DataQualityIssue, InvestigationRecommendation
     from backend.schemas import DatasetResponse
     from backend.processing.data_loader import load_csv_data
     from backend.processing.data_cleaner import clean_dataset_dataframe
     from backend.processing.data_validator import validate_row
     from backend.processing.duplicate_detector import detect_duplicates_in_records
     from backend.processing.quality_report import generate_data_quality_report
+    from backend.processing.recommendation_engine import generate_deterministic_recommendations
 
 router = APIRouter(prefix="/datasets", tags=["Datasets"])
 
@@ -166,95 +168,141 @@ async def upload_csv_dataset(
 
     name = dataset_name or file.filename.replace(".csv", "").replace("_", " ").title()
 
-    df_raw, df_standard = load_csv_data(content)
-    if df_standard.empty:
-        raise HTTPException(status_code=400, detail="CSV file contained no parseable records")
+    try:
+        df_raw, df_standard = load_csv_data(content)
+        if df_standard.empty:
+            raise HTTPException(status_code=400, detail="CSV file contained no parseable records")
 
-    df_clean = clean_dataset_dataframe(df_standard)
+        df_clean = clean_dataset_dataframe(df_standard)
 
-    records = []
-    issues_list = []
-    for idx, (_, row) in enumerate(df_clean.iterrows()):
-        is_val, rec, issues = validate_row(row, idx)
-        records.append(rec)
-        issues_list.append(issues)
+        records = []
+        issues_list = []
+        for idx, (_, row) in enumerate(df_clean.iterrows()):
+            is_val, rec, issues = validate_row(row, idx)
+            records.append(rec)
+            issues_list.append(issues)
 
-    records, dup_count = detect_duplicates_in_records(records, issues_list)
-    quality_summary = generate_data_quality_report(len(records), records, issues_list, df_clean)
+        records, dup_count = detect_duplicates_in_records(records, issues_list)
+        quality_summary = generate_data_quality_report(len(records), records, issues_list, df_clean)
 
-    dataset = Dataset(
-        dataset_name=name,
-        original_filename=file.filename,
-        upload_date=datetime.utcnow(),
-        total_records=quality_summary["total_records"],
-        valid_records=quality_summary["valid_records"],
-        invalid_records=quality_summary["invalid_records"],
-        duplicate_records=quality_summary["duplicate_records"],
-        processing_status="completed"
-    )
-    db.add(dataset)
-    db.flush()
+        # Prevent duplicate dataset accumulation if re-uploading the same file
+        existing_dataset = db.query(Dataset).filter(
+            (Dataset.original_filename == file.filename) | (Dataset.dataset_name == name)
+        ).first()
+        if existing_dataset:
+            db.query(InvestigationRecommendation).filter(InvestigationRecommendation.dataset_id == existing_dataset.id).delete()
+            db.delete(existing_dataset)
+            db.flush()
 
-    accident_models = []
-    rec_id_to_model = {}
-
-    for r in records:
-        acc = Accident(
-            dataset_id=dataset.id,
-            source_record_id=r["source_record_id"],
-            accident_date=r["accident_date"],
-            accident_time=r["accident_time"],
-            location=r["location"],
-            latitude=r["latitude"],
-            longitude=r["longitude"],
-            severity=r["severity"],
-            weather_condition=r["weather_condition"],
-            road_condition=r["road_condition"],
-            number_of_vehicles=r["number_of_vehicles"],
-            injuries=r["injuries"],
-            fatalities=r["fatalities"],
-            is_valid=r["is_valid"],
-            is_duplicate=r["is_duplicate"]
+        dataset = Dataset(
+            dataset_name=name,
+            original_filename=file.filename,
+            upload_date=datetime.utcnow(),
+            total_records=quality_summary["total_records"],
+            valid_records=quality_summary["valid_records"],
+            invalid_records=quality_summary["invalid_records"],
+            duplicate_records=quality_summary["duplicate_records"],
+            processing_status="completed"
         )
-        accident_models.append(acc)
-        rec_id_to_model[r["source_record_id"]] = acc
+        db.add(dataset)
+        db.flush()
 
-    db.add_all(accident_models)
-    db.flush()
+        def clean_coord(val):
+            if val is None:
+                return None
+            try:
+                f = float(val)
+                return None if math.isnan(f) else f
+            except (ValueError, TypeError):
+                return None
 
-    issue_models = []
-    for idx, issues in enumerate(issues_list):
-        rec_id = records[idx]["source_record_id"]
-        acc_obj = rec_id_to_model.get(rec_id)
-        for iss in issues:
-            issue_models.append(DataQualityIssue(
+        accident_models = []
+        rec_id_to_model = {}
+
+        for idx, r in enumerate(records):
+            source_id = str(r.get("source_record_id") or f"rec_{idx + 1}")
+            loc_val = str(r.get("location") or "Unknown Location").strip()
+            sev_val = str(r.get("severity") or "Unknown").strip()
+
+            acc = Accident(
                 dataset_id=dataset.id,
-                accident_id=acc_obj.id if acc_obj else None,
-                issue_type=iss.get("issue_type", "OTHER"),
-                field_name=iss.get("field_name", "unknown"),
-                issue_description=iss.get("issue_description", ""),
-                detected_value=str(iss.get("detected_value", ""))[:500] if iss.get("detected_value") is not None else None
+                source_record_id=source_id,
+                accident_date=r.get("accident_date"),
+                accident_time=r.get("accident_time"),
+                location=loc_val if loc_val else "Unknown Location",
+                latitude=clean_coord(r.get("latitude")),
+                longitude=clean_coord(r.get("longitude")),
+                severity=sev_val if sev_val else "Unknown",
+                weather_condition=str(r.get("weather_condition")) if r.get("weather_condition") else None,
+                road_condition=str(r.get("road_condition")) if r.get("road_condition") else None,
+                number_of_vehicles=int(r.get("number_of_vehicles", 1) or 1),
+                injuries=int(r.get("injuries", 0) or 0),
+                fatalities=int(r.get("fatalities", 0) or 0),
+                is_valid=bool(r.get("is_valid", True)),
+                is_duplicate=bool(r.get("is_duplicate", False))
+            )
+            accident_models.append(acc)
+            rec_id_to_model[source_id] = acc
+
+        db.add_all(accident_models)
+        db.flush()
+
+        issue_models = []
+        for idx, issues in enumerate(issues_list):
+            rec_id = str(records[idx].get("source_record_id") or f"rec_{idx + 1}")
+            acc_obj = rec_id_to_model.get(rec_id)
+            for iss in issues:
+                issue_models.append(DataQualityIssue(
+                    dataset_id=dataset.id,
+                    accident_id=acc_obj.id if acc_obj else None,
+                    issue_type=iss.get("issue_type", "OTHER"),
+                    field_name=iss.get("field_name", "unknown"),
+                    issue_description=iss.get("issue_description", ""),
+                    detected_value=str(iss.get("detected_value", ""))[:500] if iss.get("detected_value") is not None else None
+                ))
+
+        if issue_models:
+            db.add_all(issue_models)
+
+        # Generate deterministic recommendations for the imported dataset
+        valid_accident_models = [a for a in accident_models if a.is_valid]
+        recs = generate_deterministic_recommendations(valid_accident_models if valid_accident_models else accident_models)
+        rec_models = []
+        for rec_item in recs:
+            rec_models.append(InvestigationRecommendation(
+                dataset_id=dataset.id,
+                location=rec_item.get("location") or "Unknown Location",
+                recommendation=rec_item.get("recommendation") or "",
+                priority=rec_item.get("priority") or "Medium",
+                evidence=rec_item.get("evidence") or ""
             ))
+        if rec_models:
+            db.add_all(rec_models)
 
-    db.add_all(issue_models)
-    db.commit()
-    db.refresh(dataset)
+        db.commit()
+        db.refresh(dataset)
 
-    return {
-        "status": "success",
-        "dataset": {
-            "id": dataset.id,
-            "dataset_name": dataset.dataset_name,
-            "original_filename": dataset.original_filename,
-            "upload_date": dataset.upload_date.isoformat(),
-            "total_records": dataset.total_records,
-            "valid_records": dataset.valid_records,
-            "invalid_records": dataset.invalid_records,
-            "duplicate_records": dataset.duplicate_records,
-            "quality_score_pct": quality_summary["quality_percentage"]
-        },
-        "quality_summary": quality_summary
-    }
+        return {
+            "status": "success",
+            "dataset": {
+                "id": dataset.id,
+                "dataset_name": dataset.dataset_name,
+                "original_filename": dataset.original_filename,
+                "upload_date": dataset.upload_date.isoformat(),
+                "total_records": dataset.total_records,
+                "valid_records": dataset.valid_records,
+                "invalid_records": dataset.invalid_records,
+                "duplicate_records": dataset.duplicate_records,
+                "quality_score_pct": quality_summary["quality_percentage"]
+            },
+            "quality_summary": quality_summary
+        }
+    except HTTPException:
+        db.rollback()
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to process and store dataset: {str(e)}")
 
 @router.delete("/{dataset_id}")
 def delete_dataset(dataset_id: int, db: Session = Depends(get_db)):

@@ -30,10 +30,10 @@ export default function DataValidationModal({
   useEffect(() => {
     if (validationResult && validationResult.processedRecords) {
       setRecordsState(validationResult.processedRecords);
+    } else {
+      setRecordsState([]);
     }
   }, [validationResult]);
-
-  if (!isOpen || !validationResult) return null;
 
   const summary = useMemo(() => {
     const total = recordsState.length;
@@ -67,8 +67,8 @@ export default function DataValidationModal({
         const sec = (item.cleaned?.sector || '').toLowerCase();
         const weather = (item.cleaned?.weatherCondition || '').toLowerCase();
         const severity = (item.cleaned?.severity || '').toLowerCase();
-        const rowStr = String(item.rowNumber);
-        const issuesStr = item.issues.map((i) => i.message).join(' ').toLowerCase();
+        const rowStr = String(item.rowNumber || '');
+        const issuesStr = Array.isArray(item.issues) ? item.issues.map((i) => i.message || '').join(' ').toLowerCase() : '';
 
         return (
           loc.includes(q) ||
@@ -82,6 +82,8 @@ export default function DataValidationModal({
       return true;
     });
   }, [recordsState, activeTab, searchTerm]);
+
+  if (!isOpen || !validationResult) return null;
 
   const handleToggleRecord = (id) => {
     setRecordsState((prev) =>
@@ -354,22 +356,22 @@ export default function DataValidationModal({
                             <span className="clean-label">No issues detected</span>
                           )}
                         </td>
-                        <td className="cell-date">{item.cleaned.date || '—'}</td>
+                        <td className="cell-date">{item?.cleaned?.date || '—'}</td>
                         <td>
-                          <div className="val-cell-primary">{item.cleaned.location}</div>
-                          {(item.cleaned.sector !== 'Unknown' || item.cleaned.corridor !== 'Unknown') && (
+                          <div className="val-cell-primary">{item?.cleaned?.location || 'Unknown Location'}</div>
+                          {((item?.cleaned?.sector && item.cleaned.sector !== 'Unknown') || (item?.cleaned?.corridor && item.cleaned.corridor !== 'Unknown')) && (
                             <div className="val-cell-secondary">
-                              {[item.cleaned.sector, item.cleaned.corridor].filter((v) => v && v !== 'Unknown').join(' • ')}
+                              {[item?.cleaned?.sector, item?.cleaned?.corridor].filter((v) => v && v !== 'Unknown').join(' • ')}
                             </div>
                           )}
                         </td>
                         <td>
-                          <span className={`badge badge-${item.cleaned.severity.toLowerCase()}`}>
-                            {item.cleaned.severity}
+                          <span className={`badge badge-${String(item?.cleaned?.severity || 'unknown').toLowerCase()}`}>
+                            {item?.cleaned?.severity || 'Unknown'}
                           </span>
                         </td>
                         <td className="val-casualties">
-                          {item.cleaned.injuries} inj / {item.cleaned.fatalities} fat
+                          {item?.cleaned?.injuries ?? 0} inj / {item?.cleaned?.fatalities ?? 0} fat
                         </td>
                         <td style={{ textAlign: 'right' }}>
                           <button

@@ -1,7 +1,8 @@
 import React from 'react';
 import { TrendingDown, TrendingUp, AlertCircle } from 'lucide-react';
 
-export default function StatCards({ stats }) {
+export default function StatCards({ stats = {} }) {
+  const safeStats = stats || {};
   const {
     totalAccidents = 0,
     totalInjuries = 0,
@@ -9,7 +10,7 @@ export default function StatCards({ stats }) {
     topLocation = 'N/A',
     topLocationCount = 0,
     uniqueLocationsCount = 0,
-  } = stats;
+  } = safeStats;
 
   return (
     <section id="overview" className="stat-cards-grid">
@@ -17,7 +18,7 @@ export default function StatCards({ stats }) {
         <div className="stat-header">
           <span className="stat-label">Total Accidents</span>
         </div>
-        <div className="stat-value">{totalAccidents.toLocaleString()}</div>
+        <div className="stat-value">{(totalAccidents || 0).toLocaleString()}</div>
         <div className="stat-meta">
           <span>vs. previous monitoring cycle</span>
         </div>
@@ -27,7 +28,7 @@ export default function StatCards({ stats }) {
         <div className="stat-header">
           <span className="stat-label">Total Injuries</span>
         </div>
-        <div className="stat-value">{totalInjuries.toLocaleString()}</div>
+        <div className="stat-value">{(totalInjuries || 0).toLocaleString()}</div>
         <div className="stat-meta">
           <span>Non-fatal casualties recorded</span>
         </div>
@@ -37,7 +38,7 @@ export default function StatCards({ stats }) {
         <div className="stat-header">
           <span className="stat-label">Total Fatalities</span>
         </div>
-        <div className="stat-value">{totalFatalities.toLocaleString()}</div>
+        <div className="stat-value">{(totalFatalities || 0).toLocaleString()}</div>
         <div className="stat-meta">
           <span>Fatal casualties recorded</span>
         </div>
@@ -47,8 +48,8 @@ export default function StatCards({ stats }) {
         <div className="stat-header">
           <span className="stat-label">Top Incident Corridor</span>
         </div>
-        <div className="stat-value-location" title={topLocation}>
-          {topLocation}
+        <div className="stat-value-location" title={topLocation || 'None Recorded'}>
+          {topLocation || 'None Recorded'}
         </div>
         <div className="stat-meta">
           {topLocationCount > 0 ? (

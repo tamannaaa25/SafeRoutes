@@ -60,17 +60,26 @@ export default function ChartsSection({
   weatherData = [],
   severityData = [],
 }) {
-  const monthTotal = monthlyData.reduce((sum, d) => sum + (d.accidents || 0), 0);
-  const peakMonth = [...monthlyData].sort((a, b) => b.accidents - a.accidents)[0];
+  const safeMonthly = Array.isArray(monthlyData) ? monthlyData : [];
+  const safeDayOfWeek = Array.isArray(dayOfWeekData) ? dayOfWeekData : [];
+  const safeWeather = (Array.isArray(weatherData) ? weatherData : []).filter(
+    (d) => d && typeof d.value === 'number' && d.value > 0
+  );
+  const safeSeverity = (Array.isArray(severityData) ? severityData : []).filter(
+    (d) => d && typeof d.value === 'number' && d.value > 0
+  );
 
-  const dayTotal = dayOfWeekData.reduce((sum, d) => sum + (d.accidents || 0), 0);
-  const peakDay = [...dayOfWeekData].sort((a, b) => b.accidents - a.accidents)[0];
+  const monthTotal = safeMonthly.reduce((sum, d) => sum + (d?.accidents || 0), 0);
+  const peakMonth = safeMonthly.length > 0 ? [...safeMonthly].sort((a, b) => (b?.accidents || 0) - (a?.accidents || 0))[0] : null;
 
-  const weatherTotal = weatherData.reduce((sum, d) => sum + (d.value || 0), 0);
-  const topWeather = [...weatherData].sort((a, b) => b.value - a.value)[0];
+  const dayTotal = safeDayOfWeek.reduce((sum, d) => sum + (d?.accidents || 0), 0);
+  const peakDay = safeDayOfWeek.length > 0 ? [...safeDayOfWeek].sort((a, b) => (b?.accidents || 0) - (a?.accidents || 0))[0] : null;
 
-  const severityTotal = severityData.reduce((sum, d) => sum + (d.value || 0), 0);
-  const topSeverity = [...severityData].sort((a, b) => b.value - a.value)[0];
+  const weatherTotal = safeWeather.reduce((sum, d) => sum + (d?.value || 0), 0);
+  const topWeather = safeWeather.length > 0 ? [...safeWeather].sort((a, b) => (b?.value || 0) - (a?.value || 0))[0] : null;
+
+  const severityTotal = safeSeverity.reduce((sum, d) => sum + (d?.value || 0), 0);
+  const topSeverity = safeSeverity.length > 0 ? [...safeSeverity].sort((a, b) => (b?.value || 0) - (a?.value || 0))[0] : null;
 
   return (
     <section id="analytics" className="charts-section">
@@ -80,15 +89,21 @@ export default function ChartsSection({
             <h3 className="chart-title">Accidents by Month</h3>
           </div>
           <div className="chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={monthlyData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
-                <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
-                <Tooltip content={<CustomTooltip unit="crashes" />} />
-                <Bar dataKey="accidents" fill="#2563eb" radius={[3, 3, 0, 0]} maxBarSize={32} />
-              </BarChart>
-            </ResponsiveContainer>
+            {monthTotal === 0 ? (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '13px' }}>
+                No monthly accident records
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={safeMonthly} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                  <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
+                  <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
+                  <Tooltip content={<CustomTooltip unit="crashes" />} />
+                  <Bar dataKey="accidents" fill="#2563eb" radius={[3, 3, 0, 0]} maxBarSize={32} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </div>
           <div className="chart-interpretation-box">
             <span className="interp-scope">Scope: {monthTotal} records</span>
@@ -103,15 +118,21 @@ export default function ChartsSection({
             <h3 className="chart-title">Accidents by Day of Week</h3>
           </div>
           <div className="chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={dayOfWeekData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="day" tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
-                <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
-                <Tooltip content={<CustomTooltip unit="crashes" />} />
-                <Bar dataKey="accidents" fill="#475569" radius={[3, 3, 0, 0]} maxBarSize={32} />
-              </BarChart>
-            </ResponsiveContainer>
+            {dayTotal === 0 ? (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '13px' }}>
+                No day-of-week records
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={safeDayOfWeek} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                  <XAxis dataKey="day" tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
+                  <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#64748b' }} axisLine={{ stroke: '#e2e8f0' }} tickLine={false} />
+                  <Tooltip content={<CustomTooltip unit="crashes" />} />
+                  <Bar dataKey="accidents" fill="#475569" radius={[3, 3, 0, 0]} maxBarSize={32} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </div>
           <div className="chart-interpretation-box">
             <span className="interp-scope">Scope: {dayTotal} records</span>
@@ -126,33 +147,39 @@ export default function ChartsSection({
             <h3 className="chart-title">Recorded Weather Conditions</h3>
           </div>
           <div className="chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={weatherData}
-                  cx="50%"
-                  cy="46%"
-                  innerRadius={50}
-                  outerRadius={75}
-                  paddingAngle={2}
-                  dataKey="value"
-                >
-                  {weatherData.map((entry, index) => (
-                    <Cell
-                      key={`weather-cell-${index}`}
-                      fill={WEATHER_COLORS[entry.name] || DEFAULT_WEATHER_COLORS[index % DEFAULT_WEATHER_COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip unit="crashes" />} />
-                <Legend
-                  verticalAlign="bottom"
-                  height={32}
-                  iconType="circle"
-                  wrapperStyle={{ fontSize: '11px', color: '#64748b' }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            {safeWeather.length === 0 ? (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '13px' }}>
+                No recorded weather conditions
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={safeWeather}
+                    cx="50%"
+                    cy="46%"
+                    innerRadius={50}
+                    outerRadius={75}
+                    paddingAngle={2}
+                    dataKey="value"
+                  >
+                    {safeWeather.map((entry, index) => (
+                      <Cell
+                        key={`weather-cell-${index}`}
+                        fill={WEATHER_COLORS[entry.name] || DEFAULT_WEATHER_COLORS[index % DEFAULT_WEATHER_COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip unit="crashes" />} />
+                  <Legend
+                    verticalAlign="bottom"
+                    height={32}
+                    iconType="circle"
+                    wrapperStyle={{ fontSize: '11px', color: '#64748b' }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            )}
           </div>
           <div className="chart-interpretation-box">
             <span className="interp-scope">Scope: {weatherTotal} records</span>
@@ -167,33 +194,39 @@ export default function ChartsSection({
             <h3 className="chart-title">Severity Breakdown</h3>
           </div>
           <div className="chart-container">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={severityData}
-                  cx="50%"
-                  cy="46%"
-                  innerRadius={50}
-                  outerRadius={75}
-                  paddingAngle={2}
-                  dataKey="value"
-                >
-                  {severityData.map((entry) => (
-                    <Cell
-                      key={`severity-cell-${entry.name}`}
-                      fill={SEVERITY_COLORS[entry.name] || '#64748b'}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip unit="crashes" />} />
-                <Legend
-                  verticalAlign="bottom"
-                  height={32}
-                  iconType="circle"
-                  wrapperStyle={{ fontSize: '11px', color: '#64748b' }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            {safeSeverity.length === 0 ? (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8', fontSize: '13px' }}>
+                No recorded severity records
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={safeSeverity}
+                    cx="50%"
+                    cy="46%"
+                    innerRadius={50}
+                    outerRadius={75}
+                    paddingAngle={2}
+                    dataKey="value"
+                  >
+                    {safeSeverity.map((entry) => (
+                      <Cell
+                        key={`severity-cell-${entry.name}`}
+                        fill={SEVERITY_COLORS[entry.name] || '#64748b'}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<CustomTooltip unit="crashes" />} />
+                  <Legend
+                    verticalAlign="bottom"
+                    height={32}
+                    iconType="circle"
+                    wrapperStyle={{ fontSize: '11px', color: '#64748b' }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            )}
           </div>
           <div className="chart-interpretation-box">
             <span className="interp-scope">Scope: {severityTotal} records</span>

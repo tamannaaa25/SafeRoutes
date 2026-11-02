@@ -1,0 +1,17 @@
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+CHD-2024-1001,2024-01-12,08:30:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,2,0,Side Impact,Daylight
+CHD-2024-1002,2024-01-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-1002,2024-01-18,22:15:00,Piccadilly Chowk (Sector 34/35),30.7225,76.7682,Fatal,Fog,Wet,2,1,1,Head On,Night (Streetlights)
+CHD-2024-1003,2024-01-25,14:20:00,Tribune Chowk (Purv Marg),30.7058,76.7905,Medium,Clear,Dry,1,0,0,Skid,Daylight
+CHD-2024-1004,,10:15:00,Transport Chowk (Madhya Marg),30.7258,76.8042,High,Rain,Wet,2,1,0,Side Impact,Daylight
+CHD-2024-1005,2024-02-30,23:10:00,Airport Light Point (Purv Marg),30.6980,76.8010,Fatal,Dense Fog,Waterlogged,2,3,1,Head On,Darkness (No Lights)
+CHD-2024-1006,2024-02-14,09:40:00,   ,,,Medium,Cloudy,Dry,1,1,0,Pedestrian,Daylight
+CHD-2024-1007,2024-02-22,17:50:00,Housing Board Light Point (Sector 13),30.7180,76.8320,Minor,Clear,Dry,2,-1,0,Rear End,Dusk
+CHD-2024-1008,2024-03-05,11:30:00,Sector 17 Bus Stand (Jan Marg),30.7410,76.7820,Severe,Sunny,Dry,2,2,-2,Side Impact,Daylight
+CHD-2024-1009,2024-03-12,19:15:00,PGI Roundabout (Madhya Marg),45.1234,12.5678,High,Clear,Dry,1,1,0,Skid,Night (Streetlights)
+CHD-2024-1010,2024-03-18,13:00:00,Matka Chowk (Madhya Marg),30.7392,76.7780,,Haze,Dry,2,0,0,Side Impact,Daylight
+CHD-2024-1011,2024-03-24,03:30:00,Grain Market Chowk (Sector 26),30.7290,76.8110,Extreme_Hazard,UNKNOWN_WEATHER,Slippery,3,2,1,Multi-Vehicle,Darkness (No Lights)
+CHD-2024-1001,2024-01-12,08:50:00,Hallomajra Light Point (Dakshin Marg),30.7022,76.7928,High,Clear,Dry,2,1,0,Rear End,Daylight
+CHD-2024-1012,2024-04-02,15:45:00,Kisan Bhawan Chowk (Sector 35),,,Medium,Clear,Dry,-3,1,0,Side Impact,Daylight
+CHD-2024-1013,2024-04-10,20:30:00,Sector 43 ISBT Light Point (Himalaya Marg),30.7240,76.7450,Fatal,Clear,Dry,2,0,2,Pedestrian,Night (Streetlights)
+

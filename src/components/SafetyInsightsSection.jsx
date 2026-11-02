@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Lightbulb,
   MapPin,
@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { getAiSafetyInsights } from '../services/api';
 
-export default function SafetyInsightsSection({ insights }) {
+export default function SafetyInsightsSection({ insights, datasetId = null, severityFilter = 'All' }) {
   const {
     hasData = false,
     totalCount = 0,
@@ -27,11 +27,16 @@ export default function SafetyInsightsSection({ insights }) {
   const [aiError, setAiError] = useState('');
   const [isAiExpanded, setIsAiExpanded] = useState(true);
 
+  useEffect(() => {
+    setAiInsights(null);
+    setAiError('');
+  }, [datasetId, severityFilter]);
+
   const handleFetchAiInsights = async () => {
     setIsLoadingAi(true);
     setAiError('');
     try {
-      const data = await getAiSafetyInsights();
+      const data = await getAiSafetyInsights(datasetId, severityFilter);
       if (data && data.success === false) {
         setAiError(data.error || 'Gemini API is not configured. Please set GEMINI_API_KEY in backend/.env.');
         setAiInsights(null);

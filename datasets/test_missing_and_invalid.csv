@@ -1,0 +1,5 @@
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+INV-001,,12:00:00,,,,,Dry,-2,-1,-1,,
+INV-002,2024-99-99,99:99:99,Sector 999 Out of Bounds,120.0,200.0,UNKNOWN,UNKNOWN,UNKNOWN,-1,-5,-3,Unknown,Unknown
+INV-003,invalid-date,invalid-time,   ,,,Corrupted,Stormy,Ice,0,N/A,N/A,,
+

@@ -256,6 +256,32 @@ export function processCsvDataset(rawRows = []) {
 
   const validRows = rawRows.filter((r) => r && Object.values(r).some((v) => v && String(v).trim() !== ''));
 
+  const knownKeys = [
+    'date', 'accident_date', 'accidentdate', 'crash_date', 'crashdate', 'date_of_crash', 'incident_date', 'incidentdate',
+    'time', 'accident_time', 'accidenttime', 'crash_time', 'time_of_crash', 'incident_time',
+    'location', 'accident_location', 'accidentlocation', 'black_spot', 'blackspot', 'place_of_occurrence', 'chowk', 'intersection', 'light_point', 'road_name',
+    'sector', 'area', 'zone', 'police_station', 'ps',
+    'corridor', 'arterial_road', 'highway', 'road',
+    'weather', 'weather_condition', 'weathercondition', 'atmospheric_condition',
+    'road_condition', 'roadcondition', 'surface_condition', 'road_surface', 'surface',
+    'severity', 'crash_severity', 'accident_severity', 'injury_severity', 'severity_level',
+    'injuries', 'injury_count', 'injured', 'persons_injured', 'total_injuries',
+    'fatalities', 'fatality_count', 'deaths', 'killed', 'persons_killed', 'total_fatalities',
+    'accident_id', 'id', 'record_id', 'incident_id',
+    'latitude', 'lat', 'lat_coord', 'latitude_deg',
+    'longitude', 'lon', 'lng', 'long', 'longitude_deg',
+    'number_of_vehicles', 'vehicles', 'vehicle_count', 'vehicles_involved',
+    'accident_type', 'light_condition', 'collision_type'
+  ];
+
+  const allColumnsInFile = validRows.length > 0 && typeof validRows[0] === 'object' && validRows[0] !== null
+    ? Object.keys(validRows[0])
+    : [];
+  const unmappedColumns = allColumnsInFile.filter((col) => {
+    const cleanCol = col.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return !knownKeys.some((k) => k.replace(/[^a-z0-9]/g, '') === cleanCol);
+  });
+
   validRows.forEach((row, idx) => {
     const rowNumber = idx + 1;
     const issues = [];
@@ -293,6 +319,9 @@ export function processCsvDataset(rawRows = []) {
     const rawFatalities = getFieldValue(row, [
       'fatalities', 'fatality_count', 'deaths', 'killed', 'persons_killed', 'total_fatalities'
     ]);
+    const rawLatitude = getFieldValue(row, ['latitude', 'lat', 'lat_coord', 'latitude_deg']);
+    const rawLongitude = getFieldValue(row, ['longitude', 'lon', 'lng', 'long', 'longitude_deg']);
+    const rawVehicles = getFieldValue(row, ['number_of_vehicles', 'vehicles', 'vehicle_count', 'vehicles_involved']);
 
     if (!rawDate) {
       issues.push({ field: 'Date', severity: 'error', message: 'Missing required accident date' });
@@ -343,6 +372,49 @@ export function processCsvDataset(rawRows = []) {
       }
     }
 
+    let cleanedLat = null;
+    let cleanedLng = null;
+    if (rawLatitude !== null && rawLatitude !== undefined && String(rawLatitude).trim() !== '') {
+      const latNum = Number(rawLatitude);
+      if (isNaN(latNum)) {
+        issues.push({ field: 'Coordinates', severity: 'warning', message: `Invalid non-numeric latitude "${rawLatitude}"` });
+      } else if (latNum < -90 || latNum > 90) {
+        issues.push({ field: 'Coordinates', severity: 'error', message: `Latitude out of valid physical range (${latNum})` });
+      } else {
+        cleanedLat = latNum;
+        if (latNum < 30.5 || latNum > 31.0) {
+          issues.push({ field: 'Coordinates', severity: 'warning', message: `Latitude ${latNum} is outside Chandigarh region (30.60 - 30.88)` });
+        }
+      }
+    }
+
+    if (rawLongitude !== null && rawLongitude !== undefined && String(rawLongitude).trim() !== '') {
+      const lngNum = Number(rawLongitude);
+      if (isNaN(lngNum)) {
+        issues.push({ field: 'Coordinates', severity: 'warning', message: `Invalid non-numeric longitude "${rawLongitude}"` });
+      } else if (lngNum < -180 || lngNum > 180) {
+        issues.push({ field: 'Coordinates', severity: 'error', message: `Longitude out of valid physical range (${lngNum})` });
+      } else {
+        cleanedLng = lngNum;
+        if (lngNum < 76.6 || lngNum > 77.0) {
+          issues.push({ field: 'Coordinates', severity: 'warning', message: `Longitude ${lngNum} is outside Chandigarh region (76.65 - 76.92)` });
+        }
+      }
+    }
+
+    let cleanedVehicles = 1;
+    if (rawVehicles !== null && rawVehicles !== undefined && String(rawVehicles).trim() !== '') {
+      const vehNum = Number(rawVehicles);
+      if (isNaN(vehNum)) {
+        issues.push({ field: 'Vehicles', severity: 'warning', message: `Non-numeric vehicle count "${rawVehicles}"` });
+      } else if (vehNum < 0) {
+        issues.push({ field: 'Vehicles', severity: 'error', message: `Negative vehicle count (${vehNum})` });
+        cleanedVehicles = 0;
+      } else {
+        cleanedVehicles = Math.round(vehNum);
+      }
+    }
+
     const weatherResult = standardizeWeather(rawWeather);
     if (!weatherResult.isRecognized && rawWeather) {
       issues.push({
@@ -373,7 +445,7 @@ export function processCsvDataset(rawRows = []) {
     }
 
     const cleanedDate = dateResult.isValid ? dateResult.formatted : (rawDate || null);
-    const cleanedLocation = cleanText(rawLocation) || 'Unknown';
+    const cleanedLocation = cleanText(rawLocation) || 'Unknown Location';
     const cleanedSector = cleanText(rawSector) || 'Unknown';
     const cleanedCorridor = cleanText(rawCorridor) || 'Unknown';
     const cleanedWeather = weatherResult.standardized;
@@ -401,7 +473,7 @@ export function processCsvDataset(rawRows = []) {
       }
     }
 
-    if (dateResult.isValid && cleanedLocation !== 'Unknown') {
+    if (dateResult.isValid && cleanedLocation !== 'Unknown Location') {
       const timeComponent = cleanedTime ? cleanedTime.toLowerCase() : '';
       const dupKey = `${cleanedDate}|${cleanedLocation.toLowerCase()}|${timeComponent}|${cleanedSeverity.toLowerCase()}|${cleanedInjuries}|${cleanedFatalities}`;
       const nearKey = `${cleanedDate}|${cleanedLocation.toLowerCase()}`;
@@ -468,6 +540,9 @@ export function processCsvDataset(rawRows = []) {
         location: cleanedLocation,
         sector: cleanedSector,
         corridor: cleanedCorridor,
+        latitude: cleanedLat,
+        longitude: cleanedLng,
+        numberOfVehicles: cleanedVehicles,
         weatherCondition: cleanedWeather,
         roadCondition: cleanedRoad,
         severity: cleanedSeverity,
@@ -491,6 +566,103 @@ export function processCsvDataset(rawRows = []) {
     duplicateRecords: duplicateCount,
     missingFieldCount: totalMissingFields,
     qualityPercentage,
+    unmappedColumns,
+    processedRecords
+  };
+}
+
+export function transformBackendRecordsToProcessed(backendRecords = [], qualityReport = null) {
+  const processedRecords = (backendRecords || []).map((r, idx) => {
+    const rowNumber = idx + 1;
+    const rawIssues = Array.isArray(r.issues) ? r.issues : [];
+
+    const hasErrorIssues = !r.is_valid || rawIssues.some(
+      (iss) => iss.issue_type === 'INVALID_VALUE' || iss.issue_type === 'OUT_OF_RANGE'
+    );
+    const hasWarningIssues = rawIssues.some(
+      (iss) => iss.issue_type !== 'INVALID_VALUE' && iss.issue_type !== 'OUT_OF_RANGE'
+    );
+
+    let status = 'valid';
+    if (!r.is_valid || hasErrorIssues) {
+      status = 'invalid';
+    } else if (hasWarningIssues || r.is_duplicate) {
+      status = 'warning';
+    }
+
+    const issues = rawIssues.map((iss) => {
+      const isErr = !r.is_valid || iss.issue_type === 'INVALID_VALUE' || iss.issue_type === 'OUT_OF_RANGE';
+      return {
+        field: iss.field_name || 'Record',
+        severity: isErr ? 'error' : 'warning',
+        message: iss.description || `${iss.issue_type}: ${iss.field_name}`,
+      };
+    });
+
+    const locationStr = cleanText(r.location) || 'Unknown Location';
+    const sectorMatch = locationStr.match(/\b(?:Sector|Sec\.?)\s*([0-9]{1,2})\b/i);
+    const sector = sectorMatch ? `Sector ${sectorMatch[1]}` : 'Chandigarh';
+    const corridorMatch = locationStr.match(
+      /\b(?:Madhya Marg|Dakshin Marg|Purv Marg|Vikas Marg|Himalaya Marg|Sarovar Marg|Jan Marg|Vidya Marg|Shanti Path|Udyog Path|Sukhna Path|NH-?0?5)\b/i
+    );
+    const corridor = corridorMatch
+      ? corridorMatch[0]
+      : (sectorMatch ? `Sector ${sectorMatch[1]} Corridor` : 'Arterial Corridor');
+
+    const weatherResult = standardizeWeather(r.weather_condition);
+    const roadResult = standardizeRoadCondition(r.road_condition);
+    const severityResult = standardizeSeverity(r.severity);
+
+    const isExcluded = !r.is_valid || Boolean(r.is_duplicate);
+
+    return {
+      id: `proc-rec-${r.id || rowNumber}`,
+      rowNumber,
+      status,
+      issues,
+      isDuplicate: Boolean(r.is_duplicate),
+      duplicateOfRow: null,
+      isLocationUnverified: false,
+      missingFields: [],
+      isExcluded,
+      cleaned: {
+        id: `rec-${r.id || rowNumber}`,
+        date: r.accident_date,
+        time: r.accident_time,
+        location: locationStr,
+        sector,
+        corridor,
+        latitude: r.latitude,
+        longitude: r.longitude,
+        numberOfVehicles: r.number_of_vehicles || 1,
+        weatherCondition: weatherResult.standardized || 'Clear',
+        roadCondition: roadResult.standardized || 'Dry',
+        severity: severityResult.standardized || 'Medium',
+        injuries: Number(r.injuries) || 0,
+        fatalities: Number(r.fatalities) || 0,
+      },
+      raw: { ...r }
+    };
+  });
+
+  const total = qualityReport?.total_records ?? (backendRecords || []).length;
+  const valid = qualityReport?.valid_records ?? processedRecords.filter((r) => r.status === 'valid').length;
+  const invalid = qualityReport?.invalid_records ?? processedRecords.filter((r) => r.status === 'invalid').length;
+  const warnings = processedRecords.filter((r) => r.status === 'warning').length;
+  const duplicates = qualityReport?.duplicate_records ?? processedRecords.filter((r) => r.isDuplicate).length;
+  const qualityPercentage = qualityReport?.quality_score_pct ?? (
+    total > 0 ? Math.max(0, Math.min(100, Math.round(((valid * 1.0 + warnings * 0.5) / total) * 100))) : 100
+  );
+
+  return {
+    totalRecords: total,
+    validRecords: valid,
+    warningRecords: warnings,
+    invalidRecords: invalid,
+    duplicateRecords: duplicates,
+    missingFieldCount: 0,
+    qualityPercentage,
+    unmappedColumns: [],
     processedRecords
   };
 }

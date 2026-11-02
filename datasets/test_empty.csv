@@ -1,0 +1,2 @@
+accident_id,accident_date,accident_time,location,latitude,longitude,severity,weather_condition,road_condition,number_of_vehicles,injuries,fatalities,accident_type,light_condition
+

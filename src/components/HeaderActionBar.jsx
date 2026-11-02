@@ -6,10 +6,14 @@ import {
   Menu,
   RotateCcw,
   Upload,
+  Database,
 } from 'lucide-react';
 import { processCsvDataset } from '../utils/dataProcessing';
 
 export default function HeaderActionBar({
+  availableDatasets = [],
+  selectedDatasetId = null,
+  onSelectDataset = () => {},
   severityFilter,
   onSeverityFilterChange,
   onResetFilters,
@@ -46,7 +50,7 @@ export default function HeaderActionBar({
             return;
           }
 
-          onInitiateValidation(validationResult, file.name);
+          onInitiateValidation(validationResult, file.name, file);
 
           if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -91,13 +95,13 @@ export default function HeaderActionBar({
             <span className={`dataset-status-tag ${currentSource.isCustom ? 'tag-custom' : ''}`}>
               {currentSource.isCustom
                 ? `Custom: ${currentSource.name}`
-                : (currentSource.name || 'Chandigarh Demo Dataset')} ({totalCount} active)
+                : (currentSource.name || 'Chandigarh Demo Dataset')} ({totalCount} active{currentSource.totalRecords && currentSource.totalRecords !== totalCount ? ` / ${currentSource.totalRecords} total` : ''})
             </span>
             {currentSource.isCustom && (
               <button
                 className="btn-link-reset"
                 onClick={onResetSample}
-                title="Reset to CTP baseline dataset"
+                title="Reset to baseline demonstration dataset"
               >
                 Reset Baseline
               </button>
@@ -108,6 +112,25 @@ export default function HeaderActionBar({
       </div>
 
       <div className="action-bar-right">
+        {availableDatasets && availableDatasets.length > 0 && (
+          <div className="filter-item dataset-selector-wrapper" title="Select active dataset">
+            <Database size={14} strokeWidth={1.75} className="filter-icon" />
+            <select
+              className="action-select dataset-select"
+              value={selectedDatasetId || ''}
+              onChange={(e) => onSelectDataset(Number(e.target.value))}
+              aria-label="Select Dataset"
+              style={{ maxWidth: '210px', textOverflow: 'ellipsis' }}
+            >
+              {availableDatasets.map((ds) => (
+                <option key={ds.id} value={ds.id}>
+                  {ds.dataset_name || `Dataset #${ds.id}`} ({ds.total_records} rows)
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="filter-item severity-filter-wrapper" title="Filter by crash severity">
           <Filter size={14} strokeWidth={1.75} className="filter-icon" />
           <select

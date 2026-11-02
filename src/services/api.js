@@ -102,7 +102,7 @@ export async function getAiSafetyInsights(datasetId = null, severityFilter = 'Al
   return fetchJson('/ai/insights', {
     method: 'POST',
     body: JSON.stringify({
-      dataset_id: datasetId,
+      dataset_id: datasetId ? Number(datasetId) : null,
       severity_filter: severityFilter,
       include_recommendations: true,
     }),
