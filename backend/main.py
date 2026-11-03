@@ -23,9 +23,16 @@ app = FastAPI(
     version="2.0.0"
 )
 
+# Production CORS configuration
+cors_origins_env = os.getenv("CORS_ORIGINS", "*").strip()
+if cors_origins_env == "*" or not cors_origins_env:
+    allow_origins = ["*"]
+else:
+    allow_origins = [o.strip() for o in cors_origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,10 +40,27 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup_event():
+    # Automatically provision all tables in the database if they do not exist
     try:
         Base.metadata.create_all(bind=engine)
     except Exception as e:
         print(f"Warning: Database auto-migration skipped or failed: {e}")
+
+    # Seed demonstration data ONLY if explicitly enabled via environment variable
+    if os.getenv("SEED_DEMO_DATA", "").lower() in ("true", "1", "yes"):
+        try:
+            from database import SessionLocal
+            from models import Dataset
+            from seed_db import seed_database
+            db = SessionLocal()
+            try:
+                if db.query(Dataset).count() == 0:
+                    print("SEED_DEMO_DATA=true and database is empty. Initializing baseline demonstration dataset...")
+                    seed_database()
+            finally:
+                db.close()
+        except Exception as seed_err:
+            print(f"Note: Safe demo data initialization skipped: {seed_err}")
 
 app.include_router(health.router, prefix="/api")
 app.include_router(datasets.router, prefix="/api")
@@ -56,5 +80,6 @@ def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-
+    port = int(os.getenv("PORT", 8000))
+    host = os.getenv("HOST", "0.0.0.0")
+    uvicorn.run("main:app", host=host, port=port, reload=False)

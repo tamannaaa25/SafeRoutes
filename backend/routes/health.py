@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from sqlalchemy import text
 from datetime import datetime
 from database import get_db, check_db_connection
 from models import Dataset, Accident, DataQualityIssue, InvestigationRecommendation
@@ -23,8 +22,10 @@ def get_database_status(db: Session = Depends(get_db)):
         return {
             "connected": False,
             "error": status_info.get("error"),
-            "database_name": "saferoutes_db",
-            "server": "PostgreSQL",
+            "provider": status_info.get("provider", "PostgreSQL"),
+            "database_name": status_info.get("database_name", "saferoutes_db"),
+            "host": status_info.get("host", "configured"),
+            "port": status_info.get("port", 5432),
             "latency_ms": status_info.get("latency_ms", 0),
             "table_counts": {}
         }
@@ -40,10 +41,11 @@ def get_database_status(db: Session = Depends(get_db)):
 
     return {
         "connected": True,
+        "provider": status_info.get("provider", "PostgreSQL"),
         "database_name": status_info.get("database_name", "saferoutes_db"),
-        "server": status_info.get("server_version", "PostgreSQL 17"),
-        "host": "localhost (unix socket)",
-        "port": 5432,
+        "server": status_info.get("server_version", "PostgreSQL"),
+        "host": status_info.get("host", "configured"),
+        "port": status_info.get("port", 5432),
         "latency_ms": status_info.get("latency_ms", 0),
         "table_counts": table_counts,
         "checked_at": datetime.utcnow().isoformat()

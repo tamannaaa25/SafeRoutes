@@ -1,4 +1,13 @@
-const API_BASE = '/api';
+// Resolve production API base URL from Vite environment variable or fallback to relative '/api'
+const rawApiBase = (import.meta.env?.VITE_API_BASE_URL || '/api').trim();
+const normalizeApiBase = (url) => {
+  const clean = (url || '/api').trim().replace(/\/+$/, '');
+  if (clean.startsWith('http') && !clean.endsWith('/api')) {
+    return `${clean}/api`;
+  }
+  return clean || '/api';
+};
+const API_BASE = normalizeApiBase(rawApiBase);
 
 async function fetchJson(endpoint, options = {}) {
   try {
